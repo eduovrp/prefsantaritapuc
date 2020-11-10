@@ -1,43 +1,61 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.app')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('content')
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+<x-jet-validation-errors class="mb-4" />
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
+<div class="row">
+	<div class="col-sm-12 tr-sticky">
+	    <div class="tr-content theiaStickySidebar">
+			<div class="tr-section">
+				<div class="tr-post">
+                    <x-jet-validation-errors />
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+					<div class="tr-details arqs">
+                        <div class="ragister-account text-center tr-section">
+                            <div class="account-content">
+                                <div class="logo text-center">
+                                    <a class="navbar-brand" href="#"><img class="img-responsive" src="images/logosr.png" width="40%" style="left: 0" alt="Logo"></a>
+                                </div>
+                                <div class="section-title">
+                                    <h1>Registre-se</h1>
+                                </div>
+                                <form method="POST" class="contact-form contact-form-two" action="{{ route('register') }}">
+                                    @csrf
+                                    <div class="form-group">
+                                        <div>
+                                            <x-jet-input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Digite o seu nome"/>
+                                            <x-jet-input id="email"  class="form-control" type="email" name="email" :value="old('email')" required placeholder="Digite o seu e-mail"/>
+                                            <x-jet-input id="password"  class="form-control" type="password" name="password" required autocomplete="new-password" placeholder="Digite uma senha"/>
+                                            <x-jet-input id="password_confirmation"  class="form-control" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Repita a senha" />
+                                        </div>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
+                                    <hr>
+                                        <label for="news">
+                                            <x-jet-input id="news" type="checkbox" checked name="news" />
+                                            Desejo receber e-mails de noticias importantes e futuros eventos no município.
+                                        </label>
+                                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                    </div>
+                                    <span>Ou</span>
+                                    <div class="buttons">
+                                        <a href="{{route('login')}}" class="btn btn-primary pass">Já possui cadastro? Clique para entrar</a>
+                                    </div>
 
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
+                                </form><!-- /.contact-form -->
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
 
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+                            </div><!-- /.account-content -->
+                        </div><!-- /.tr-page-content -->
+
+                                    </div><!-- /.tr-details -->
+
+										</div>
+                                    </div>
+                                </div>
+                            </div>
+						</div>
+                    </div>
+						  </div><!-- /.container-fulid -->
+                      </div><!-- /.main-wrapper -->
+@endsection
