@@ -240,12 +240,11 @@
                                                 </div>
                                                 <p>A cidade foi fundada em 22 de maio de 1952 e transformada em distrito em 30 de dezembro de 1953, em território do município de Santa Fé do Sul. Desenvolveu-se e obteve sua autonomia político-administrativa em 28 de fevereiro de 1964, quando foi elevada a município.</p>
                                                 <address>
-                                                    <p>&copy; 2018 <a href="{{url ('/')}}">Santa Rita d'Oeste - SP</a>. Email: <a href="#">tecnologia@santaritadoeste.sp.gov.br</a></p>
+                                                    <p>&copy; 2020 <a href="{{url ('/')}}">Santa Rita d'Oeste - SP</a>. Email: <a href="#">tecnologia@santaritadoeste.sp.gov.br</a></p>
                                                 </address>
 
                                             </div><!-- /.footer-bottom-content -->
                                         </div><!-- /.container -->
-                                        <p>Desenvolvido Por: <a href="https://twitter.com/eduovrp" style="color: red" target="_blank">Eduovrp</a></p>
                                     </div><!-- /.footer-bottom -->
 
                                 </footer><!-- /#footer -->

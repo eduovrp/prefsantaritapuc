@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<x-jet-validation-errors class="mb-4" />
+
             <div class="row">
                 <div class="col-sm-12 tr-sticky">
                     <div class="tr-content theiaStickySidebar">
                         <div class="tr-section">
                             <div class="tr-post">
-
                             <div class="tr-details arqs">
-
+                                <x-jet-validation-errors class="alert alert-warning" role="alert" />
                             <div class="ragister-account text-center tr-section">
             <div class="account-content">
             <div class="logo text-center">
