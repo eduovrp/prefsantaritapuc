@@ -169,7 +169,13 @@
 							<div class="topbar-right">
 								<div class="user">
 									<div class="user-image">
-										<img class="img-responsive img-circle" src="{{asset('images/others/ninja.png')}}" alt="Image">
+                                        <img class="img-responsive img-circle"
+                                        src="@if(Auth::check())
+                                                {{asset(Auth::user()->avatar_url)}}
+                                            @else
+                                                {{asset('images/others/ninja.png')}}
+                                            @endif
+                                        " alt="Image">
 									</div>
 									<div class="dropdown user-dropdown">
                                         Olá,

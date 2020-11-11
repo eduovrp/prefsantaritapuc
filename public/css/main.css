@@ -1105,6 +1105,12 @@ ul.sub-menu .sub-menu-2 {
 	display: inline-block;
 }
 
+.user-image img{
+    vertical-align: middle;
+    height: 35px;
+    border-radius: 50%;
+}
+
 .topbar-right .user-image {
 	margin-right: 10px;
 }
@@ -4033,6 +4039,17 @@ textarea.form-control {
 
 .ragister-account .contact-form .btn.btn-primary.facebook:hover {
 	background-color: rgba(0, 103, 179, 0.7);
+}
+
+.ragister-account .contact-form .btn.btn-primary.google {
+	border-color: #9c9c9c;
+    background-color: #ffffff;
+    color: rgba(0, 0, 0, 0.54);
+    padding: 5px;
+}
+
+.ragister-account .contact-form .btn.btn-primary.google:hover {
+	border-color: #f80000;
 }
 
 .ragister-account .contact-form .btn.btn-primary.pass {

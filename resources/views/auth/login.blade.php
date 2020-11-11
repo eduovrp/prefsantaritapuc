@@ -30,16 +30,12 @@
                 </div>
                 <span>Ou</span>
                 <div class="buttons">
-                    <a href="#" class="btn btn-primary facebook">Entre usando o Facebook</a>
-                    <a href="#" class="btn btn-primary twitter">Entre usando o Twitter</a>
+                    <a href="{{route('social.login', ['provider' =>'facebook'])}}" class="btn btn-primary facebook">Entre usando o Facebook</a>
+                    <a href="{{route('social.login', ['provider' =>'google'])}}" class="btn btn-primary google">Entre usando o Google</a>
+                    <a href="{{route('social.login', ['provider' =>'github'])}}" class="btn btn-primary twitter">Entre usando o Github</a>
                     <a href="{{route('register')}}" class="btn btn-primary pass">Registre-se usando uma senha</a>
                 </div>
-                {{-- <div class="form-group user-type">
-                    <div class="pull-right">
-                        <input type="radio" name="remember" value="remember" id="remember"> <label for="remember">Mantenha-me Conectado </label>
-                    </div>
-                </div> --}}
-            </form><!-- /.contact-form -->
+               </form><!-- /.contact-form -->
 
             </div><!-- /.account-content -->
             </div><!-- /.tr-page-content -->
