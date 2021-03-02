@@ -13,9 +13,8 @@ class HomeController extends Controller
     {
 
         $token      = '0767bb1676bdfb6a5a5b0caf82b63d3e';
-        $climatempo = new Climatempo($token);
         $locales 	= 3662;
-        $id 		= $climatempo->addLocalesToToken($locales);
+        $climatempo = new Climatempo($token);
 
         $weather    = $climatempo->current($locales);
         $forecast   = $climatempo->fifteenDays($locales);

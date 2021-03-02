@@ -81,7 +81,7 @@
                                                 <a href="{{url ('/')}}"><i class="fa fa-home" aria-hidden="true"></i>Início</a>
                                             </li>
                                             <li>
-                                                <a href="noticias"><i class="fa fa-newspaper-o" aria-hidden="true"></i>Notícias</a>
+                                                <a href="{{url ('/posts')}}"><i class="fa fa-newspaper-o" aria-hidden="true"></i>Notícias</a>
                                             </li>
                                             <li class="dropdown">
                                                 <a class="pointer"><i class="fa fa-map-signs" aria-hidden="true"></i>Turismo</a>
@@ -229,7 +229,7 @@
                                         <div class="container">
                                             <ul class="nav navbar-nav">
                                                 <li><a href="{{url ('/')}}">Inicio</a></li>
-                                                <li><a href="noticias">Notícias</a></li>
+                                                <li><a href="posts">Notícias</a></li>
                                                 <li><a href="cidade#map">Como Chegar</a></li>
                                                 <li><a href="contato">Ouvidoria</a></li>
                                                 <li><a href="registrar">Registre-se</a></li>

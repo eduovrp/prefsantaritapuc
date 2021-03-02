@@ -19,6 +19,7 @@ use App\Http\Controllers\LoginController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
+Route::get('posts', [PostController::class, 'index'])->name('posts');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

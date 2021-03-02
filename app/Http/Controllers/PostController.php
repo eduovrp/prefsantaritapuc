@@ -14,10 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::orderBy('id','desc')->paginate(5);
+        return view('posts', compact('posts'));
     }
 
-    /**
+/**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
