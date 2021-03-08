@@ -20,10 +20,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('posts', [PostController::class, 'index'])->name('posts');
+Route::get('manageFiles', [FileController::class, 'index'])->name('manageFiles');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 Route::get('login/{provider}', [LoginController::class, 'redirectToProvider'])->name('social.login');
 Route::get('login/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('social.callback');

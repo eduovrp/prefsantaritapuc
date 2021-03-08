@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('provider_id')->nullable();
             $table->string('avatar_url')->default('images/others/ninja.png');
             $table->string('email')->unique();
-            $table->char('news',1)->nullable();
+            $table->string('nivelAcesso')->default('User');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();

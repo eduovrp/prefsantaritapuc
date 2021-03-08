@@ -183,6 +183,9 @@
 										<a href="#" aria-expanded="true">{{ Auth::user()->name }}<i class="fa fa-caret-down" aria-hidden="true"></i></a>
 										<ul class="sub-menu text-left">
 
+                                            @if(Auth::user()->nivelAcesso == "Admin")
+                                                <li><a href="">Gerenciar Arquivos</a></li>
+                                            @endif
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
                                             <li>

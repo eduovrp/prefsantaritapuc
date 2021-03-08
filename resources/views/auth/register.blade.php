@@ -31,10 +31,6 @@
                                         </div>
 
                                     <hr>
-                                        <label for="news">
-                                            <x-jet-input id="news" type="checkbox" checked name="news" />
-                                            Desejo receber e-mails de noticias importantes e futuros eventos no município.
-                                        </label>
                                         <button type="submit" class="btn btn-primary">Cadastrar</button>
                                     </div>
                                     <span>Ou</span>

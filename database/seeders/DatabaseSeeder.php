@@ -17,11 +17,18 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(5)->create();
 
-        POst::factory(10)
+        Post::factory(10)
         ->hasTags(2)
         ->hasCategoryPost(1)
         ->create();
 
+        DB::table('users')->insert([
+            'name' => 'Super Admin',
+            'avatar_url' => 'images/others/ninja.png',
+            'email' => 'admin@santaritadoeste.sp.gov.br',
+            'nivelAcesso' => 'Admin',
+            'password' => '$2y$10$hRijxsCdf8vr4x7etp5sie9h/O/q4PTLi9vFFV.BHwuKPwjRwfNc.'
+        ]);
 
         DB::table('cards')->insert([
             'name'=>'Novembro Azul',
