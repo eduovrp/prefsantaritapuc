@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
@@ -20,7 +21,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('posts', [PostController::class, 'index'])->name('posts');
-Route::get('manageFiles', [FileController::class, 'index'])->name('manageFiles');
+
+Route::get('{filesCategory}/{filesSubCategory}', [FileController::class, 'index'])->name('file.index');
+
+// Route::get('manageFiles', [FileController::class, 'index'])->name('manageFiles');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');

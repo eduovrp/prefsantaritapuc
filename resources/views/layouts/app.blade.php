@@ -97,48 +97,20 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="dropdown">
-                                                <a class="pointer"><i class="fa fa-gavel" aria-hidden="true"></i>Licitações</a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="licitacao/atas">atas</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="licitacao/contratos">Contratos</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="licitacao/editais">editais</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="licitacao/resultados">resultados</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="pointer"><i class="fas fa-balance-scale" aria-hidden="true"></i>Legislação</a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="legislacao/decretos">decretos</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="legislacao/leis">leis</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="legislacao/resolucoes">Resoluções</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="pointer"><i class="fas fa-spell-check" aria-hidden="true"></i>Concursos Públicos</a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="concursos/editais">editais</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="concursos/resultados">resultados</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
+
+                                            @foreach(App\Models\filesCategory::menu() as $menu)
+                                                <li class="dropdown">
+                                                    <a class="pointer"><i class="{{$menu->iconMenu}}" aria-hidden="true"></i>{{$menu->name}}</a>
+                                                    <ul class="sub-menu">
+                                                        @foreach($menu->filesSubCategories as $submenu)
+                                                        <li>
+                                                            <a href="/{{$menu->href .'/'. $submenu->href}}">{{$submenu->name}}</a>
+                                                        </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
+                                            @endforeach
+
                                     <li><a href="contato"><i class="fa fa-phone" aria-hidden="true"></i>Fale Conosco</a></li>
                                     </ul>
 										</ul>

@@ -2,34 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\file;
+use App\Models\filesCategory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class FileController extends Controller
+class FilesCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($filesCategory, $filesSubCategory)
+    public function index()
     {
-
-        $fileCategoryId = DB::table('files_categories')
-        ->where('href', '=', $filesCategory)
-        ->get();
-
-        $fileSubCategoryId = DB::table('files_sub_categories')
-        ->where('href', '=', $filesSubCategory)
-        ->get();
-
-        $files = DB::table('files')
-        ->where('files_category_id', '=', $fileCategoryId[0]->id)
-        ->where('files_sub_category_id', '=', $fileSubCategoryId[0]->id)
-        ->get();
-
-        return view('files', compact('files'));
+        //
     }
 
     /**
@@ -56,10 +41,10 @@ class FileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\file  $file
+     * @param  \App\Models\filesCategory  $filesCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(file $file)
+    public function show(filesCategory $filesCategory)
     {
         //
     }
@@ -67,10 +52,10 @@ class FileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\file  $file
+     * @param  \App\Models\filesCategory  $filesCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(file $file)
+    public function edit(filesCategory $filesCategory)
     {
         //
     }
@@ -79,10 +64,10 @@ class FileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\file  $file
+     * @param  \App\Models\filesCategory  $filesCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, file $file)
+    public function update(Request $request, filesCategory $filesCategory)
     {
         //
     }
@@ -90,10 +75,10 @@ class FileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\file  $file
+     * @param  \App\Models\filesCategory  $filesCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(file $file)
+    public function destroy(filesCategory $filesCategory)
     {
         //
     }

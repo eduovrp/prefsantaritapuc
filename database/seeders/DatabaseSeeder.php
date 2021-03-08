@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use \App\Models\Post;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,20 +28,17 @@ class DatabaseSeeder extends Seeder
             'avatar_url' => 'images/others/ninja.png',
             'email' => 'admin@santaritadoeste.sp.gov.br',
             'nivelAcesso' => 'Admin',
-            'password' => '$2y$10$hRijxsCdf8vr4x7etp5sie9h/O/q4PTLi9vFFV.BHwuKPwjRwfNc.'
+            'password' => '$2y$10$hRijxsCdf8vr4x7etp5sie9h/O/q4PTLi9vFFV.BHwuKPwjRwfNc.',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('cards')->insert([
-            'name'=>'Novembro Azul',
-            'src_img'=>'images/cards/novembroazul.png',
-            'date_exp'=>'2020-12-31 23:59:59',
+        $this->call([
+            CardSeeder::class,
+            FilesCategorySeeder::class,
+            FilesSubCategorySeeder::class,
+            FileSeeder::class
         ]);
 
-        DB::table('cards')->insert([
-            'name'=>'Natal 2019',
-            'src_img'=>'images/cards/natal2019.png',
-            'src_img_onclick'=>'images/cards/natal2019_onclick.png',
-            'date_exp'=>'2020-12-31 23:59:59',
-        ]);
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class FileSeeder extends Seeder
+class FilesCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,28 +15,29 @@ class FileSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('files')->insert([
-            'name' => 'arquivo 1',
-            'files_category_id' => '1',
-            'files_sub_category_id' => '1',
+        DB::table('files_categories')->insert([
+            'name' => 'Legislação',
+            'iconMenu' => 'fas fa-balance-scale',
+            'href' => 'legislacao',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('files')->insert([
-            'name' => 'arquivo 2',
-            'files_category_id' => '1',
-            'files_sub_category_id' => '2',
+        DB::table('files_categories')->insert([
+            'name' => 'Licitação',
+            'iconMenu' => 'fa fa-gavel',
+            'href' => 'licitacao',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('files')->insert([
-            'name' => 'arquivo 3',
-            'files_category_id' => '2',
-            'files_sub_category_id' => '4',
+        DB::table('files_categories')->insert([
+            'name' => 'Concursos Públicos',
+            'iconMenu' => 'fas fa-spell-check',
+            'href' => 'concursos',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
     }
 }
