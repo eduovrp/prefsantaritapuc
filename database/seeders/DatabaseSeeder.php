@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         ->hasCategoryPost(1)
         ->create();
 
+        // Admin Password "admin123"
         DB::table('users')->insert([
             'name' => 'Super Admin',
             'avatar_url' => 'images/others/ninja.png',
@@ -35,8 +36,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CardSeeder::class,
-            FilesCategorySeeder::class,
-            FilesSubCategorySeeder::class,
+            FileCategorySeeder::class,
+            FileSubCategorySeeder::class,
             FileSeeder::class
         ]);
 

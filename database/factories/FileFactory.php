@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\file;
+use App\Models\File;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class FileFactory extends Factory
@@ -12,7 +12,7 @@ class FileFactory extends Factory
      *
      * @var string
      */
-    protected $model = file::class;
+    protected $model = File::class;
 
     /**
      * Define the model's default state.

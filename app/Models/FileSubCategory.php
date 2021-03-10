@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class filesSubCategory extends Model
+class FileSubCategory extends Model
 {
     use HasFactory;
 
@@ -16,6 +16,6 @@ class filesSubCategory extends Model
     ];
 
     public function filesCategories(){
-        return $this->belongsTo(filesCategory::class);
+        return $this->belongsTo(FileCategory::class);
     }
 }

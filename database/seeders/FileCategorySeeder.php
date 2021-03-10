@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class FilesCategorySeeder extends Seeder
+class FileCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class FilesCategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('files_categories')->insert([
+        DB::table('file_categories')->insert([
             'name' => 'Legislação',
             'iconMenu' => 'fas fa-balance-scale',
             'href' => 'legislacao',
@@ -23,7 +23,7 @@ class FilesCategorySeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('files_categories')->insert([
+        DB::table('file_categories')->insert([
             'name' => 'Licitação',
             'iconMenu' => 'fa fa-gavel',
             'href' => 'licitacao',
@@ -31,7 +31,7 @@ class FilesCategorySeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('files_categories')->insert([
+        DB::table('file_categories')->insert([
             'name' => 'Concursos Públicos',
             'iconMenu' => 'fas fa-spell-check',
             'href' => 'concursos',

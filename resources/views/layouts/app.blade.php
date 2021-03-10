@@ -98,7 +98,7 @@
                                                 </ul>
                                             </li>
 
-                                            @foreach(App\Models\filesCategory::menu() as $menu)
+                                            @foreach(App\Models\fileCategory::menu() as $menu)
                                                 <li class="dropdown">
                                                     <a class="pointer"><i class="{{$menu->iconMenu}}" aria-hidden="true"></i>{{$menu->name}}</a>
                                                     <ul class="sub-menu">
@@ -156,7 +156,7 @@
 										<ul class="sub-menu text-left">
 
                                             @if(Auth::user()->nivelAcesso == "Admin")
-                                                <li><a href="">Gerenciar Arquivos</a></li>
+                                                <li><a href="{{route('manageFiles')}}">Gerenciar Arquivos</a></li>
                                             @endif
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf

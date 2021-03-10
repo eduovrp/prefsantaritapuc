@@ -16,10 +16,10 @@ class CreateFilesTable extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedInteger('files_category_id');
-            $table->foreign('files_category_id')->references('id')->on('files_categories');
-            $table->unsignedInteger('files_sub_category_id');
-            $table->foreign('files_sub_category_id')->references('id')->on('files_sub_categories');
+            $table->unsignedInteger('file_category_id');
+            $table->foreign('file_category_id')->references('id')->on('file_categories');
+            $table->unsignedInteger('file_sub_category_id');
+            $table->foreign('file_sub_category_id')->references('id')->on('file_sub_categories');
             $table->timestamps();
         });
     }

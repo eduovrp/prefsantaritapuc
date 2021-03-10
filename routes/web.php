@@ -22,9 +22,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('posts', [PostController::class, 'index'])->name('posts');
 
-Route::get('{filesCategory}/{filesSubCategory}', [FileController::class, 'index'])->name('file.index');
+Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'index'])->name('file.index');
 
-// Route::get('manageFiles', [FileController::class, 'index'])->name('manageFiles');
+Route::get('manageFiles', [FileController::class, 'files'])->name('manageFiles');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');

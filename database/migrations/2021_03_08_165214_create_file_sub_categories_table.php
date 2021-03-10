@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFilesCategoriesTable extends Migration
+class CreateFileSubCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateFilesCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('files_categories', function (Blueprint $table) {
+        Schema::create('file_sub_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('iconMenu');
             $table->string('href');
+            $table->unsignedInteger('file_category_id');
+            $table->foreign('file_category_id')->references('id')->on('file_categories');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateFilesCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files_categories');
+        Schema::dropIfExists('file_sub_categories');
     }
 }

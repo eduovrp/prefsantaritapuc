@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\filesSubCategory;
+use App\Models\FileCategory;
 use Illuminate\Http\Request;
 
-class FilesSubCategoryController extends Controller
+class FileCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class FilesSubCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\filesSubCategory  $filesSubCategory
+     * @param  \App\Models\FileCategory  $FileCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(filesSubCategory $filesSubCategory)
+    public function show(FileCategory $FileCategory)
     {
         //
     }
@@ -52,10 +52,10 @@ class FilesSubCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\filesSubCategory  $filesSubCategory
+     * @param  \App\Models\FileCategory  $FileCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(filesSubCategory $filesSubCategory)
+    public function edit(FileCategory $FileCategory)
     {
         //
     }
@@ -64,10 +64,10 @@ class FilesSubCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\filesSubCategory  $filesSubCategory
+     * @param  \App\Models\FileCategory  $FileCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, filesSubCategory $filesSubCategory)
+    public function update(Request $request, FileCategory $FileCategory)
     {
         //
     }
@@ -75,10 +75,10 @@ class FilesSubCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\filesSubCategory  $filesSubCategory
+     * @param  \App\Models\FileCategory  $FileCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(filesSubCategory $filesSubCategory)
+    public function destroy(FileCategory $FileCategory)
     {
         //
     }

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\filesSubCategory;
+use App\Models\FileSubCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class FilesSubCategoryFactory extends Factory
+class FileSubCategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = filesSubCategory::class;
+    protected $model = FileSubCategory::class;
 
     /**
      * Define the model's default state.
