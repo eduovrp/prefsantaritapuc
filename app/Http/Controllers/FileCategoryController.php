@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FileCategory;
+use App\Models\FileSubCategory;
 use Illuminate\Http\Request;
 
 class FileCategoryController extends Controller
@@ -17,6 +18,11 @@ class FileCategoryController extends Controller
         //
     }
 
+    public function uploadFiles()
+    {
+        $categories = FileCategory::all();
+        return view ('uploadFiles', compact('categories'));
+    }
     /**
      * Show the form for creating a new resource.
      *

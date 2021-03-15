@@ -14,7 +14,7 @@ class FileCategory extends Model
         'iconMenu'
     ];
 
-    public function filesSubCategories(){
+    public function fileSubCategories(){
         return $this->hasMany(FileSubCategory::class);
     }
 

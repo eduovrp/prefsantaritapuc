@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\FileCategoryController;
+use App\Http\Controllers\FileSubCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
+use App\Models\FileSubCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,11 @@ Route::get('posts', [PostController::class, 'index'])->name('posts');
 Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'index'])->name('file.index');
 
 Route::get('manageFiles', [FileController::class, 'files'])->name('manageFiles');
+Route::get('uploadFiles', [FileCategoryController::class, 'uploadFiles'])->name('uploadFiles');
+
+Route::post('uploadFiles', [FileSubCategoryController::class, 'ajaxRequest'])->name('ajaxRequest');
+
+Route::post('files',[FileController::class, 'upload'])->name('fileUpload');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');

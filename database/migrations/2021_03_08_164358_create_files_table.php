@@ -16,6 +16,8 @@ class CreateFilesTable extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('path');
+            $table->string('year');
             $table->unsignedInteger('file_category_id');
             $table->foreign('file_category_id')->references('id')->on('file_categories');
             $table->unsignedInteger('file_sub_category_id');

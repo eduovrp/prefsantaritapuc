@@ -9,11 +9,19 @@ class File extends Model
 {
     use HasFactory;
 
-    public function filesCategories(){
+    protected $fillable = [
+        'name',
+        'path',
+        'year',
+        'file_category_id',
+        'file_sub_category_id'
+    ];
+
+    public function fileCategories(){
         return $this->belongsTo(FileCategory::class);
     }
 
-    public function filesSubCategories(){
+    public function fileSubCategories(){
         return $this->belongsTo(FileSubCategory::class);
     }
 }

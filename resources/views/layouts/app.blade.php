@@ -33,7 +33,11 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
         <link href="{{ asset('css/background.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/font/font-fileuploader.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/jquery.fileuploader.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/jquery.fancybox.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-html5-1.7.0/b-print-1.7.0/datatables.min.css"/>
+
 
 
 		<script src="https://kit.fontawesome.com/02c1f06a40.js" crossorigin="anonymous"></script>
@@ -102,7 +106,7 @@
                                                 <li class="dropdown">
                                                     <a class="pointer"><i class="{{$menu->iconMenu}}" aria-hidden="true"></i>{{$menu->name}}</a>
                                                     <ul class="sub-menu">
-                                                        @foreach($menu->filesSubCategories as $submenu)
+                                                        @foreach($menu->fileSubCategories as $submenu)
                                                         <li>
                                                             <a href="/{{$menu->href .'/'. $submenu->href}}">{{$submenu->name}}</a>
                                                         </li>
@@ -246,6 +250,12 @@
                                 <script src="{{asset('js/main.js')}}"></script>
                                 <script src="{{asset('js/nav.js')}}"></script>
                                 <script src="{{asset('js/jquery.fancybox.min.js')}}"></script>
+                                <script src="{{asset('js/jquery.fileuploader.min.js')}}"></script>
+                                <script src="{{asset('js/files.js')}}"></script>
+                                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+                                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+                                <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-html5-1.7.0/b-print-1.7.0/datatables.min.js"></script>
+
 
                             </body>
                         </html>

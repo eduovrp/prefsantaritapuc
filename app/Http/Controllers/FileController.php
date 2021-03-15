@@ -38,6 +38,10 @@ class FileController extends Controller
         return view('manageFiles', compact('files'));
     }
 
+    public function upload(Request $request){
+        dd($request->file());
+    }
+
     /**
      * Show the form for creating a new resource.
      *

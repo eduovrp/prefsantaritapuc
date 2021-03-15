@@ -79,6 +79,10 @@ p.footer{
 	background-color: #e8e8e8;
 	border: #dbdbdb 1px solid
 }
+
+.right{
+    float: right;
+}
 .m-t-50{
 	margin-top: 50px;
 }
