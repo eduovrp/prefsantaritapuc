@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <div class="col-md-5">
                                     <label for="">Categoria</label>
-                                    <select name="category" id="category" class="form-control">
+                                    <select name="category" id="category" class="form-control" required>
                                         <option value="">Selecione a Categoria</option>
                                         @foreach($categories as $category)
                                             <option value="{{$category->id}}">{{$category->name}}</option>
@@ -27,19 +27,19 @@
                                 </div>
                                 <div class="col-md-5">
                                     <label for="">Sub-Categoria</label>
-                                    <select name="subCategory" id="subCategory" class="form-control" disabled>
+                                    <select name="subCategory" id="subCategory" class="form-control" disabled required>
                                         <option value="" class="subCategory">Selecione a Categoria</option>
 
                                     </select>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="year">Ano</label>
-                                    <input type="number" class="form-control" name="year" id="year" value="{{now()->year}}">
+                                    <input type="number" class="form-control" name="year" id="year" value="{{now()->year}}" required>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="file" name="files">
+                            <input type="file" name="files" required>
                         </div>
                         <div class="col-md-6 col-md-offset-3">
                             <input type="submit" class="btn btn-primary btn-block">

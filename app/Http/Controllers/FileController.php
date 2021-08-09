@@ -39,7 +39,8 @@ class FileController extends Controller
     }
 
     public function upload(Request $request){
-        dd($request->file());
+        
+        dd($request->all());
     }
 
     /**
