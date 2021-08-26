@@ -19,22 +19,24 @@
                             <thead>
                                 <tr>
                                     <th class="print">Nome</th>
-                                    <th class="print">Path</th>
+                                    <th class="print">Caminho</th>
                                     <th class="print">Ano</th>
                                     <th class="print">Categoria</th>
                                     <th class="print">Sub-Categoria</th>
-                                    <th>#</th>
+                                    <th>Download</th>
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
                         <tbody>
                             @foreach($files as $file)
                             <tr>
                                 <td class="print">{{$file->name}}</td>
-                                <td class="print">{{$file->path}}</td>
+                                <td class="print">{{substr($file->path,0,25)}}...</td>
                                 <td class="print">{{$file->year}}</td>
-                                <td class="print">{{$file->file_category_id}}</td>
-                                <td class="print">{{$file->file_sub_category_id}}</td>
-                                <td><a href="#"><i class="fa fa-download fa-2x"></i></a></td>
+                                <td class="print">{{$file->fileCategory->name}}</td>
+                                <td class="print">{{$file->fileSubCategory->name}}</td>
+                                <td><a href="{{$file->path}}"><i class="fa fa-download fa-2x"></i></a></td>
+                                <td><a href="{{url("manageFiles/$file->id/edit")}}"><i class="fa fa-edit fa-2x"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>

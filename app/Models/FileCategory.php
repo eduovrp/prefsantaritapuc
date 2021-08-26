@@ -18,6 +18,10 @@ class FileCategory extends Model
         return $this->hasMany(FileSubCategory::class);
     }
 
+    public function files(){
+        return $this->hasMany(File::class);
+    }
+
     public static function menu(){
         return FileCategory::all();
     }

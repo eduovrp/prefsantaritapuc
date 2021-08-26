@@ -28,11 +28,13 @@ Route::get('posts', [PostController::class, 'index'])->name('posts');
 Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'index'])->name('file.index');
 
 Route::get('manageFiles', [FileController::class, 'files'])->name('manageFiles');
+Route::get('manageFiles/{file}/edit', [FileController::class, 'edit'])->name('editFile');
 Route::get('uploadFiles', [FileCategoryController::class, 'uploadFiles'])->name('uploadFiles');
 
 Route::post('uploadFiles', [FileSubCategoryController::class, 'ajaxRequest'])->name('ajaxRequest');
 
 Route::post('files',[FileController::class, 'upload'])->name('fileUpload');
+Route::put('fileUpdate',[FileController::class, 'update'])->name('fileUpdate');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');

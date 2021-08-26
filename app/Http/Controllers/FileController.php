@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\FileCategory;
 
 class FileController extends Controller
 {
@@ -40,7 +41,27 @@ class FileController extends Controller
 
     public function upload(Request $request){
         
-        dd($request->all());
+        
+        foreach($request->file('files') as $file){
+            
+            
+            $name = $file->getClientOriginalName();
+
+            $files = new File();
+
+            $files->name = $name;
+            $files->path = 'storage/'.$file->store('uploads/'.$request->year);
+            $files->year = $request->year;
+            $files->file_category_id = $request->category;
+            $files->file_sub_category_id = $request->subCategory;
+
+            $files->save();
+            unset($files);
+
+        };
+
+        return redirect()->route('manageFiles');
+
     }
 
     /**
@@ -70,7 +91,7 @@ class FileController extends Controller
      * @param  \App\Models\File  $File
      * @return \Illuminate\Http\Response
      */
-    public function show(File $File)
+    public function show(File $file)
     {
         //
     }
@@ -81,9 +102,10 @@ class FileController extends Controller
      * @param  \App\Models\File  $File
      * @return \Illuminate\Http\Response
      */
-    public function edit(File $File)
-    {
-        //
+    public function edit(File $file)
+    {   
+        $categories = FileCategory::all();        
+        return view ('editFile',compact('file','categories'));
     }
 
     /**
@@ -93,7 +115,7 @@ class FileController extends Controller
      * @param  \App\Models\File  $File
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, File $File)
+    public function update(Request $request, File $file)
     {
         //
     }
@@ -104,7 +126,7 @@ class FileController extends Controller
      * @param  \App\Models\File  $File
      * @return \Illuminate\Http\Response
      */
-    public function destroy(File $File)
+    public function destroy(File $file)
     {
         //
     }

@@ -17,11 +17,11 @@ class File extends Model
         'file_sub_category_id'
     ];
 
-    public function fileCategories(){
+    public function fileCategory(){
         return $this->belongsTo(FileCategory::class);
     }
 
-    public function fileSubCategories(){
+    public function fileSubCategory(){
         return $this->belongsTo(FileSubCategory::class);
     }
 }

@@ -15,7 +15,11 @@ class FileSubCategory extends Model
         'file_category_id'
     ];
 
-    public function fileCategories(){
+    public function fileCategory(){
         return $this->belongsTo(FileCategory::class);
+    }
+
+    public function files(){
+        return $this->hasMany(File::class);
     }
 }
