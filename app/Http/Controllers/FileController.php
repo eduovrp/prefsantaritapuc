@@ -117,7 +117,21 @@ class FileController extends Controller
      */
     public function update(Request $request, File $file)
     {
-        //
+           $validaded = $request->validate([
+                'name' => 'required',
+                'year' => 'required',
+                'category' => 'required',
+                'subCategory' => 'required'
+            ]);
+
+            File::where(['id'=>$file->id])->update([
+                'name' => $request->name,
+                'year' => $request->year,
+                'file_category_id' => $request->category,
+                'file_sub_category_id' => $request->subCategory
+            ]);
+
+            return redirect('manageFiles')->with('status', 'Arquivo alterado com sucesso!');
     }
 
     /**
@@ -128,6 +142,8 @@ class FileController extends Controller
      */
     public function destroy(File $file)
     {
-        //
+        $file->destroy();
+
+        return redirect('manageFiles')->with('status', 'Arquivo excluido com sucesso!');
     }
 }

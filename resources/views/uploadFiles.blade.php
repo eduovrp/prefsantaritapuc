@@ -8,6 +8,7 @@
             <div class="tr-section">
                 <div class="tr-post">
                     <div class="section-title title-before">
+                    <span class="right"><a href="{{route('manageFiles')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
                         <h1><a>Arquivos</a></h1>
                     </div>
 

@@ -11,7 +11,12 @@
                     <div class="section-title title-before">
                         <h1><a>Arquivos</a></h1>
                     </div>
-
+                    @if (session('status'))
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <a href="uploadFiles" class="btn btn-primary">Novo Upload</a>
                 <div class="tr-details">
                     <div class="table-responsive">
@@ -25,6 +30,7 @@
                                     <th class="print">Sub-Categoria</th>
                                     <th>Download</th>
                                     <th>Editar</th>
+                                    <th>Deletar</th>
                                 </tr>
                             </thead>
                         <tbody>
@@ -37,6 +43,13 @@
                                 <td class="print">{{$file->fileSubCategory->name}}</td>
                                 <td><a href="{{$file->path}}"><i class="fa fa-download fa-2x"></i></a></td>
                                 <td><a href="{{url("manageFiles/$file->id/edit")}}"><i class="fa fa-edit fa-2x"></i></a></td>
+                                <td>
+                                <form action="" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                        <i class="fas fa-trash fa-lg text-danger"></i>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -8,16 +8,27 @@
             <div class="tr-section">
                 <div class="tr-post">
                     <div class="section-title title-before">
+                        <span class="right"><a href="{{route('manageFiles')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
                         <h1><a>Arquivos</a></h1>
                     </div>
-                <div class="tr-details">
-                    <form action="{{route ('fileUpdate') }}" method="post" enctype="multipart/form-data">
+                        <div class="tr-details">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    <form action="{{url ("manageFiles/$file->id") }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @METHOD('PUT')
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="col-md-5">
                                 
-                                    <label for="">Categoria</label>
+                                    <label for="category">Categoria</label>
                                     <select name="category" id="category" class="form-control" required>
                                         <option value="">Selecione a Categoria</option>
                                         @foreach($categories as $category)
@@ -26,7 +37,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-5">
-                                    <label for="">Sub-Categoria</label>
+                                    <label for="subCategory">Sub-Categoria</label>
                                     <select name="subCategory" id="subCategory" class="form-control" required>
                                         <option value="" class="subCategory">Selecione a Categoria</option>
 
@@ -37,6 +48,19 @@
                                     <input type="number" class="form-control" name="year" id="year" value="{{$file->year}}" required>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label for="name">Nome</label>
+                                <input type="text" class="form-control" name="name" id="name" value="{{$file->name}}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="path">Caminho</label>
+                                <input type="text" class="form-control" name="path" id="path" value="{{$file->path}}" disabled >
+                            </div>
+                            </div>
+                        </div>
                         </div>
                         <div class="col-md-6 col-md-offset-3">
                             <input type="submit" class="btn btn-primary btn-block">
