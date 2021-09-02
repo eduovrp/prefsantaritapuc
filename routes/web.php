@@ -25,16 +25,17 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('posts', [PostController::class, 'index'])->name('posts');
 
-Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'index'])->name('file.index');
+Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'files'])->name('files');
 
-Route::get('manageFiles', [FileController::class, 'files'])->name('manageFiles');
-Route::get('manageFiles/{file}/edit', [FileController::class, 'edit'])->name('editFile');
-Route::put('manageFiles/{file}',[FileController::class, 'update'])->name('fileUpdate');
-Route::get('uploadFiles', [FileCategoryController::class, 'uploadFiles'])->name('uploadFiles');
+Route::get('manageFiles', [FileController::class, 'index'])->name('manageFiles.index');
+Route::get('uploadFiles', [FileController::class, 'create'])->name('uploadFiles');
+Route::post('manageFiles',[FileController::class, 'store'])->name('manageFiles.store');
+Route::put('manageFiles/{file}',[FileController::class, 'update'])->name('manageFiles.update');
+Route::get('manageFiles/{file}/edit', [FileController::class, 'edit'])->name('manageFiles.edit');
+Route::delete('manageFiles/delete/{id}',[FileController::class, 'destroy'])->name('manageFiles.destroy');
 
-Route::post('uploadFiles', [FileSubCategoryController::class, 'ajaxRequest'])->name('ajaxRequest');
+Route::post('ajaxRequest', [FileController::class, 'ajaxRequest'])->name('ajaxRequest');
 
-Route::post('files',[FileController::class, 'upload'])->name('fileUpload');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');

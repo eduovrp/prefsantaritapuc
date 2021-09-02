@@ -17,12 +17,6 @@ class FileSubCategoryController extends Controller
         //
     }
 
-    public function ajaxRequest(Request $request)
-    {
-        $subCategories = FileSubCategory::where('file_category_id', '=', $request->category)->get();
-        return $subCategories;
-    }
-
     /**
      * Show the form for creating a new resource.
      *

@@ -8,12 +8,12 @@
             <div class="tr-section">
                 <div class="tr-post">
                     <div class="section-title title-before">
-                    <span class="right"><a href="{{route('manageFiles')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
+                    <span class="right"><a href="{{route('manageFiles.index')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
                         <h1><a>Arquivos</a></h1>
                     </div>
 
                 <div class="tr-details">
-                    <form action="{{route ('fileUpload') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{route ('manageFiles.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-12">
                             <div class="form-group">

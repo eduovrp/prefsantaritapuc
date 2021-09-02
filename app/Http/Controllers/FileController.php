@@ -6,6 +6,7 @@ use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\FileCategory;
+use App\Models\FileSubCategory;
 
 class FileController extends Controller
 {
@@ -14,7 +15,14 @@ class FileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($fileCategory, $fileSubCategory)
+  
+     public function index()
+    {
+        $files = File::all();
+        return view('manageFiles.index', compact('files'));
+    }
+
+    public function files($fileCategory, $fileSubCategory)
     {
 
         $fileCategoryId = DB::table('file_categories')
@@ -32,16 +40,26 @@ class FileController extends Controller
 
         return view('files', compact('files'));
     }
-
-    public function files()
+  
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        $files = File::all();
-        return view('manageFiles', compact('files'));
+        $categories = FileCategory::all();
+        return view('uploadFiles', compact('categories'));
     }
 
-    public function upload(Request $request){
-        
-        
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         foreach($request->file('files') as $file){
             
             
@@ -60,29 +78,13 @@ class FileController extends Controller
 
         };
 
-        return redirect()->route('manageFiles');
-
+        return redirect()->route('manageFiles.index')->with('status', 'Upload realizado com sucesso!');;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function ajaxRequest(Request $request)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $subCategories = FileSubCategory::where('file_category_id', '=', $request->category)->get();
+        return $subCategories;
     }
 
     /**
@@ -93,7 +95,7 @@ class FileController extends Controller
      */
     public function show(File $file)
     {
-        //
+        
     }
 
     /**
@@ -105,7 +107,7 @@ class FileController extends Controller
     public function edit(File $file)
     {   
         $categories = FileCategory::all();        
-        return view ('editFile',compact('file','categories'));
+        return view ('manageFiles.edit',compact('file','categories'));
     }
 
     /**
@@ -131,7 +133,7 @@ class FileController extends Controller
                 'file_sub_category_id' => $request->subCategory
             ]);
 
-            return redirect('manageFiles')->with('status', 'Arquivo alterado com sucesso!');
+            return redirect()->route('manageFiles.index')->with('status', 'Arquivo alterado com sucesso!');
     }
 
     /**
@@ -140,10 +142,8 @@ class FileController extends Controller
      * @param  \App\Models\File  $File
      * @return \Illuminate\Http\Response
      */
-    public function destroy(File $file)
-    {
-        $file->destroy();
-
-        return redirect('manageFiles')->with('status', 'Arquivo excluido com sucesso!');
+    public function destroy(File $file,$id)
+    {   
+        $file->destroy($id);
     }
 }

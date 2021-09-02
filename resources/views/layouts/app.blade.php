@@ -160,7 +160,7 @@
 										<ul class="sub-menu text-left">
 
                                             @if(Auth::user()->nivelAcesso == "Admin")
-                                                <li><a href="{{route('manageFiles')}}">Gerenciar Arquivos</a></li>
+                                                <li><a href="{{route('manageFiles.index')}}">Gerenciar Arquivos</a></li>
                                             @endif
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
