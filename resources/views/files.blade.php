@@ -8,22 +8,44 @@
             <div class="tr-section">
                 <div class="tr-post">
                     <div class="section-title title-before">
-                        <h1><a>Arquivos</a></h1>
+                        <h1><a>{{implode(' / ',explode('/',$uri))}}</a></h1>
                     </div>
-
-                <div class="tr-details">
-                    @foreach($files as $file)
-                    <ul>
-                        <li>{{$file->name}}</li>
-                    </ul>
-                    @endforeach
-
-                </div><!-- /.tr-details -->
+                  
             </div><!-- /.tr-section -->
-
-
+            
         </div><!-- row -->
-        </div>
+        @if($checkUri==false)
+    
+            @foreach($years as $year)
+            <a href='{{url("$uri/$year->year")}}'>
+                <div class="col-md-3">              
+                    <div class="tr-years">
+                            {{$year->year}}
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+        @else
+            @foreach($files as $file)
+            <a href="{{ asset($file->path) }}" target="_blank">
+            <div class="col-md-4">      
+                <div class="tr-arqs">
+                    <div class="row">
+                            <div class="col-md-3">
+                                <i class="far fa-file-pdf fa-5x"></i>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="file_name">{{$file->internal_type.''.$file->internal_number}}</p>
+                                <p class="file_desc">{{$file->simple_name}}</p>
+                            </div>
+                        </div>
+                    </div><!-- /.tr-details -->
+                </div>
+            </a>
+            @endforeach
+        @endif
+    </div>
+    
       </div><!-- /.row -->
 
 @endsection

@@ -13,6 +13,10 @@ class File extends Model
         'name',
         'path',
         'year',
+        'ext',
+        'internal_number',
+        'internal_type',
+        'simple_name',
         'file_category_id',
         'file_sub_category_id'
     ];

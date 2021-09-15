@@ -11,6 +11,16 @@
                     <span class="right"><a href="{{route('manageFiles.index')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
                         <h1><a>Arquivos</a></h1>
                     </div>
+                    
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
                 <div class="tr-details">
                     <form action="{{route ('manageFiles.store') }}" method="post" enctype="multipart/form-data">

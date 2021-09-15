@@ -62,6 +62,36 @@ p.footer{
 
 }
 
+.tr-years{
+	background-color: #fff;
+	padding: 10px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	border-radius: 3px;
+	border: #e7eaec 1px solid;
+	margin-bottom: 20px;
+	
+}
+
+.tr-arqs{
+	background-color: #ffffff;
+	border: 1px solid #e7eaec;
+	padding: 20px;
+	margin-bottom: 20px;
+	min-height: 140px;
+}
+
+p.file_name{
+	font-size: 15px;
+	font-weight: 600;
+}
+
+p.file_desc{
+	color: #696969;
+}
+
 .tur h2{
 	text-align: center;
 	margin-top: 30px;

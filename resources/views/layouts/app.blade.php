@@ -108,7 +108,15 @@
                                                     <ul class="sub-menu">
                                                         @foreach($menu->fileSubCategories as $submenu)
                                                         <li>
-                                                            <a href="/{{$menu->href .'/'. $submenu->href}}">{{$submenu->name}}</a>
+                                                            <!-- <a href="/{{$menu->href .'/'. $submenu->href}}">{{$submenu->name}}</a> -->
+                                                            <a href="{{ 
+                                                                route('years', 
+                                                                ['fileCategory' => $menu->href,
+                                                                 'fileSubCategory' => $submenu->href
+                                                                ])
+                                                            }}
+                                                                
+                                                                ">{{$submenu->name}}</a>
                                                         </li>
                                                         @endforeach
                                                     </ul>

@@ -25,7 +25,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('posts', [PostController::class, 'index'])->name('posts');
 
-Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'files'])->name('files');
+Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'files'])->name('years');
+Route::get('{fileCategory}/{fileSubCategory}/{year?}', [FileController::class, 'files'])->name('files');
 
 Route::get('manageFiles', [FileController::class, 'index'])->name('manageFiles.index');
 Route::get('uploadFiles', [FileController::class, 'create'])->name('uploadFiles');
