@@ -32,7 +32,15 @@
                 <div class="tr-arqs">
                     <div class="row">
                             <div class="col-md-3">
-                                <i class="far fa-file-pdf fa-5x"></i>
+                                @if($file->ext == 'pdf')
+                                    <i class="far fa-file-pdf fa-5x"></i>
+                                @elseif ($file->ext == 'docx')
+                                    <i class="far fa-file-word fa-5x"></i>
+                                @elseif($file->ext == 'rar')
+                                    <i class="far fa-file-archive fa-5x"></i>
+                                @else
+                                    <i class="far fa-file fa-5x"></i>
+                                @endif
                             </div>
                             <div class="col-md-9">
                                 <p class="file_name">{{$file->internal_type.''.$file->internal_number}}</p>
