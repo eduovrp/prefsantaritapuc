@@ -17,6 +17,7 @@ class CreateFileSubCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('href');
+            $table->string('single_name');
             $table->unsignedInteger('file_category_id');
             $table->foreign('file_category_id')->references('id')->on('file_categories');
             $table->timestamps();

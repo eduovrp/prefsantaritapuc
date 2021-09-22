@@ -42,10 +42,16 @@
                                     <i class="far fa-file fa-5x"></i>
                                 @endif
                             </div>
+                            @if(strlen($file->desc) > 3)
                             <div class="col-md-9">
-                                <p class="file_name">{{$file->internal_type.''.$file->internal_number}}</p>
-                                <p class="file_desc">{{$file->simple_name}}</p>
+                                <p class="file_name">{{$file->fileSubCategory->single_name.' n°. '.$file->number.' / '. $file->year}}</p>
+                                <p class="file_desc">{{$file->desc}}</p>
                             </div>
+                            @else 
+                                <div class="col-md-9">
+                                    <p class="file_desc">{{substr($file->name,0,-4)}}</p>
+                                </div> 
+                            @endif
                         </div>
                     </div><!-- /.tr-details -->
                 </div>

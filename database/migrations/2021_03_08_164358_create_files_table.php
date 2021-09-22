@@ -19,9 +19,8 @@ class CreateFilesTable extends Migration
             $table->string('path');
             $table->string('year');
             $table->string('ext');
-            $table->string('internal_number')->nullable();
-            $table->string('internal_type')->nullable();
-            $table->string('simple_name')->nullable();
+            $table->string('number')->nullable();
+            $table->string('desc')->nullable();
             $table->unsignedInteger('file_category_id');
             $table->foreign('file_category_id')->references('id')->on('file_categories');
             $table->unsignedInteger('file_sub_category_id');

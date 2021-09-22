@@ -30,22 +30,24 @@ class FileController extends Controller
 
         $fileCategoryId = DB::table('file_categories')
         ->where('href', '=', $fileCategory)
-        ->get();
+        ->first();
 
         $fileSubCategoryId = DB::table('file_sub_categories')
         ->where('href', '=', $fileSubCategory)
-        ->get();
+        ->first();
 
         $files = DB::table('files')
-        ->where('file_category_id', '=', $fileCategoryId[0]->id)
-        ->where('file_sub_category_id', '=', $fileSubCategoryId[0]->id)
+        ->join('file_sub_categories', 'files.file_sub_category_id', '=', 'file_sub_categories.id')
+        ->select('files.*', 'file_sub_categories.single_name AS single_name')
+        ->where('file_category_id', '=', $fileCategoryId->id)
+        ->where('file_sub_category_id', '=', $fileSubCategoryId->id)
         ->where('year', '=', $year)
-        ->orderByRaw('internal_number DESC')
+        ->orderByRaw('number DESC')
         ->get();
 
         $years = DB::table('files')
-        ->where('file_category_id', '=', $fileCategoryId[0]->id)
-        ->where('file_sub_category_id', '=', $fileSubCategoryId[0]->id)
+        ->where('file_category_id', '=', $fileCategoryId->id)
+        ->where('file_sub_category_id', '=', $fileSubCategoryId->id)
         ->groupBy('year')
         ->orderByRaw('year DESC')
         ->get();
@@ -90,22 +92,21 @@ class FileController extends Controller
             $extlessForName = (strlen($file->extension()))+1;
 
             $name = $file->getClientOriginalName();
+
             if(substr($name,0,7) == 'Decreto'){
-                $internal_type = 'Decreto nº. ';
-                $internal_number = substr($name, 13,9);
-                $simple_name = substr($name, 25,-($extlessForName));
+                $number = substr($name, 13,4);
+                $desc = substr($name, 25,-($extlessForName));
             }
             elseif(substr($name,0,5) == 'Lei n'){
-                $internal_type = 'Lei nº. ';
-                $internal_number = substr($name, 9,9);
-                $simple_name = substr($name, 21,-($extlessForName));
+                $number = substr($name, 9,4);
+                $desc = substr($name, 21,-($extlessForName));
             }
             elseif(substr($name,0,16) == 'Lei Complementar'){
-                $internal_type = 'Lei Complementar nº. ';
-                $internal_number = substr($name, 22,9);
-                $simple_name = substr($name, 34,-($extlessForName));
-            }else{
-                return redirect()->route('manageFiles.index')->with('warning', 'Nome do arquivo não corresponde ao padrão do sistema');;
+                $number = substr($name, 22,4);
+                $desc = substr($name, 34,-($extlessForName));
+            } else{
+                $number = "";
+                $desc = "";
             }
 
            
@@ -116,9 +117,8 @@ class FileController extends Controller
             $files->path = 'storage/'.$file->store('uploads/'.$request->year);
             $files->year = $request->year;
             $files->ext = $file->extension();
-            $files->internal_number = $internal_number;
-            $files->internal_type = $internal_type;
-            $files->simple_name = $simple_name;
+            $files->number = $number;
+            $files->desc = $desc;
             $files->file_category_id = $request->category;
             $files->file_sub_category_id = $request->subCategory;
 
@@ -156,7 +156,7 @@ class FileController extends Controller
     public function edit(File $file)
     {   
         $categories = FileCategory::all();        
-        return view ('manageFiles.edit',compact('file','categories'));
+        return view('manageFiles.edit',compact('file','categories'));
     }
 
     /**

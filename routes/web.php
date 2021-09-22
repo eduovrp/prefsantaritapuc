@@ -25,8 +25,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('posts', [PostController::class, 'index'])->name('posts');
 
-Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'files'])->name('years');
-Route::get('{fileCategory}/{fileSubCategory}/{year?}', [FileController::class, 'files'])->name('files');
 
 Route::get('manageFiles', [FileController::class, 'index'])->name('manageFiles.index');
 Route::get('uploadFiles', [FileController::class, 'create'])->name('uploadFiles');
@@ -34,6 +32,9 @@ Route::post('manageFiles',[FileController::class, 'store'])->name('manageFiles.s
 Route::put('manageFiles/{file}',[FileController::class, 'update'])->name('manageFiles.update');
 Route::get('manageFiles/{file}/edit', [FileController::class, 'edit'])->name('manageFiles.edit');
 Route::delete('manageFiles/delete/{id}',[FileController::class, 'destroy'])->name('manageFiles.destroy');
+
+Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'files'])->name('years');
+Route::get('{fileCategory}/{fileSubCategory}/{year?}', [FileController::class, 'files'])->name('files');
 
 Route::post('ajaxRequest', [FileController::class, 'ajaxRequest'])->name('ajaxRequest');
 

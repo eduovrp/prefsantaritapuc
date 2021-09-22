@@ -11,7 +11,8 @@ class FileSubCategory extends Model
 
     protected $fillable = [
         'name',
-        'iconMenu',
+        'href',
+        'simple_name',
         'file_category_id'
     ];
 

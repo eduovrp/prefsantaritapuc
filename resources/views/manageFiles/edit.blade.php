@@ -26,8 +26,7 @@
                         @METHOD('PUT')
                         <div class="col-md-12">
                             <div class="form-group">
-                                <div class="col-md-5">
-                                
+                                <div class="col-md-4">
                                     <label for="category">Categoria</label>
                                     <select name="category" id="category" class="form-control" required>
                                         <option value="">Selecione a Categoria</option>
@@ -36,12 +35,16 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <label for="subCategory">Sub-Categoria</label>
                                     <select name="subCategory" id="subCategory" class="form-control" required>
                                         <option value="" class="subCategory">Selecione a Categoria</option>
 
                                     </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="number">Numero</label>
+                                    <input type="text" class="form-control" name="number" id="number" value="{{$file->number}}" required>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="year">Ano</label>
@@ -52,8 +55,8 @@
                         <div class="col-md-12">
                         <div class="form-group">
                             <div class="col-md-6">
-                                <label for="name">Nome</label>
-                                <input type="text" class="form-control" name="name" id="name" value="{{$file->name}}" required>
+                                <label for="number">Descrição</label>
+                                <input type="text" class="form-control" name="number" id="number" value="{{$file->desc}}" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="path">Caminho</label>
