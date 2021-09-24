@@ -44,12 +44,13 @@
                             </div>
                             @if(strlen($file->desc) > 3)
                             <div class="col-md-9">
-                                <p class="file_name">{{$file->fileSubCategory->single_name.' n°. '.$file->number.' / '. $file->year}}</p>
+                                <p class="file_name">{{$file->single_name.' n°. '.$file->number.' / '.$file->year}}</p>
                                 <p class="file_desc">{{$file->desc}}</p>
                             </div>
                             @else 
                                 <div class="col-md-9">
-                                    <p class="file_desc">{{substr($file->name,0,-4)}}</p>
+                                    <p class="file_name">{{$file->single_name.' n°. * / '.$file->year}}</p>
+                                    <p class="file_desc">{{substr($file->fileName,0,-4)}}</p>
                                 </div> 
                             @endif
                         </div>

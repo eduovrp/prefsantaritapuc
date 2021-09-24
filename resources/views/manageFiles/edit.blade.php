@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label for="number">Numero</label>
-                                    <input type="text" class="form-control" name="number" id="number" value="{{$file->number}}" required>
+                                    <input type="text" class="form-control" name="number" id="number" value="{{$file->number}}">
                                 </div>
                                 <div class="col-md-2">
                                     <label for="year">Ano</label>
@@ -55,8 +55,8 @@
                         <div class="col-md-12">
                         <div class="form-group">
                             <div class="col-md-6">
-                                <label for="number">Descrição</label>
-                                <input type="text" class="form-control" name="number" id="number" value="{{$file->desc}}" required>
+                                <label for="desc">Descrição</label>
+                                <input type="text" class="form-control" name="desc" id="desc" value="{{$file->desc}}" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="path">Caminho</label>

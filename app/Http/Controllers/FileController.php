@@ -38,8 +38,10 @@ class FileController extends Controller
 
         $files = DB::table('files')
         ->join('file_sub_categories', 'files.file_sub_category_id', '=', 'file_sub_categories.id')
-        ->select('files.*', 'file_sub_categories.single_name AS single_name')
-        ->where('file_category_id', '=', $fileCategoryId->id)
+        ->select('files.name as fileName', 'files.path as path', 
+        'files.ext as ext' , 'files.desc as desc' , 'files.number as number' , 'files.year as year',
+        'file_sub_categories.single_name as single_name')
+        ->where('files.file_category_id', '=', $fileCategoryId->id)
         ->where('file_sub_category_id', '=', $fileSubCategoryId->id)
         ->where('year', '=', $year)
         ->orderByRaw('number DESC')
@@ -89,21 +91,32 @@ class FileController extends Controller
 
         foreach($request->file('files') as $file){
             
+            //Conta a quantidade de caracteres da extenção e adiciona 1 a contagem para o caractere '.'
             $extlessForName = (strlen($file->extension()))+1;
 
-            $name = $file->getClientOriginalName();
+            //Remove espaços no começo e no final com trim
+            //Ajusta Espaços duplos com str_replace
+            //Retira a extensão do arquivo com substr
+            $name = trim(
+                str_replace(
+                    '  ', ' ',
+                    substr(
+                        $file->getClientOriginalName(), 0,-($extlessForName)
+                    )
+                )
+            );
 
             if(substr($name,0,7) == 'Decreto'){
                 $number = substr($name, 13,4);
-                $desc = substr($name, 25,-($extlessForName));
+                $desc = substr($name, 25);
             }
             elseif(substr($name,0,5) == 'Lei n'){
                 $number = substr($name, 9,4);
-                $desc = substr($name, 21,-($extlessForName));
+                $desc = substr($name, 21);
             }
             elseif(substr($name,0,16) == 'Lei Complementar'){
                 $number = substr($name, 22,4);
-                $desc = substr($name, 34,-($extlessForName));
+                $desc = substr($name, 34);
             } else{
                 $number = "";
                 $desc = "";
@@ -169,15 +182,19 @@ class FileController extends Controller
     public function update(Request $request, File $file)
     {
            $validaded = $request->validate([
-                'name' => 'required',
+                'desc' => 'required',
                 'year' => 'required',
                 'category' => 'required',
                 'subCategory' => 'required'
             ]);
 
+            $name = $file->fileSubCategory->single_name.' n°. '.$request->number.'-'.$request->year.' - '.$request->desc;
+
             File::where(['id'=>$file->id])->update([
-                'name' => $request->name,
+                'name' => $name,
+                'desc' => $request->desc,
                 'year' => $request->year,
+                'number' => $request->number,
                 'file_category_id' => $request->category,
                 'file_sub_category_id' => $request->subCategory
             ]);
