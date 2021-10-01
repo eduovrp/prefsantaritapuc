@@ -23,34 +23,36 @@
                         {{ session('warning') }}
                     </div>
                 @endif
-                    <a href="{{ route('uploadFiles') }}" class="btn btn-primary">Novo Upload</a>
+                    <a href="{{ route('managePosts.create') }}" class="btn btn-primary">Nova Notícia</a>
                 <div class="tr-details">
                     <div class="table-responsive">
                         <table id="dataTable-Files" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th class="print">Nome</th>
-                                    <th>Caminho</th>
-                                    <th class="print">Ano</th>
-                                    <th class="print">Categoria</th>
-                                    <th class="print">Sub-Categoria</th>
-                                    <th>Download</th>
+                                    <th class="print">Título</th>
+                                    <th class="print">Categorias</th>
+                                    <th class="print">Tags</th>
+                                    <th class="print">Data</th>
+                                    <th>Abrir</th>
                                     <th>Editar</th>
                                     <th>Deletar</th>
                                 </tr>
                             </thead>
                         <tbody>
-                            @foreach($files as $file)
-                            <tr id="row_{{ $file->id }}">
-                                <td class="print">{{ $file->name }}</td>
-                                <td>{{ substr($file->path,0,25 )}}...</td>
-                                <td class="print">{{ $file->year }}</td>
-                                <td class="print">{{ $file->fileCategory->name }}</td>
-                                <td class="print">{{ $file->fileSubCategory->name }}</td>
-                                <td><a href="{{ $file->path }}" target="_blank"><i class="fa fa-download fa-2x"></i></a></td>
-                                <td><a href="{{ route('manageFiles.edit', ['file' => $file->id]) }}"><i class="fa fa-edit fa-2x"></i></a></td>
+                            @foreach($posts as $post)
+                            <tr id="row_{{ $post->id }}">
+                                <td class="print">{{ $post->title }}</td>
+                                <td class="print">{{ $post->categoryPost->name}}</td>
+                                <td class="print">
+                                    @foreach($post->tags as $tag)
+                                        #{{$tag->name}}
+                                    @endforeach
+                                </td>
+                                <td class="print">{{ $post->created_at }}</td>
+                                <td><a href="{{route('post.show', ['post'=> $post->id])}}" target="_blank"><i class="fas fa-external-link-alt fa-2x"></i></a></td>
+                                <td><i class="fa fa-edit fa-2x"></i></a></td>
                                 <td>
-                                    <a href="javascript:void(0)" onClick="deletePost({{ $file->id }})">                               
+                                    <a href="javascript:void(0)" onClick="deletePost({{ $post->id }})">                               
                                         <i class="fas fa-trash fa-2x"></i>
                                     </a>
                                 </td>
@@ -72,7 +74,7 @@
       <script>
            function deletePost(id) {
                 var id  = id;
-                let _url = `/manageFiles/delete/${id}`;
+                let _url = `/managePosts/delete/${id}`;
 
                 $.ajax({
                     url: _url,

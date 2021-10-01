@@ -87,7 +87,7 @@ class FileSubCategorySeeder extends Seeder
         DB::table('file_sub_categories')->insert([
             'name' => 'Editais',
             'href' => 'editais',
-            'single_name' => 'Edital',
+            'single_name' => 'Concurso Público',
             'file_category_id' => '3',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')

@@ -120,6 +120,7 @@ p.file_desc{
 span.right{
 	text-align: right;
 }
+
 .weather-top .right{
     text-align: right;
     font-size: 12px;
@@ -1535,7 +1536,7 @@ ul.sub-menu .sub-menu-2 {
 }
 
 .entry-meta li ul li a {
-	padding: 5px;
+	padding: 7px;
 }
 
 .item .entry-meta {

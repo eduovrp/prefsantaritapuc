@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\CategoryPost;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -18,6 +19,12 @@ class PostController extends Controller
         return view('posts', compact('posts'));
     }
 
+    public function list()
+    {
+        $posts = Post::orderBy('id', 'desc')->get();
+        return view ('managePosts.index', compact('posts'));
+    }
+
 /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +32,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = CategoryPost::all();
+        $categoriesJson = $categories->toArray();
+        return view('managePosts.create', compact('categories', 'categoriesJson'));
     }
 
     /**
@@ -79,8 +88,8 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post, $id)
     {
-        //
+        $post->destroy($id);
     }
 }

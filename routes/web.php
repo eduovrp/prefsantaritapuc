@@ -24,6 +24,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('posts', [PostController::class, 'index'])->name('posts');
+Route::get('managePosts/create', [PostController::class, 'create'])->name('managePosts.create');
+Route::post('posts', [PostController::class, 'store'])->name('managePosts.store');
+Route::get('managePosts', [PostController::class, 'list'])->name('managePosts.index');
+Route::delete('managePosts/delete/{id}',[PostController::class, 'destroy'])->name('managePosts.destroy');
 
 
 Route::get('manageFiles', [FileController::class, 'index'])->name('manageFiles.index');

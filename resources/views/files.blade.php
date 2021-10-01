@@ -12,6 +12,8 @@
                     </div>
                   
             </div><!-- /.tr-section -->
+
+            
             
         </div><!-- row -->
         @if($checkUri==false)
@@ -49,8 +51,8 @@
                             </div>
                             @else 
                                 <div class="col-md-9">
-                                    <p class="file_name">{{$file->single_name.' n°. * / '.$file->year}}</p>
-                                    <p class="file_desc">{{substr($file->fileName,0,-4)}}</p>
+                                    
+                                    <p class="file_desc">{{$file->fileName}}</p>
                                 </div> 
                             @endif
                         </div>

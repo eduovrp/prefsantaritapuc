@@ -34,8 +34,9 @@ class FileController extends Controller
 
         $fileSubCategoryId = DB::table('file_sub_categories')
         ->where('href', '=', $fileSubCategory)
+        ->where('file_category_id', '=', $fileCategoryId->id)
         ->first();
-
+     
         $files = DB::table('files')
         ->join('file_sub_categories', 'files.file_sub_category_id', '=', 'file_sub_categories.id')
         ->select('files.name as fileName', 'files.path as path', 
@@ -106,21 +107,27 @@ class FileController extends Controller
                 )
             );
 
-            if(substr($name,0,7) == 'Decreto'){
-                $number = substr($name, 13,4);
-                $desc = substr($name, 25);
-            }
-            elseif(substr($name,0,5) == 'Lei n'){
-                $number = substr($name, 9,4);
-                $desc = substr($name, 21);
-            }
-            elseif(substr($name,0,16) == 'Lei Complementar'){
-                $number = substr($name, 22,4);
-                $desc = substr($name, 34);
-            } else{
-                $number = "";
-                $desc = "";
-            }
+            // if(substr($name,0,7) == 'Decreto'){
+            //     $number = substr($name, 13,4);
+            //     $desc = substr($name, 25);
+            // }elseif(substr($name,0,5) == 'Lei n'){
+            //     $number = substr($name, 9,4);
+            //     $desc = substr($name, 21);
+            // }elseif(substr($name,0,16) == 'Lei Complementar'){
+            //     $number = substr($name, 22,4);
+            //     $desc = substr($name, 34);
+            // }elseif(substr($name, 0,8) == 'Processo' || 'PROCESSO'){
+            //     $number = substr($name, 9,3);
+            //     $desc = substr($name, 20);
+            // }elseif(substr($name, 0,8) == 'Contrato' || 'CONTRATO'){
+            //     dd($name);
+            //     $number = substr($name, 14,3);
+            //     $desc = substr($name, 25);
+            // }
+            //  else{
+            //     $number = "";
+            //     $desc = "";
+            // }
 
            
 
@@ -130,8 +137,8 @@ class FileController extends Controller
             $files->path = 'storage/'.$file->store('uploads/'.$request->year);
             $files->year = $request->year;
             $files->ext = $file->extension();
-            $files->number = $number;
-            $files->desc = $desc;
+            // $files->number = $number;
+            // $files->desc = $desc;
             $files->file_category_id = $request->category;
             $files->file_sub_category_id = $request->subCategory;
 
@@ -208,7 +215,7 @@ class FileController extends Controller
      * @param  \App\Models\File  $File
      * @return \Illuminate\Http\Response
      */
-    public function destroy(File $file,$id)
+    public function destroy(File $file, $id)
     {   
         $file->destroy($id);
     }
