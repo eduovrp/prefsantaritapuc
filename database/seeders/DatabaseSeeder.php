@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
 
         Post::factory(10)
         ->hasTags(2)
-        ->hasCategoryPost(1)
         ->create();
 
         // Admin Password "admin123"

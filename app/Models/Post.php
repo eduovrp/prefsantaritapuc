@@ -13,6 +13,8 @@ class Post extends Model
         'title',
         'text',
         'src_img',
+        'date',
+        'category_post_id'
     ];
 
     public function tags(){

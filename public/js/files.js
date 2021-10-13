@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     });
 
-    $('input[name="files"]').fileuploader({
+    $('#file').fileuploader({
         addMore: true
     });
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TagController;
 use App\Models\FileSubCategory;
 
 /*
@@ -29,6 +30,7 @@ Route::post('posts', [PostController::class, 'store'])->name('managePosts.store'
 Route::get('managePosts', [PostController::class, 'list'])->name('managePosts.index');
 Route::delete('managePosts/delete/{id}',[PostController::class, 'destroy'])->name('managePosts.destroy');
 
+Route::get('manageTags/list/tags', [TagController::class, 'index']);
 
 Route::get('manageFiles', [FileController::class, 'index'])->name('manageFiles.index');
 Route::get('uploadFiles', [FileController::class, 'create'])->name('uploadFiles');

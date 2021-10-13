@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\CategoryPost;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Provider\Lorem;
-use App\Models\Post;
 
 class CategoryPostFactory extends Factory
 {
@@ -24,8 +23,7 @@ class CategoryPostFactory extends Factory
     public function definition()
     {
         return [
-            'name' => Lorem::word(),
-            'post_id' => Post::factory()
+            'name' => Lorem::word()
         ];
     }
 }

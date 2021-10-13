@@ -27,30 +27,48 @@
                         @csrf
                         <div class="col-md-12">
                             <div class="form-group">
-                                <div class="col-md-5">
-                                    <label for="">Categoria</label>
-                                        <div id="the-basics">
-                                            <input class="typeahead form-control" type="text" name="category" style="width: 25em;" placeholder="">
-                                        </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <label for="">Sub-Categoria</label>
-                                    <select name="subCategory" id="subCategory" class="form-control" disabled required>
-                                        <option value="" class="subCategory">Selecione a Categoria</option>
-
-                                    </select>
-                                </div>
-                                <div class="col-md-2">
-                                    <label for="year">Ano</label>
-                                    <input type="number" class="form-control" name="year" id="year" value="{{now()->year}}" required>
+                                <div class="col-md-12">
+                                    <label for="title">Título *</label>
+                                    <input type="text" class="form-control" id="title" name="title" required>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <input type="file" name="files" required>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="category">Categoria *</label>
+                                        <div id="the-basics">
+                                            <input class="typeahead form-control" id="category" type="text" name="category" placeholder="">
+                                        </div>
+                                </div>
+                                <div class="col-md-5">
+                                        <label for="tags">Tags *</label><br>
+                                        <input type="text" class="form-control" name="tags" id="tags" data-role="tagsinput"/>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="date">Data *</label>
+                                    <input type="date" name="date" id="date" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label for="file">Imagem Principal *</label>    
+                                    <input type="file" id="file" name="files" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label for="text">Texto da Notícia *</label>    
+                                    <textarea name="text" id="text" class="summernote" cols="30" rows="30"></textarea>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6 col-md-offset-3">
-                            <input type="submit" class="btn btn-primary btn-block">
+                            <input type="submit" class="btn btn-primary btn-xg btn-block">
                         </div>
                             </div>
                         </div>
@@ -99,6 +117,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
         name: 'grupos',
         source: substringMatcher(grupos)
     });
+
+    Date.prototype.toDateInputValue = (function() {
+            var local = new Date(this);
+            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+            return local.toJSON().slice(0,10);
+        });
+
+    $('#date').val(new Date().toDateInputValue());
+
+    $('.summernote').summernote({
+            minHeight: 200,
+        });
+
 });
 
 </script>

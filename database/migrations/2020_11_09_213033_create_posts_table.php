@@ -18,6 +18,9 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('src_img');
             $table->text('text');
+            $table->date('date');
+            $table->unsignedInteger('category_post_id');
+            $table->foreign('category_post_id')->references('id')->on('category_posts');
             $table->timestamps();
         });
     }

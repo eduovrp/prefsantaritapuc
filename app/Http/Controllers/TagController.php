@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TagController extends Controller
 {
@@ -14,7 +15,15 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = DB::table('tags')
+            ->select('name')
+            ->get();
+        
+        foreach($tags as $tag){
+            $tagsArr[] = $tag->name;
+        }
+
+        return response()->json($tagsArr);
     }
 
     /**

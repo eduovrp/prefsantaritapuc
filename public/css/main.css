@@ -121,6 +121,50 @@ span.right{
 	text-align: right;
 }
 
+.typeahead-wrapper {
+	display: block;
+	margin: 50px 0;
+}
+
+.tt-dropdown-menu {
+	background-color: #fff;
+	border: 1px solid #000;
+}
+
+.tt-suggestion.tt-cursor {
+	background-color: #ccc;
+}
+.tt-selectable{
+	cursor: pointer;
+}
+
+.triggered-events {
+	float: right;
+	width: 500px;
+	height: 300px;
+}
+
+.twitter-typeahead{
+	width: 100%;
+}
+
+.bootstrap-tagsinput{
+	width: 100%;
+}
+
+.tt-menu{
+	position: absolute;
+	top: 95%;
+	left: 2.5%;
+	z-index: 100;
+	width: 100%;
+	padding: 15px;
+	overflow: hidden;
+	background-color: #fff;
+	border-radius: 8px;
+	border-color: #5b5b5b;
+}
+
 .weather-top .right{
     text-align: right;
     font-size: 12px;

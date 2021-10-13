@@ -36,7 +36,9 @@
         <link href="{{ asset('css/font/font-fileuploader.css') }}" rel="stylesheet">
         <link href="{{ asset('css/jquery.fileuploader.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/jquery.fancybox.min.css') }}" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-html5-1.7.0/b-print-1.7.0/datatables.min.css"/>
+        <link href="{{ asset('css/bootstrap-tagsinput.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/summernote.min.css') }}" rel="stylesheet">
 
 
 
@@ -246,25 +248,28 @@
 
 
                                 <!-- JS -->
-                                <script src="{{asset('js/jquery.min.js')}}"></script>
-                                <script src="{{asset('js/bootstrap.min.js')}}"></script>
-                                <script src="{{asset('js/marquee.js')}}"></script>
-                                <script src="{{asset('js/moment.min.js')}}"></script>
-                                <script src="{{asset('js/theia-sticky-sidebar.js')}}"></script>
-                                <script src="{{asset('js/jquery.jplayer.min.js')}}"></script>
-                                <script src="{{asset('js/jplayer.playlist.min.js')}}"></script>
-                                <script src="{{asset('js/slick.min.js')}}"></script>
-                                <script src="{{asset('js/carouFredSel.js')}}"></script>
-                                <script src="{{asset('js/jquery.magnific-popup.js')}}"></script>
-                                <script src="{{asset('js/main.js')}}"></script>
-                                <script src="{{asset('js/nav.js')}}"></script>
-                                <script src="{{asset('js/jquery.fancybox.min.js')}}"></script>
-                                <script src="{{asset('js/jquery.fileuploader.min.js')}}"></script>
-                                <script src="{{asset('js/files.js')}}"></script>
-                                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-                                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-                                <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-html5-1.7.0/b-print-1.7.0/datatables.min.js"></script>
-                                <script src="{{asset('js/typeahead.bundle.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/marquee.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/moment.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/theia-sticky-sidebar.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/jquery.jplayer.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/jplayer.playlist.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/slick.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/carouFredSel.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/jquery.magnific-popup.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/nav.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/jquery.fancybox.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/jquery.fileuploader.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/files.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/pdfmake.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/vfs_fonts.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/datatables.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/typeahead.bundle.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/summernote.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/bootstrap-tagsinput.min.js')}}"></script>
+
 
 
                             </body>
