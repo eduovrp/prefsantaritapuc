@@ -36,7 +36,7 @@
 
                 <div class="tr-details">
                     <div class="row">
-                      {{$post->text}}
+                      {!! $post->text !!}
                     </div>
                 </div><!-- /.tr-details -->
             </div><!-- /.tr-section -->

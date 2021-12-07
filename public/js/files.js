@@ -21,9 +21,4 @@ $(document).ready(function() {
 
     });
 
-    $('#file').fileuploader({
-        addMore: true
-    });
-
-
 } );

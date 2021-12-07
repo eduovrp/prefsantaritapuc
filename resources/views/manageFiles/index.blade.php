@@ -50,7 +50,7 @@
                                 <td><a href="{{ $file->path }}" target="_blank"><i class="fa fa-download fa-2x"></i></a></td>
                                 <td><a href="{{ route('manageFiles.edit', ['file' => $file->id]) }}"><i class="fa fa-edit fa-2x"></i></a></td>
                                 <td>
-                                    <a href="javascript:void(0)" onClick="deletePost({{ $file->id }})">                               
+                                    <a href="javascript:void(0)" onClick="deleteFile({{ $file->id }})">                               
                                         <i class="fas fa-trash fa-2x"></i>
                                     </a>
                                 </td>
@@ -70,9 +70,25 @@
       </div><!-- /.row -->
 
       <script>
-           function deletePost(id) {
+
+        function deleteFile(id) {
                 var id  = id;
-                let _url = `/manageFiles/delete/${id}`;
+                let _url = `/managePosts/delete/${id}`;
+
+                Swal.fire({
+                title: 'Deseja realmente excluir este arquivo?',
+                text: "Ao excluir, não será possível reverter a ação.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, deletar!',
+                cancelButtonText: 'Cancelar',
+                width: '450px'
+
+            }).then((result) => {
+            
+            if (result.isConfirmed) {
 
                 $.ajax({
                     url: _url,
@@ -85,9 +101,17 @@
                         $("#row_"+id).fadeOut(300, function() {
                              $(this).remove(); 
                         });
+
+                        Swal.fire(
+                            'Arquivo exlcluido!',
+                            'Tudo certo, o arquivo foi excluida do sistema.',
+                            'success'
+                        )
                     }
                 });
             }
+        })
+    }
         </script>
 
 @endsection

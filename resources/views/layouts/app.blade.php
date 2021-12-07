@@ -39,6 +39,7 @@
         <link href="{{ asset('css/bootstrap-tagsinput.css') }}" rel="stylesheet">
         <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('css/summernote.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/switchery.min.css') }}" rel="stylesheet">
 
 
 
@@ -171,7 +172,8 @@
 
                                             @if(Auth::user()->nivelAcesso == "Admin")
                                                 <li><a href="{{route('manageFiles.index')}}">Gerenciar Arquivos</a></li>
-                                                <li><a href="{{route('managePosts.index')}}">Notícias</a></li>
+                                                <li><a href="{{route('managePosts.index')}}">Gerenciar Notícias</a></li>
+                                                <li><a href="{{route('manageCards.index')}}">Gerenciar Cartões</a></li>
                                             @endif
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
@@ -269,8 +271,8 @@
                                 <script type="text/javascript" src="{{asset('js/typeahead.bundle.min.js')}}"></script>
                                 <script type="text/javascript" src="{{asset('js/summernote.min.js')}}"></script>
                                 <script type="text/javascript" src="{{asset('js/bootstrap-tagsinput.min.js')}}"></script>
-
-
+                                <script type="text/javascript" src="{{asset('js/sweetalert2.all.min.js')}}"></script>
+                                <script type="text/javascript" src="{{asset('js/switchery.min.js')}}"></script>
 
                             </body>
                         </html>

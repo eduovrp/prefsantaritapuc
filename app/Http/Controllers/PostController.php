@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\CategoryPost;
 use App\Models\Tag;
+use \FileUploader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -53,15 +56,52 @@ class PostController extends Controller
             'category' => 'required',
             'tags' => 'required',
             'date' => 'required',
-            'fileuploader-list-files' => 'required',
-            'text' => 'required|min:5'
+            'text' => 'required|min:5',
+            'files1' => 'required'
         ]);
 
         $category = CategoryPost::where('name', '=', $request->category)->firstOrCreate(
             ['name' => $request->category]            
         );
 
-        dd($request);
+        
+        $dir = storage_path('app/public/notices/');
+            if (!file_exists($dir)) {
+                mkdir($dir, 0777, true);
+            }
+
+        $FileUploader = new FileUploader('files1', array(
+            'limit' => 1,
+            'uploadDir' => $dir,
+            'title' => 'auto'
+        ));
+
+        $upload = $FileUploader->upload();
+
+        $post = new Post();
+
+        $post->title = trim($request->title);
+        $post->text = $request->text;
+        $post->date = $request->date;
+        $post->category_post_id = $category->id;
+        $post->src_img = Storage::url('notices/').$upload['files'][0]['name'];
+        
+        $post->save();
+        
+
+        
+        foreach(explode(",", $request->tags) as $tagName){
+            $tags = new Tag();
+            $tags->name = $tagName;
+            $tags->post_id = $post->id;
+            $tags->save();
+            unset($tags);
+        }
+
+        unset($post);
+
+
+    return redirect()->route('managePosts.index')->with('status', 'Notícia criada com sucesso!');;
     }
 
     /**
@@ -83,7 +123,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $img_name  = Str::afterLast($post->src_img, '/');
+        $categories = CategoryPost::all();
+        $categoriesJson = $categories->toArray();
+        return view('managePosts.edit', compact('post', 'categoriesJson', 'img_name'));
     }
 
     /**
@@ -95,7 +138,54 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+
+        $validaded = $request->validate([
+            'title' => 'required|min:5',
+            'category' => 'required',
+            'tags' => 'required',
+            'date' => 'required',
+            'text' => 'required|min:5',
+        ]);
+
+        $category = CategoryPost::where('name', '=', $request->category)->firstOrCreate(
+            ['name' => $request->category]            
+        );
+
+        $tags = Tag::where('post_id', $post->id)->delete();
+        
+        foreach(explode(",", $request->tags) as $tagName){
+            $tags = Tag::create(
+                [
+                    'name' => trim($tagName),
+                    'post_id' => $post->id
+                ]
+            );           
+        }
+
+        if($request->hasFile('files2')){
+
+            $dir = storage_path('app/public/notices/');
+
+            $FileUploader = new FileUploader('files2', array(
+                'limit' => 1,
+                'uploadDir' => $dir,
+                'title' => 'auto'
+            ));
+
+            $upload = $FileUploader->upload();
+            Post::where(['id'=>$post->id])->update([
+                'src_img' => Storage::url('notices/').$upload['files'][0]['name']]);
+        }
+
+        
+        Post::where(['id'=>$post->id])->update([
+            'title' => trim($request->title),
+            'text' => $request->text,
+            'date' => $request->date,
+            'category_post_id' => $category->id,
+        ]);
+
+        return redirect()->route('managePosts.index')->with('status', 'Notícia alterada com sucesso!');
     }
 
     /**
@@ -106,6 +196,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post, $id)
     {
+        $tags = Tag::where('post_id', $id)->delete();
         $post->destroy($id);
     }
 }

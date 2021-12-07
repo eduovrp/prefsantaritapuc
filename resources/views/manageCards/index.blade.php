@@ -9,7 +9,7 @@
             <div class="tr-section">
                 <div class="tr-post">
                     <div class="section-title title-before">
-                        <h1><a>Arquivos</a></h1>
+                        <h1><a>Cartões</a></h1>
                     </div>
                     @if (session('status'))
                         <div class="alert alert-success alert-dismissible" role="alert">
@@ -18,43 +18,45 @@
                         </div>
                     @endif
                     @if (session('warning'))
-                    <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        {{ session('warning') }}
-                    </div>
-                @endif
-                    <a href="{{ route('managePosts.create') }}" class="btn btn-primary">Nova Notícia</a>
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{ session('warning') }}
+                        </div>
+                    @endif
+                    <a href="{{ route('manageCards.create') }}" class="btn btn-primary">Novo Cartão</a>
                 <div class="tr-details">
                     <div class="table-responsive">
                         <table id="dataTable-Files" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th class="print">Título</th>
-                                    <th class="print">Categorias</th>
-                                    <th class="print">Tags</th>
-                                    <th class="print">Data</th>
+                                    <th class="print">Nome do Evento</th>
+                                    <th class="print">Url Vinculada</th>
+                                    <th class="print">Data Exp</th>
+                                    <th class="print">Situação</th>
                                     <th>Abrir</th>
                                     <th>Editar</th>
                                     <th>Deletar</th>
                                 </tr>
                             </thead>
                         <tbody>
-                            @foreach($posts as $post)
-                            <tr id="row_{{ $post->id }}">
-                                <td>{{$post->id}}</td>
-                                <td class="print">{{ $post->title }}</td>
-                                <td class="print">{{ $post->categoryPost->name}}</td>
+                            @foreach($cards as $card)
+                            <tr id="row_{{ $card->id }}">
+                                <td>{{$card->id}}</td>
+                                <td class="print">{{ $card->name }}</td>
+                                <td class="print"><a data-fancybox="gallery" href="/{{$card->src_img_onclick}}">{{$card->src_img_onclick}}</a></td>
+                                <td class="print">{{ $card->date_exp }}</td>
                                 <td class="print">
-                                    @foreach($post->tags as $tag)
-                                        #{{$tag->name}}
-                                    @endforeach
+                                    @if($card->active == 1)
+                                        <i class="fa fa-check" style="color:green"></i>
+                                    @else
+                                        <i class="fa fa-times" style="color:red"></i>
+                                    @endif
                                 </td>
-                                <td class="print">{{ $post->date }}</td>
-                                <td><a href="{{route('post.show', ['post'=> $post->id])}}" target="_blank"><i class="fas fa-external-link-alt fa-2x"></i></a></td>
-                                <td><a href="{{ route('managePosts.edit', ['post' => $post->id]) }}"><i class="fa fa-edit fa-2x"></i></a></td>
+                                <td><a data-fancybox="gallery" href="{{$card->src_img}}"><i class="fas fa-search-plus fa-2x"></i></a></td>
+                                <td><a href="{{ route('manageCards.edit', ['card' => $card->id]) }}"><i class="fa fa-edit fa-2x"></i></a></td>
                                 <td>
-                                    <a href="javascript:void(0)" onClick="deletePost({{ $post->id }})">                               
+                                    <a href="javascript:void(0)" onClick="deleteCard({{ $card->id }})">                               
                                         <i class="fas fa-trash fa-2x"></i>
                                     </a>
                                 </td>
@@ -75,12 +77,12 @@
 
       <script>
 
-        function deletePost(id) {
+        function deleteCard(id) {
                 var id  = id;
-                let _url = `/managePosts/delete/${id}`;
+                let _url = `/manageCard/delete/${id}`;
 
                 Swal.fire({
-                title: 'Deseja realmente excluir essa notícia?',
+                title: 'Deseja realmente excluir este cartão?',
                 text: "Ao excluir, não será possível reverter a ação.",
                 icon: 'warning',
                 showCancelButton: true,
@@ -107,8 +109,8 @@
                         });
 
                         Swal.fire(
-                            'Notícia exlcluida!',
-                            'Tudo certo, a noticia foi excluida do sistema.',
+                            'Cartão exlcluido!',
+                            'Tudo certo, o cartão foi excluido do sistema.',
                             'success'
                         )
                     }

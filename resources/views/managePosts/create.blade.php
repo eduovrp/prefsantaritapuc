@@ -38,24 +38,24 @@
                                 <div class="col-md-4">
                                     <label for="category">Categoria *</label>
                                         <div id="the-basics">
-                                            <input class="typeahead form-control" id="category" type="text" name="category" placeholder="">
+                                            <input class="typeahead form-control" id="category" type="text" name="category" required>
                                         </div>
                                 </div>
                                 <div class="col-md-5">
                                         <label for="tags">Tags *</label><br>
-                                        <input type="text" class="form-control" name="tags" id="tags" data-role="tagsinput"/>
+                                        <input type="text" class="form-control" name="tags" id="tags" data-role="tagsinput" required/>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="date">Data *</label>
-                                    <input type="date" name="date" id="date" class="form-control">
+                                    <input type="date" name="date" id="date" class="form-control" required>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <label for="file">Imagem Principal *</label>    
-                                    <input type="file" id="file" name="files" >
+                                    <label for="">Imagem Principal *</label>
+                                    <input type="file" name="files1" required>
                                 </div>
                             </div>
                         </div>
@@ -129,6 +129,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $('.summernote').summernote({
             minHeight: 200,
         });
+
+        $('input[name="files1"]').fileuploader({
+        limit: 1,
+        editor: {
+            cropper: {
+                minWidth: 800,
+                minHeight: 300,
+                showGrid: true
+            },
+            quality: 90,
+            maxHeight: 400
+        }
+    });
+
 
 });
 

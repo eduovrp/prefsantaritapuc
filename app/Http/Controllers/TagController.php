@@ -87,8 +87,15 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy($tag, $post, Request $request)
     {
-        //
+        $tag = Tag::where('name', '=', $tag)
+                    ->where('post_id', '=', $post)
+                    ->get();
+
+    //    Tag::destroy($tag->id);
+
+    Tag::destroy($tag);
+       return true;
     }
 }

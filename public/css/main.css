@@ -2902,11 +2902,12 @@ a:hover i.fa-rss,
 /* Tr Details */
 
 .tr-details {
+	text-align: justify;
 	font-size: 14px;
 	line-height: 26px;
 	color: #888;
 	margin-top: 25px;
-	padding: 25px;
+	padding: 30px 50px 30px 50px;
 	border-top: 1px solid #f0f3f5;
 }
 

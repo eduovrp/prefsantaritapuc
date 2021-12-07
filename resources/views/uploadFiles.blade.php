@@ -88,6 +88,10 @@
                 }
             })
          });
+
+        $('input[name="files"]').fileuploader({
+            addMore: true
+        });
     });
     </script>
 

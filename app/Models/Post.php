@@ -22,7 +22,7 @@ class Post extends Model
     }
 
     public function categoryPost(){
-        return $this->hasOne(CategoryPost::class);
+        return $this->belongsTo(CategoryPost::class);
     }
 
     public static function posts(){
