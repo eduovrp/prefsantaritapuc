@@ -16,14 +16,14 @@ class FileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-  
+
      public function index()
     {
         $files = File::all();
         return view('manageFiles.index', compact('files'));
     }
 
-    public function files($fileCategory, $fileSubCategory, $year = null, Request $request)
+    public function files($fileCategory, $fileSubCategory, Request $request, $year = null)
     {
         $checkUri = is_numeric(substr($request->path(),-4));
         $uri = $request->path();
@@ -36,10 +36,10 @@ class FileController extends Controller
         ->where('href', '=', $fileSubCategory)
         ->where('file_category_id', '=', $fileCategoryId->id)
         ->first();
-     
+
         $files = DB::table('files')
         ->join('file_sub_categories', 'files.file_sub_category_id', '=', 'file_sub_categories.id')
-        ->select('files.name as fileName', 'files.path as path', 
+        ->select('files.name as fileName', 'files.path as path',
         'files.ext as ext' , 'files.desc as desc' , 'files.number as number' , 'files.year as year',
         'file_sub_categories.single_name as single_name')
         ->where('files.file_category_id', '=', $fileCategoryId->id)
@@ -61,7 +61,7 @@ class FileController extends Controller
     public function years($fileCategory, $fileSubCategory){
 
     }
-  
+
     /**
      * Show the form for creating a new resource.
      *
@@ -91,7 +91,7 @@ class FileController extends Controller
 
 
         foreach($request->file('files') as $file){
-            
+
             //Conta a quantidade de caracteres da extenção e adiciona 1 a contagem para o caractere '.'
             $extlessForName = (strlen($file->extension()))+1;
 
@@ -138,7 +138,7 @@ class FileController extends Controller
      */
     public function show(File $file)
     {
-        
+
     }
 
     /**
@@ -148,8 +148,8 @@ class FileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(File $file)
-    {   
-        $categories = FileCategory::all();        
+    {
+        $categories = FileCategory::all();
         return view('manageFiles.edit',compact('file','categories'));
     }
 
@@ -190,7 +190,7 @@ class FileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(File $file, $id)
-    {   
+    {
         $file->destroy($id);
     }
 }
