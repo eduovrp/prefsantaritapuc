@@ -72,9 +72,10 @@
         </div><!-- row -->
         </div>
       </div><!-- /.row -->
+@endsection
 
-      <script>
-
+@section('script')
+<script>
         function deleteFile(id) {
                 var id  = id;
                 let _url = `/managePosts/delete/${id}`;

@@ -11,7 +11,7 @@
                     <span class="right"><a href="{{route('manageFiles.index')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
                         <h1><a>Arquivos</a></h1>
                     </div>
-                    
+
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -66,8 +66,9 @@
         </div><!-- row -->
         </div>
       </div><!-- /.row -->
-
-      <script>
+@endsection
+@section('script')
+<script>
     document.addEventListener("DOMContentLoaded", function(event) {
         $("#category").change(function() {
             var category = $(this).val();
@@ -90,7 +91,9 @@
          });
 
         $('input[name="files"]').fileuploader({
-            addMore: true
+            addMore: true,
+            extensions: ['jpg', 'jpeg', 'png', 'gif', 'pdf', 'rar', 'zip', 'doc', 'docx', 'xls', 'xlsx'],
+            captions: 'pt',
         });
     });
     </script>

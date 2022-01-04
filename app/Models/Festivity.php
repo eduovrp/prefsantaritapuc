@@ -14,8 +14,10 @@ class Festivity extends Model
         'month',
         'tag',
         'local',
-        'desc',
-        'first_img',
-        'second_img'
+        'desc'
     ];
+
+    public function festivityImages(){
+        return $this->hasMany(festivityImages::class);
+    }
 }

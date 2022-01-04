@@ -11,7 +11,7 @@
                     <span class="right"><a href="{{route('managePosts.index')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
                         <h1><a>Criar nova notícia</a></h1>
                     </div>
-                    
+
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-md-5">
                                         <label for="tags">Tags *</label><br>
-                                        <input type="text" class="form-control" name="tags" id="tags" data-role="tagsinput" 
+                                        <input type="text" class="form-control" name="tags" id="tags" data-role="tagsinput"
                                         value="@foreach($post->tags as $tag){{$tag->name}},@endforeach" required/>
                                 </div>
                                 <div class="col-md-3">
@@ -64,7 +64,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <label for="text">Texto da Notícia *</label>    
+                                    <label for="text">Texto da Notícia *</label>
                                     <textarea name="text" id="text" class="summernote" cols="30" rows="30">{{$post->text}}</textarea>
                                 </div>
                             </div>
@@ -83,19 +83,21 @@
         </div><!-- row -->
         </div>
       </div><!-- /.row -->
+@endsection
 
+@section('script')
 <script>
-document.addEventListener("DOMContentLoaded", function(event) { 
+document.addEventListener("DOMContentLoaded", function(event) {
         var substringMatcher = function(strs) {
         return function findMatches(q, cb) {
         var matches, substringRegex;
-    
+
         // an array that will be populated with substring matches
         matches = [];
-    
+
         // regex used to determine if a string contains the substring `q`
         substrRegex = new RegExp(q, 'i');
-    
+
         // iterate through the pool of strings and for any string that
         // contains the substring `q`, add it to the `matches` array
         $.each(strs, function(i, str) {
@@ -103,13 +105,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
             matches.push(str);
             }
         });
-    
+
         cb(matches);
         };
     };
 
     var grupos = [<?php foreach($categoriesJson as $c){ echo "'".$c['name']."',";}?>];
-    
+
     $('#the-basics .typeahead').typeahead({
         hint: true,
         highlight: true,
@@ -134,6 +136,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     $('input[name="files2"]').fileuploader({
         limit: 1,
+        extensions: ['jpg', 'jpeg', 'png', 'gif'],
+        captions: 'pt',
         files:  [{
             name: '{{$img_name}}', // file name
             size: 902400, // file size in bytes
@@ -173,9 +177,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 "tag": tag,
                 "_token": "{{ csrf_token() }}"
             }
-        });    
+        });
     });
-      
+
 
 });
 

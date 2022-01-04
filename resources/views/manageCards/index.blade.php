@@ -79,8 +79,10 @@
         </div><!-- row -->
         </div>
       </div><!-- /.row -->
+@endsection
 
-      <script>
+@section('script')
+    <script>
 
         function deleteCard(id) {
                 var id  = id;

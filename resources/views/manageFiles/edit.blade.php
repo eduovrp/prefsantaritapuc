@@ -80,11 +80,13 @@
         </div><!-- row -->
         </div>
       </div><!-- /.row -->
+@endsection
 
+@section('script')
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
         var editCategory = $('#category').val();
-        
+
         var idSubCategory = {{$file->fileSubCategory->id}};
         var subCategoryName = "{{$file->fileSubCategory->name}}";
 

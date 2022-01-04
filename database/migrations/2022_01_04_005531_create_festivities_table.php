@@ -20,8 +20,6 @@ class CreateFestivitiesTable extends Migration
             $table->string('tag');
             $table->string('local');
             $table->text('desc');
-            $table->string('first_img')->nullable();
-            $table->string('second_img')->nullable();
             $table->timestamps();
         });
     }

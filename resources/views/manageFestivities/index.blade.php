@@ -9,7 +9,7 @@
             <div class="tr-section">
                 <div class="tr-post">
                     <div class="section-title title-before">
-                        <h1><a>Arquivos</a></h1>
+                        <h1><a>Festividades</a></h1>
                     </div>
                     @if (session('status'))
                         <div class="alert alert-success alert-dismissible" role="alert">
@@ -18,36 +18,32 @@
                         </div>
                     @endif
                     @if (session('warning'))
-                    <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        {{ session('warning') }}
-                    </div>
-                @endif
-                    <a href="{{ route('managePosts.create') }}" class="btn btn-primary">Nova Notícia</a>
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{ session('warning') }}
+                        </div>
+                    @endif
+                    <a href="{{ route('manageFestivities.create') }}" class="btn btn-primary">Nova Festividade</a>
                 <div class="tr-details">
                         <table id="dataTable-Files" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th class="print">Título</th>
-                                    <th class="print">Categorias</th>
-                                    <th class="print">Tags</th>
-                                    <th class="print">Data</th>
+                                    <th class="print">Nome do Evento</th>
+                                    <th class="print">Tag</th>
+                                    <th class="print">Mês do Evento</th>
+                                    <th class="print">Local</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
                         <tbody>
-                            @foreach($posts as $post)
-                            <tr id="row_{{ $post->id }}">
-                                <td>{{$post->id}}</td>
-                                <td class="print">{{ $post->title }}</td>
-                                <td class="print">{{ $post->categoryPost->name}}</td>
-                                <td class="print">
-                                    @foreach($post->tags as $tag)
-                                        #{{$tag->name}}
-                                    @endforeach
-                                </td>
-                                <td class="print">{{ $post->date }}</td>
+                            @foreach($festivities as $fest)
+                            <tr id="row_{{ $fest->id }}">
+                                <td>{{$fest->id}}</td>
+                                <td class="print">{{ $fest->name }}</td>
+                                <td class="print">{{ $fest->tag }}</td>
+                                <td class="print">{{ $fest->month }}</td>
+                                <td class="print">{{ $fest->local }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,10 +51,10 @@
                                         <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{route('post.show', ['post'=> $post->id])}}" target="_blank"><i class="fas fa-external-link-alt fa-2x"></i> Visualizar</a></li>
-                                            <li><a href="{{ route('managePosts.edit', ['post' => $post->id]) }}"><i class="fa fa-edit fa-2x"></i> Editar</a></li>
+                                            <li><a href="festivities"><i class="fas fa-search-plus fa-2x"></i> Visualizar</a></li>
+                                            <li><a href="{{ route('manageFestivities.edit', ['festivity' => $fest->id]) }}"><i class="fa fa-edit fa-2x"></i> Editar</a></li>
                                             <li>
-                                                <a href="javascript:void(0)" onClick="deletePost({{ $post->id }})">
+                                                <a href="javascript:void(0)" onClick="deleteFestivity({{ $fest->id }})">
                                                     <i class="fas fa-trash fa-2x"></i> Excluir
                                                 </a>
                                             </li>
@@ -80,13 +76,13 @@
 @endsection
 
 @section('script')
-<script>
-    function deletePost(id) {
+     <script>
+        function deleteFestivity(id) {
                 var id  = id;
-                let _url = `/managePosts/delete/${id}`;
+                let _url = `/manageFestivities/delete/${id}`;
 
                 Swal.fire({
-                title: 'Deseja realmente excluir essa notícia?',
+                title: 'Deseja realmente excluir este evento?',
                 text: "Ao excluir, não será possível reverter a ação.",
                 icon: 'warning',
                 showCancelButton: true,
@@ -113,8 +109,8 @@
                         });
 
                         Swal.fire(
-                            'Notícia exlcluida!',
-                            'Tudo certo, a noticia foi excluida do sistema.',
+                            'Evento exlcluido!',
+                            'Tudo certo, o evento foi excluido do sistema.',
                             'success'
                         )
                     }
@@ -123,4 +119,5 @@
         })
     }
 </script>
+
 @endsection

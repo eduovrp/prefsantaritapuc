@@ -11,7 +11,7 @@
                     <span class="right"><a href="{{route('managePosts.index')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
                         <h1><a>Criar nova notícia</a></h1>
                     </div>
-                    
+
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -62,7 +62,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <label for="text">Texto da Notícia *</label>    
+                                    <label for="text">Texto da Notícia *</label>
                                     <textarea name="text" id="text" class="summernote" cols="30" rows="30"></textarea>
                                 </div>
                             </div>
@@ -81,19 +81,21 @@
         </div><!-- row -->
         </div>
       </div><!-- /.row -->
+@endsection
 
+@section('script')
 <script>
-document.addEventListener("DOMContentLoaded", function(event) { 
+document.addEventListener("DOMContentLoaded", function(event) {
         var substringMatcher = function(strs) {
         return function findMatches(q, cb) {
         var matches, substringRegex;
-    
+
         // an array that will be populated with substring matches
         matches = [];
-    
+
         // regex used to determine if a string contains the substring `q`
         substrRegex = new RegExp(q, 'i');
-    
+
         // iterate through the pool of strings and for any string that
         // contains the substring `q`, add it to the `matches` array
         $.each(strs, function(i, str) {
@@ -101,13 +103,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
             matches.push(str);
             }
         });
-    
+
         cb(matches);
         };
     };
 
     var grupos = [<?php foreach($categoriesJson as $c){ echo "'".$c['name']."',";}?>];
-    
+
     $('#the-basics .typeahead').typeahead({
         hint: true,
         highlight: true,
@@ -132,6 +134,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         $('input[name="files1"]').fileuploader({
         limit: 1,
+        extensions: ['jpg', 'jpeg', 'png', 'gif'],
+        captions: 'pt',
         editor: {
             cropper: {
                 minWidth: 800,

@@ -11,7 +11,7 @@
                     <span class="right"><a href="{{route('manageCards.index')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
                         <h1><a>Criar nova notícia</a></h1>
                     </div>
-                    
+
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -80,7 +80,9 @@
         </div><!-- row -->
         </div>
       </div><!-- /.row -->
+@endsection
 
+@section('script')
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
     Date.prototype.toDateInputValue = (function() {
@@ -118,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             },
             quality: 90
         },
-    });     
+    });
 
 var img_onclick_name = '{{$img_onclick_name}}'
 
@@ -148,7 +150,7 @@ if(img_onclick_name != ''){
             },
             quality: 90
         }
-    });  
+    });
 } else {
     $('input[name="files6"]').fileuploader({
         limit: 1,
@@ -161,7 +163,7 @@ if(img_onclick_name != ''){
             quality: 90
         }
     });
-}  
+}
 
 var elem = document.querySelector('.js-switch');
     var init = new Switchery(elem);

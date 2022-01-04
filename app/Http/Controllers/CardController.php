@@ -75,7 +75,7 @@ class CardController extends Controller
         unset($FileUploader);
 
         if(isset($request->files4)){
-            
+
             $FileUploader = new FileUploader('files4', array(
                 'limit' => 1,
                 'uploadDir' => $dir,
@@ -147,6 +147,6 @@ class CardController extends Controller
      */
     public function destroy(Card $card, $id)
     {
-        $post->destroy($id);
+        $card->destroy($id);
     }
 }

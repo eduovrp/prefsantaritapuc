@@ -9,7 +9,6 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\FestivityController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,10 +47,16 @@ Route::post('manageCards',[CardController::class, 'store'])->name('manageCards.s
 Route::get('manageCards/{card}/edit', [CardController::class, 'edit'])->name('manageCards.edit');
 Route::delete('manageCards/delete/{id}',[CardController::class, 'destroy'])->name('manageCards.destroy');
 
+Route::get('festivities', [FestivityController::class, 'index'])->name('festivities');
+Route::get('manageFestivities', [FestivityController::class, 'list'])->name('manageFestivities.index');
+Route::get('manageFestivities/create', [FestivityController::class, 'create'])->name('manageFestivities.create');
+Route::post('manageFestivities',[FestivityController::class, 'store'])->name('manageFestivities.store');
+Route::get('manageFestivities/{festivity}/edit', [FestivityController::class, 'edit'])->name('manageFestivities.edit');
+Route::delete('manageFestivities/delete/{id}',[FestivityController::class, 'destroy'])->name('manageFestivities.destroy');
+
 Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'files'])->name('years');
 Route::get('{fileCategory}/{fileSubCategory}/{year?}', [FileController::class, 'files'])->name('files');
 
-Route::get('festivities', [FestivityController::class, 'index'])->name('festivities');
 
 Route::post('ajaxRequest', [FileController::class, 'ajaxRequest'])->name('ajaxRequest');
 

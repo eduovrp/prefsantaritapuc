@@ -14,16 +14,13 @@
                 <p>{{$fest->desc}}</p>
             </div>
             <div class="modal-footer">
+                @foreach ($fest->festivityImages as $img)
                 <div class="col-md-6">
-                    <a data-fancybox="gallery" href="{{$fest->first_img}}">
-                        <img src="{{$fest->first_img}}" class="img-responsive img-thumbnail">
+                    <a data-fancybox="gallery" href="{{$img->src}}">
+                        <img src="{{$img->src}}" class="img-responsive img-thumbnail">
                     </a>
                 </div>
-                <div class="col-md-6">
-                    <a data-fancybox="gallery" href="{{$fest->second_img}}">
-                        <img src="{{$fest->second_img}}" class="img-responsive img-thumbnail">
-                    </a>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

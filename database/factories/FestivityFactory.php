@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\Festivity;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Provider\Lorem;
-use Faker\Provider\Image;
 use Faker\Provider\DateTime;
 use Faker\Provider\pt_BR\Address;
 
@@ -32,8 +31,6 @@ class FestivityFactory extends Factory
             'month' => DateTime::monthName(),
             'local' => Address::state(),
             'desc' => Lorem::text(500),
-            'first_img' => Image::imageUrl(1024, 600),
-            'second_img' => Image::imageUrl(1024, 600),
         ];
     }
 }

@@ -9,7 +9,7 @@
                 <div class="tr-post">
                     <div class="section-title title-before">
                     <span class="right"><a href="{{route('manageCards.index')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
-                        <h1><a>Criar novo Cartão</a></h1>
+                        <h1><a>Criar nova notícia</a></h1>
                     </div>
 
                         @if ($errors->any())
@@ -23,13 +23,14 @@
                         @endif
 
                 <div class="tr-details">
-                    <form action="{{route ('manageCards.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{url ("manageCards/$card->id") }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @METHOD('PUT')
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <label for="name">Nome *</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{$card->name}}" required>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +54,7 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <label for="">Imagem Principal *</label>
-                                    <input type="file" name="files3" required>
+                                    <input type="file" name="files5" required>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +62,7 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <label for="">Imagem vinculada </label>
-                                    <input type="file" name="files4">
+                                    <input type="file" name="files6">
                                 </div>
                             </div>
                         </div>
@@ -84,7 +85,6 @@
 @section('script')
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
-
     Date.prototype.toDateInputValue = (function() {
             var local = new Date(this);
             local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
@@ -93,21 +93,82 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     $('#date').val(new Date().toDateInputValue());
 
-    $('input[name="files3"]').fileuploader({
+    $('.summernote').summernote({
+            minHeight: 200,
+        });
+
+    $('input[name="files5"]').fileuploader({
         limit: 1,
         extensions: ['jpg', 'jpeg', 'png', 'gif'],
         captions: 'pt',
+        files:  [{
+            name: '{{$img_name}}', // file name
+            size: 902400, // file size in bytes
+            type: 'image', // file MIME type
+            file: '{{$card->src_img}}', // file path
+            local: '{{$card->src_img}}', // file path in listInput (optional)
+            data: {
+                thumbnail: '{{$card->src_img}}', // item custom thumbnail; if false will disable the thumbnail (optional)
+                readerCrossOrigin: 'anonymous', // fix image cross-origin issue (optional)
+                readerForce: true, // prevent the browser cache of the image (optional)
+                popup: false, // remove the popup for this file (optional)
+            }
+        }],
+        editor: {
+            cropper: {
+                minWidth: 1300,
+                minHeight: 600,
+                showGrid: true
+            },
+            quality: 90
+        },
     });
 
-    $('input[name="files4"]').fileuploader({
+var img_onclick_name = '{{$img_onclick_name}}'
+
+console.log(img_onclick_name)
+
+if(img_onclick_name != ''){
+    $('input[name="files6"]').fileuploader({
         limit: 1,
-        extensions: ['jpg', 'jpeg', 'png', 'gif'],
-        captions: 'pt',
+        files:  [{
+            name: '{{$img_onclick_name}}', // file name
+            size: 902400, // file size in bytes
+            type: 'image', // file MIME type
+            file: '{{$card->src_img_onclick}}', // file path
+            local: '{{$card->src_img_onclick}}', // file path in listInput (optional)
+            data: {
+                thumbnail: '{{$card->src_img_onclick}}', // item custom thumbnail; if false will disable the thumbnail (optional)
+                readerCrossOrigin: 'anonymous', // fix image cross-origin issue (optional)
+                readerForce: true, // prevent the browser cache of the image (optional)
+                popup: false, // remove the popup for this file (optional)
+            }
+        }],
+        editor: {
+            cropper: {
+                minWidth: 1300,
+                minHeight: 600,
+                showGrid: true
+            },
+            quality: 90
+        }
     });
+} else {
+    $('input[name="files6"]').fileuploader({
+        limit: 1,
+        editor: {
+            cropper: {
+                minWidth: 1300,
+                minHeight: 600,
+                showGrid: true
+            },
+            quality: 90
+        }
+    });
+}
 
-    var elem = document.querySelector('.js-switch');
+var elem = document.querySelector('.js-switch');
     var init = new Switchery(elem);
-
 
 });
 

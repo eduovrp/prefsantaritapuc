@@ -174,6 +174,7 @@
                                                 <li><a href="{{route('manageFiles.index')}}">Gerenciar Arquivos</a></li>
                                                 <li><a href="{{route('managePosts.index')}}">Gerenciar Notícias</a></li>
                                                 <li><a href="{{route('manageCards.index')}}">Gerenciar Cartões</a></li>
+                                                <li><a href="{{route('manageFestivities.index')}}">Gerenciar Festividades</a></li>
                                             @endif
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
@@ -271,6 +272,8 @@
                                 <script type="text/javascript" src="{{asset('js/bootstrap-tagsinput.min.js')}}"></script>
                                 <script type="text/javascript" src="{{asset('js/sweetalert2.all.min.js')}}"></script>
                                 <script type="text/javascript" src="{{asset('js/switchery.min.js')}}"></script>
+
+                                @yield('script')
 
                             </body>
                         </html>

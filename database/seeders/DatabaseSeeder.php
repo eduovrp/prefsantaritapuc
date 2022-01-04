@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use \App\Models\Post;
 use \App\Models\Festivity;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -17,13 +18,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(5)->create();
+        User::factory(5)->create();
 
         Post::factory(10)
         ->hasTags(2)
         ->create();
 
-        Festivity::factory(6)->create();
+        Festivity::factory(6)
+        ->hasFestivityImages(2)
+        ->create();
 
         // Admin Password "admin123"
         DB::table('users')->insert([
