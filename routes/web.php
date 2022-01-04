@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\FileCategoryController;
-use App\Http\Controllers\FileSubCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
@@ -9,7 +7,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\CardController;
-use App\Models\FileSubCategory;
+use App\Http\Controllers\FestivityController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +50,8 @@ Route::delete('manageCards/delete/{id}',[CardController::class, 'destroy'])->nam
 
 Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'files'])->name('years');
 Route::get('{fileCategory}/{fileSubCategory}/{year?}', [FileController::class, 'files'])->name('files');
+
+Route::get('festivities', [FestivityController::class, 'index'])->name('festivities');
 
 Route::post('ajaxRequest', [FileController::class, 'ajaxRequest'])->name('ajaxRequest');
 

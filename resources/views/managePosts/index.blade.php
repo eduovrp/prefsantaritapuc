@@ -25,7 +25,6 @@
                 @endif
                     <a href="{{ route('managePosts.create') }}" class="btn btn-primary">Nova Notícia</a>
                 <div class="tr-details">
-                    <div class="table-responsive">
                         <table id="dataTable-Files" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -34,9 +33,7 @@
                                     <th class="print">Categorias</th>
                                     <th class="print">Tags</th>
                                     <th class="print">Data</th>
-                                    <th>Abrir</th>
-                                    <th>Editar</th>
-                                    <th>Deletar</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
                         <tbody>
@@ -51,19 +48,27 @@
                                     @endforeach
                                 </td>
                                 <td class="print">{{ $post->date }}</td>
-                                <td><a href="{{route('post.show', ['post'=> $post->id])}}" target="_blank"><i class="fas fa-external-link-alt fa-2x"></i></a></td>
-                                <td><a href="{{ route('managePosts.edit', ['post' => $post->id]) }}"><i class="fa fa-edit fa-2x"></i></a></td>
                                 <td>
-                                    <a href="javascript:void(0)" onClick="deletePost({{ $post->id }})">                               
-                                        <i class="fas fa-trash fa-2x"></i>
-                                    </a>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-bars"></i>
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{route('post.show', ['post'=> $post->id])}}" target="_blank"><i class="fas fa-external-link-alt fa-2x"></i> Visualizar</a></li>
+                                            <li><a href="{{ route('managePosts.edit', ['post' => $post->id]) }}"><i class="fa fa-edit fa-2x"></i> Editar</a></li>
+                                            <li>
+                                                <a href="javascript:void(0)" onClick="deletePost({{ $post->id }})">
+                                                    <i class="fas fa-trash fa-2x"></i> Excluir
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                         </table>
-                    </div>
-
 
                 </div><!-- /.tr-details -->
             </div><!-- /.tr-section -->
@@ -91,7 +96,7 @@
                 width: '450px'
 
             }).then((result) => {
-            
+
             if (result.isConfirmed) {
 
                 $.ajax({
@@ -103,7 +108,7 @@
                     },
                     success: function(response) {
                         $("#row_"+id).fadeOut(300, function() {
-                             $(this).remove(); 
+                             $(this).remove();
                         });
 
                         Swal.fire(

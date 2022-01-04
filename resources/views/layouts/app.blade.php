@@ -97,7 +97,7 @@
                                                         <a href="atracoes-turisticas">Atrações Turísticas </a>
                                                     </li>
                                                     <li>
-                                                        <a href="calendario-eventos">Calendário de Eventos</a>
+                                                        <a href="festivities">Calendário de Eventos</a>
                                                     </li>
                                                     <li>
                                                         <a href="conheca-santarita">Conheça Santa Rita d'Oeste</a>
@@ -112,13 +112,13 @@
                                                         @foreach($menu->fileSubCategories as $submenu)
                                                         <li>
                                                             <!-- <a href="/{{$menu->href .'/'. $submenu->href}}">{{$submenu->name}}</a> -->
-                                                            <a href="{{ 
-                                                                route('years', 
+                                                            <a href="{{
+                                                                route('years',
                                                                 ['fileCategory' => $menu->href,
                                                                  'fileSubCategory' => $submenu->href
                                                                 ])
                                                             }}
-                                                                
+
                                                                 ">{{$submenu->name}}</a>
                                                         </li>
                                                         @endforeach
@@ -246,8 +246,6 @@
                                     </div><!-- /.footer-bottom -->
 
                                 </footer><!-- /#footer -->
-
-
 
                                 <!-- JS -->
                                 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>

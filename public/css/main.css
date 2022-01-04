@@ -72,7 +72,7 @@ p.footer{
 	border-radius: 3px;
 	border: #e7eaec 1px solid;
 	margin-bottom: 20px;
-	
+
 }
 
 .tr-arqs{
@@ -99,7 +99,7 @@ p.file_desc{
 }
 .tur p{
 	font-size: 14px;
-	text-align: justify;
+	text-align: 'center';
 	margin-bottom: 20px;
 	padding-left: 2em;
 	padding-right: 2em
@@ -108,6 +108,10 @@ p.file_desc{
 .eventos .tr-section{
 	background-color: #e8e8e8;
 	border: #dbdbdb 1px solid
+}
+
+.eventos {
+    padding: 15px 25px;
 }
 
 .right{
@@ -186,7 +190,7 @@ span.right{
 	text-align: center;
 	text-transform: uppercase;
 	color: white;
-	background: url('../images/calendario/background.jpg') no-repeat center;
+	background: url('../images/bg-festivities.jpg') no-repeat center;
 }
 .header-calendario>h4{
 	font-size: 25px;
@@ -196,9 +200,7 @@ span.right{
 	color: white;
 	font-size: 26px;
 }
-.calendario{
-	min-height: 350px;
-}
+
 .calendario>p{
 	text-indent: 2em;
 	text-align: justify;

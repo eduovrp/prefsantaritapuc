@@ -25,7 +25,6 @@
                     @endif
                     <a href="{{ route('manageCards.create') }}" class="btn btn-primary">Novo Cartão</a>
                 <div class="tr-details">
-                    <div class="table-responsive">
                         <table id="dataTable-Files" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -34,9 +33,7 @@
                                     <th class="print">Url Vinculada</th>
                                     <th class="print">Data Exp</th>
                                     <th class="print">Situação</th>
-                                    <th>Abrir</th>
-                                    <th>Editar</th>
-                                    <th>Deletar</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
                         <tbody>
@@ -53,19 +50,27 @@
                                         <i class="fa fa-times" style="color:red"></i>
                                     @endif
                                 </td>
-                                <td><a data-fancybox="gallery" href="{{$card->src_img}}"><i class="fas fa-search-plus fa-2x"></i></a></td>
-                                <td><a href="{{ route('manageCards.edit', ['card' => $card->id]) }}"><i class="fa fa-edit fa-2x"></i></a></td>
                                 <td>
-                                    <a href="javascript:void(0)" onClick="deleteCard({{ $card->id }})">                               
-                                        <i class="fas fa-trash fa-2x"></i>
-                                    </a>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-bars"></i>
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a data-fancybox="gallery" href="{{$card->src_img}}"><i class="fas fa-search-plus fa-2x"></i> Visualizar</a></li>
+                                            <li><a href="{{ route('manageCards.edit', ['card' => $card->id]) }}"><i class="fa fa-edit fa-2x"></i> Editar</a></li>
+                                            <li>
+                                                <a href="javascript:void(0)" onClick="deleteCard({{ $card->id }})">
+                                                    <i class="fas fa-trash fa-2x"></i> Excluir
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                         </table>
-                    </div>
-
 
                 </div><!-- /.tr-details -->
             </div><!-- /.tr-section -->
@@ -93,7 +98,7 @@
                 width: '450px'
 
             }).then((result) => {
-            
+
             if (result.isConfirmed) {
 
                 $.ajax({
@@ -105,7 +110,7 @@
                     },
                     success: function(response) {
                         $("#row_"+id).fadeOut(300, function() {
-                             $(this).remove(); 
+                             $(this).remove();
                         });
 
                         Swal.fire(

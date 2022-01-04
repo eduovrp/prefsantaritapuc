@@ -25,7 +25,6 @@
                 @endif
                     <a href="{{ route('uploadFiles') }}" class="btn btn-primary">Novo Upload</a>
                 <div class="tr-details">
-                    <div class="table-responsive">
                         <table id="dataTable-Files" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -34,9 +33,7 @@
                                     <th class="print">Ano</th>
                                     <th class="print">Categoria</th>
                                     <th class="print">Sub-Categoria</th>
-                                    <th>Download</th>
-                                    <th>Editar</th>
-                                    <th>Deletar</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
                         <tbody>
@@ -47,20 +44,27 @@
                                 <td class="print">{{ $file->year }}</td>
                                 <td class="print">{{ $file->fileCategory->name }}</td>
                                 <td class="print">{{ $file->fileSubCategory->name }}</td>
-                                <td><a href="{{ $file->path }}" target="_blank"><i class="fa fa-download fa-2x"></i></a></td>
-                                <td><a href="{{ route('manageFiles.edit', ['file' => $file->id]) }}"><i class="fa fa-edit fa-2x"></i></a></td>
                                 <td>
-                                    <a href="javascript:void(0)" onClick="deleteFile({{ $file->id }})">                               
-                                        <i class="fas fa-trash fa-2x"></i>
-                                    </a>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-bars"></i>
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ $file->path }}" target="_blank"><i class="fa fa-download fa-2x"></i> Download</a></li>
+                                            <li><a href="{{ route('manageFiles.edit', ['file' => $file->id]) }}"><i class="fa fa-edit fa-2x"></i> Editar</a></li>
+                                            <li>
+                                                <a href="javascript:void(0)" onClick="deleteFile({{ $file->id }})">
+                                                    <i class="fas fa-trash fa-2x"></i> Excluir
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                         </table>
-                    </div>
-
-
                 </div><!-- /.tr-details -->
             </div><!-- /.tr-section -->
 
@@ -87,7 +91,7 @@
                 width: '450px'
 
             }).then((result) => {
-            
+
             if (result.isConfirmed) {
 
                 $.ajax({
@@ -99,7 +103,7 @@
                     },
                     success: function(response) {
                         $("#row_"+id).fadeOut(300, function() {
-                             $(this).remove(); 
+                             $(this).remove();
                         });
 
                         Swal.fire(
