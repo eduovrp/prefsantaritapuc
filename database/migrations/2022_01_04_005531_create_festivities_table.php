@@ -16,7 +16,7 @@ class CreateFestivitiesTable extends Migration
         Schema::create('festivities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('month');
+            $table->date('month');
             $table->string('tag');
             $table->string('local');
             $table->text('desc');

@@ -28,7 +28,7 @@ class FestivityFactory extends Factory
         return [
             'name' => Lorem::sentence(4),
             'tag' => Lorem::word(),
-            'month' => DateTime::monthName(),
+            'month' => DateTime::date(),
             'local' => Address::state(),
             'desc' => Lorem::text(500),
         ];

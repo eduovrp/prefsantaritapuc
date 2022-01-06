@@ -97,7 +97,7 @@
                                                         <a href="atracoes-turisticas">Atrações Turísticas </a>
                                                     </li>
                                                     <li>
-                                                        <a href="festivities">Calendário de Eventos</a>
+                                                        <a href="{{url ('/festivities')}}">Calendário de Eventos</a>
                                                     </li>
                                                     <li>
                                                         <a href="conheca-santarita">Conheça Santa Rita d'Oeste</a>

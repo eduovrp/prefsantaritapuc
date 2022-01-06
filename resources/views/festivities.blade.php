@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="data">
                                             <div class="divider">
-                                                <span class="mes">{{substr($fest->month,0,3)}}</span>
+                                                <span class="mes">{{ date('M', strtotime($fest->month));   }}</span>
                                             </div>
                                         </div>
                                         <div class="evento">

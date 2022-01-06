@@ -20,9 +20,8 @@ class FestivityController extends Controller
      */
     public function index()
     {
-        $festivities = Festivity::orderByRaw('FIELD
-        (month, "January","February","March","April","May","June","July","August","September","October","November","December")')
-        ->get();
+
+        $festivities = Festivity::orderByRaw("DATE_FORMAT(month,'%m')")->get();
 
         return view('festivities', compact('festivities'));
     }
@@ -91,22 +90,7 @@ class FestivityController extends Controller
 
         unset($FileUploader);
 
-        // if(isset($request->files4)){
-
-        //     $FileUploader = new FileUploader('files4', array(
-        //         'limit' => 1,
-        //         'uploadDir' => $dir,
-        //         'title' => 'auto'
-        //     ));
-
-        //     $upload2 = $FileUploader->upload();
-        //     $src_img_onclick = Storage::url('cards/').$upload2['files'][0]['name'];
-        //     unset($FileUploader);
-        // }else{
-        //     $src_img_onclick = null;
-        // }
-
-        // return redirect()->route('manageCards.index')->with('status', 'Cartão criado com sucesso!');;
+        return redirect()->route('manageFestivities.index')->with('status', 'Festividade criada com sucesso!');;
     }
 
 
