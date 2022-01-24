@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\FestivityController;
+use App\Http\Controllers\FestivityImagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,9 @@ Route::get('manageFestivities/create', [FestivityController::class, 'create'])->
 Route::post('manageFestivities',[FestivityController::class, 'store'])->name('manageFestivities.store');
 Route::get('manageFestivities/{festivity}/edit', [FestivityController::class, 'edit'])->name('manageFestivities.edit');
 Route::delete('manageFestivities/delete/{id}',[FestivityController::class, 'destroy'])->name('manageFestivities.destroy');
+Route::put('manageFestivities/{festivity}',[FestivityController::class, 'update'])->name('manageFestivities.update');
+
+Route::delete('manageFestivityImages/delete/{file}',[FestivityImagesController::class, 'destroy'])->name('manageFestivityImages.destroy');
 
 Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'files'])->name('years');
 Route::get('{fileCategory}/{fileSubCategory}/{year?}', [FileController::class, 'files'])->name('files');

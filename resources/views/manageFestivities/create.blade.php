@@ -80,23 +80,11 @@
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
 
-            Date.prototype.toDateInputValue = (function() {
-                    var local = new Date(this);
-                    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-                    return local.toJSON().slice(0,10);
-                });
-
-            $('#date').val(new Date().toDateInputValue());
-
             $('input[name="files5"]').fileuploader({
                 limit: 2,
                 extensions: ['jpg', 'jpeg', 'png', 'gif'],
                 captions: 'pt',
             });
-
-            var elem = document.querySelector('.js-switch');
-            var init = new Switchery(elem);
-
 
         });
     </script>

@@ -61,10 +61,10 @@ class PostController extends Controller
         ]);
 
         $category = CategoryPost::where('name', '=', $request->category)->firstOrCreate(
-            ['name' => $request->category]            
+            ['name' => $request->category]
         );
 
-        
+
         $dir = storage_path('app/public/notices/');
             if (!file_exists($dir)) {
                 mkdir($dir, 0777, true);
@@ -85,11 +85,11 @@ class PostController extends Controller
         $post->date = $request->date;
         $post->category_post_id = $category->id;
         $post->src_img = Storage::url('notices/').$upload['files'][0]['name'];
-        
-        $post->save();
-        
 
-        
+        $post->save();
+
+
+
         foreach(explode(",", $request->tags) as $tagName){
             $tags = new Tag();
             $tags->name = $tagName;
@@ -148,18 +148,18 @@ class PostController extends Controller
         ]);
 
         $category = CategoryPost::where('name', '=', $request->category)->firstOrCreate(
-            ['name' => $request->category]            
+            ['name' => $request->category]
         );
 
-        $tags = Tag::where('post_id', $post->id)->delete();
-        
+        Tag::where('post_id', $post->id)->delete();
+
         foreach(explode(",", $request->tags) as $tagName){
-            $tags = Tag::create(
+            Tag::create(
                 [
                     'name' => trim($tagName),
                     'post_id' => $post->id
                 ]
-            );           
+            );
         }
 
         if($request->hasFile('files2')){
@@ -173,11 +173,12 @@ class PostController extends Controller
             ));
 
             $upload = $FileUploader->upload();
+
             Post::where(['id'=>$post->id])->update([
                 'src_img' => Storage::url('notices/').$upload['files'][0]['name']]);
         }
 
-        
+
         Post::where(['id'=>$post->id])->update([
             'title' => trim($request->title),
             'text' => $request->text,
@@ -196,7 +197,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post, $id)
     {
-        $tags = Tag::where('post_id', $id)->delete();
+        Tag::where('post_id', $id)->delete();
         $post->destroy($id);
     }
 }
