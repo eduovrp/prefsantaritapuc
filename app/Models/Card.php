@@ -14,6 +14,7 @@ class Card extends Model
         'src_img',
         'src_img_onclick',
         'href',
+        'folderName',
         'data_exp',
         'active'
     ];

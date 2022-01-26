@@ -81,12 +81,14 @@ class FestivityController extends Controller
 
         $upload = $FileUploader->upload();
 
-         // if uploaded and success
+
+        // if uploaded and success
             if($upload['isSuccess'] && count($upload['files']) > 0) {
                 // get uploaded files
                 $uploadedFiles = $upload['files'];
                 // create thumbnails
                 foreach($uploadedFiles as $item) {
+                    FileUploader::resize($filename = $item['file'], $width = 1366, $height = null, $destination = $dir  . $item['name'], $crop = false, $quality = 90);
                     FileUploader::resize($filename = $item['file'], $width = 240, $height = 240, $destination = $thumbsDir  . $item['name'], $crop = false, $quality = 80);
                 }
             }
@@ -169,6 +171,7 @@ class FestivityController extends Controller
                 $uploadedFiles = $upload['files'];
                 // create thumbnails
                 foreach($uploadedFiles as $item) {
+                    FileUploader::resize($filename = $item['file'], $width = 1366, $height = null, $destination = $dir  . $item['name'], $crop = false, $quality = 90);
                     FileUploader::resize($filename = $item['file'], $width = 240, $height = 240, $destination = $thumbsDir  . $item['name'], $crop = false, $quality = 80);
                 }
             }
@@ -237,7 +240,10 @@ class FestivityController extends Controller
         $imgs = FestivityImages::where('festivity_id', $id)->get();
 
         foreach($imgs as $img){
+
+            if($img->folderName)
             Storage::deleteDirectory('festivities/'.$img->folderName);
+
             $img->destroy($img->id);
         }
 

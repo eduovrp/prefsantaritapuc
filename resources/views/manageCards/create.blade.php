@@ -36,8 +36,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="src_img_onclick">Url Vinculada</label>
-                                        <input type="text" class="form-control" id="src_img_onclick" name="src_img_onclick">
+                                    <label for="href">Url Vinculada</label>
+                                        <input type="text" class="form-control" id="href" name="href">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="date">Data Vencimento*</label>

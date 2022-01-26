@@ -33,11 +33,11 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="tag">Tag *</label>
-                                    <input type="text" class="form-control" id="tag" name="tag">
+                                    <input type="text" class="form-control" id="tag" name="tag" required>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="local">Local *</label>
-                                        <input type="text" class="form-control" id="local" name="local">
+                                        <input type="text" class="form-control" id="local" name="local" required>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                                     <input type="month" name="month" id="month" class="form-control" required>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="file" name="files5" required>
+                                    <input type="file" name="files5">
                                 </div>
                             </div>
                         </div>

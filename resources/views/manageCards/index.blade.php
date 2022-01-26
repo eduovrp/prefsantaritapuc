@@ -41,7 +41,7 @@
                             <tr id="row_{{ $card->id }}">
                                 <td>{{$card->id}}</td>
                                 <td class="print">{{ $card->name }}</td>
-                                <td class="print"><a data-fancybox="gallery" href="/{{$card->src_img_onclick}}">{{$card->src_img_onclick}}</a></td>
+                                <td class="print"><a data-fancybox="gallery" href="{{$card->src_img_onclick}}">{{$card->src_img_onclick}}</a></td>
                                 <td class="print">{{ $card->date_exp }}</td>
                                 <td class="print">
                                     @if($card->active == 1)
@@ -86,7 +86,7 @@
 
         function deleteCard(id) {
                 var id  = id;
-                let _url = `/manageCard/delete/${id}`;
+                let _url = `/manageCards/delete/${id}`;
 
                 Swal.fire({
                 title: 'Deseja realmente excluir este cartão?',

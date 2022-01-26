@@ -47,6 +47,9 @@ Route::get('manageCards/create', [CardController::class, 'create'])->name('manag
 Route::post('manageCards',[CardController::class, 'store'])->name('manageCards.store');
 Route::get('manageCards/{card}/edit', [CardController::class, 'edit'])->name('manageCards.edit');
 Route::delete('manageCards/delete/{id}',[CardController::class, 'destroy'])->name('manageCards.destroy');
+Route::delete('manageCards/images/delete/{file}',[CardController::class, 'deleteImages'])->name('manageCards.deleteImages');
+Route::delete('manageCards/imagesOnclick/delete/{file}',[CardController::class, 'deleteImagesOnclick'])->name('manageCards.deleteImagesOnclick');
+Route::put('manageCards/{id}',[CardController::class, 'update'])->name('manageCards.update');
 
 Route::get('festivities', [FestivityController::class, 'index'])->name('festivities');
 Route::get('manageFestivities', [FestivityController::class, 'list'])->name('manageFestivities.index');

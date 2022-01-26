@@ -19,6 +19,7 @@ class CreateCardsTable extends Migration
             $table->string('src_img');
             $table->string('src_img_onclick')->nullable();
             $table->string('href')->nullable();
+            $table->string('folderName')->nullable();
             $table->dateTime('date_exp');
             $table->boolean('active')->default(1);
             $table->timestamps();

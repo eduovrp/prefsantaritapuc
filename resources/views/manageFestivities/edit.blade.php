@@ -92,8 +92,6 @@
                         type: 'DELETE',
                         data: {
                             "file": item.name,
-                            "dir": item.local,
-                            "fileStr": item.name.toString(),
                             "_token": "{{ csrf_token() }}"
                         }
                     })

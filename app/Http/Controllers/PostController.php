@@ -77,7 +77,7 @@ class PostController extends Controller
         ));
 
         $upload = $FileUploader->upload();
-
+        FileUploader::resize($filename = $upload['files'][0]['file'], $width = 1600, $height = null, $destination = $dir  . $upload['files'][0]['name'], $crop = false, $quality = 100);
         $post = new Post();
 
         $post->title = trim($request->title);

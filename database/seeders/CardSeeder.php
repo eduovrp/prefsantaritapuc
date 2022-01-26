@@ -18,7 +18,7 @@ class CardSeeder extends Seeder
         DB::table('cards')->insert([
             'name'=>'Novembro Azul',
             'src_img'=>'images/cards/novembroazul.png',
-            'date_exp'=>'2020-12-31 23:59:59',
+            'date_exp'=>'2022-12-31 23:59:59',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -27,7 +27,7 @@ class CardSeeder extends Seeder
             'name'=>'Natal 2019',
             'src_img'=>'images/cards/natal2019.png',
             'src_img_onclick'=>'images/cards/natal2019_onclick.png',
-            'date_exp'=>'2020-12-31 23:59:59',
+            'date_exp'=>'2022-12-31 23:59:59',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);

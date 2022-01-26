@@ -18,9 +18,11 @@ class FestivityImagesController extends Controller
     {
         $img = FestivityImages::where('fileName', $file)->first();
         $img->destroy($img->id);
-        Storage::delete([
-            'festivities/'.$img->folderName . $img->fileName,
-            'festivities/'.$img->folderName . 'thumbs/'. $img->fileName,
-        ]);
+
+        if($img->folderName)
+            Storage::delete([
+                'festivities/'.$img->folderName . $img->fileName,
+                'festivities/'.$img->folderName . 'thumbs/'. $img->fileName,
+            ]);
     }
 }

@@ -9,7 +9,7 @@
                 <div class="tr-post">
                     <div class="section-title title-before">
                     <span class="right"><a href="{{route('manageCards.index')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
-                        <h1><a>Criar nova notícia</a></h1>
+                        <h1><a>Criar novo cartão</a></h1>
                     </div>
 
                         @if ($errors->any())
@@ -37,8 +37,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="src_img_onclick">Url Vinculada</label>
-                                        <input type="text" class="form-control" id="src_img_onclick" name="src_img_onclick">
+                                    <label for="href">Url Vinculada</label>
+                                        <input type="text" class="form-control" id="href" value="{{$card->href}}" name="href">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="date">Data Vencimento*</label>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label for="active">Situação *</label><br>
-                                    <input type="checkbox" name="active" id="active" class="js-switch" checked>
+                                    <input type="checkbox" name="active" id="active" class="js-switch" {{ $card->active === 1 ? 'checked' : ''}}>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <label for="">Imagem Principal *</label>
-                                    <input type="file" name="files5" required>
+                                    <input type="file" name="files5" data-fileuploader-files='{{$files}}'>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <label for="">Imagem vinculada </label>
-                                    <input type="file" name="files6">
+                                    <input type="file" name="files6" data-fileuploader-files='{{$files_onclick}}'>
                                 </div>
                             </div>
                         </div>
@@ -93,80 +93,57 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     $('#date').val(new Date().toDateInputValue());
 
-    $('.summernote').summernote({
-            minHeight: 200,
-        });
+        $('input[name="files5"]').fileuploader({
+                limit: 1,
+                extensions: ['jpg', 'jpeg', 'png', 'gif'],
+                captions: 'pt',
+                editor: {
+                    cropper: {
+                        minWidth: 1300,
+                        minHeight: 600,
+                        showGrid: true
+                    },
+                    quality: 90
+                },
+                onRemove: function(item){
+                    console.log(item)
+                let _url = `/manageCards/images/delete/${item.name}`;
+                    $.ajax({
+                        url: _url,
+                        type: 'DELETE',
+                        data: {
+                            "file": item.name,
+                            "_token": "{{ csrf_token() }}"
+                        }
+                    })
+                }
+            });
 
-    $('input[name="files5"]').fileuploader({
-        limit: 1,
-        files:  [{
-            name: '{{$img_name}}', // file name
-            size: 902400, // file size in bytes
-            type: 'image', // file MIME type
-            file: '{{$card->src_img}}', // file path
-            local: '{{$card->src_img}}', // file path in listInput (optional)
-            data: {
-                thumbnail: '{{$card->src_img}}', // item custom thumbnail; if false will disable the thumbnail (optional)
-                readerCrossOrigin: 'anonymous', // fix image cross-origin issue (optional)
-                readerForce: true, // prevent the browser cache of the image (optional)
-                popup: false, // remove the popup for this file (optional)
-            }
-        }],
-        editor: {
-            cropper: {
-                minWidth: 1300,
-                minHeight: 600,
-                showGrid: true
-            },
-            quality: 90
-        },
-    });
-
-var img_onclick_name = '{{$img_onclick_name}}'
-
-console.log(img_onclick_name)
-
-if(img_onclick_name != ''){
-    $('input[name="files6"]').fileuploader({
-        limit: 1,
-        files:  [{
-            name: '{{$img_onclick_name}}', // file name
-            size: 902400, // file size in bytes
-            type: 'image', // file MIME type
-            file: '{{$card->src_img_onclick}}', // file path
-            local: '{{$card->src_img_onclick}}', // file path in listInput (optional)
-            data: {
-                thumbnail: '{{$card->src_img_onclick}}', // item custom thumbnail; if false will disable the thumbnail (optional)
-                readerCrossOrigin: 'anonymous', // fix image cross-origin issue (optional)
-                readerForce: true, // prevent the browser cache of the image (optional)
-                popup: false, // remove the popup for this file (optional)
-            }
-        }],
-        editor: {
-            cropper: {
-                minWidth: 1300,
-                minHeight: 600,
-                showGrid: true
-            },
-            quality: 90
-        }
-    });
-} else {
-    $('input[name="files6"]').fileuploader({
-        limit: 1,
-        editor: {
-            cropper: {
-                minWidth: 1300,
-                minHeight: 600,
-                showGrid: true
-            },
-            quality: 90
-        }
-    });
-}
+            $('input[name="files6"]').fileuploader({
+                limit: 1,
+                extensions: ['jpg', 'jpeg', 'png', 'gif'],
+                captions: 'pt',
+                editor: {
+                    cropper: {
+                        showGrid: true
+                    },
+                    quality: 90
+                },
+                onRemove: function(item){
+                let _url = `/manageCards/imagesOnclick/delete/${item.name}`;
+                    $.ajax({
+                        url: _url,
+                        type: 'DELETE',
+                        data: {
+                            "file": item.name,
+                            "_token": "{{ csrf_token() }}"
+                        }
+                    })
+                }
+            });
 
 var elem = document.querySelector('.js-switch');
-    var init = new Switchery(elem);
+var init = new Switchery(elem);
 
 });
 
