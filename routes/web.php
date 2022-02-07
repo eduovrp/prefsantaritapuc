@@ -9,6 +9,9 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\FestivityController;
 use App\Http\Controllers\FestivityImagesController;
+use App\Http\Controllers\FileCategoryController;
+use App\Http\Controllers\FileSubCategoryController;
+use App\Models\FileCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +34,7 @@ Route::put('managePosts/{post}',[PostController::class, 'update'])->name('manage
 Route::get('managePosts', [PostController::class, 'list'])->name('managePosts.index');
 Route::get('managePosts/{post}/edit', [PostController::class, 'edit'])->name('managePosts.edit');
 Route::delete('managePosts/delete/{id}',[PostController::class, 'destroy'])->name('managePosts.destroy');
+Route::delete('managePost/images/delete/{file}',[PostController::class, 'deleteImages'])->name('managePosts.deleteImages');
 
 Route::get('manageTags/list/tags', [TagController::class, 'index']);
 Route::delete('manageTags/delete/{tag}/{post}',[TagController::class, 'destroy'])->name('manageTags.destroy');
@@ -41,6 +45,18 @@ Route::post('manageFiles',[FileController::class, 'store'])->name('manageFiles.s
 Route::put('manageFiles/{file}',[FileController::class, 'update'])->name('manageFiles.update');
 Route::get('manageFiles/{file}/edit', [FileController::class, 'edit'])->name('manageFiles.edit');
 Route::delete('manageFiles/delete/{id}',[FileController::class, 'destroy'])->name('manageFiles.destroy');
+
+Route::get('manageFileCategories', [FileCategoryController::class, 'show'])->name('manageFileCategories.index');
+Route::get('manageFileCategories/{fileCategory}/edit', [FileCategoryController::class, 'edit'])->name('manageFileCategories.edit');
+Route::post('manageFileCategories',[FileCategoryController::class, 'store'])->name('manageFileCategories.store');
+Route::delete('manageFileCategories/delete/{id}',[FileCategoryController::class, 'destroy'])->name('manageFileCategories.destroy');
+Route::put('manageFileCategories/{fileCategory}',[FileCategoryController::class, 'update'])->name('manageFileCategories.update');
+
+
+Route::post('manageFileSubCategories',[FileSubCategoryController::class, 'store'])->name('manageFileSubCategories.store');
+Route::put('manageFileSubCategories/{fileSubCategory}',[FileSubCategoryController::class, 'update'])->name('manageFileSubCategories.update');
+Route::delete('manageFileSubCategories/delete/{id}',[FileSubCategoryController::class, 'destroy'])->name('manageFileSubCategories.destroy');
+Route::post('manageFileSubCategories/{fileSubCategory}',[FileSubCategoryController::class, 'remove_accent'])->name('manageFileSubCategories.remove_accent');
 
 Route::get('manageCards', [CardController::class, 'index'])->name('manageCards.index');
 Route::get('manageCards/create', [CardController::class, 'create'])->name('manageCards.create');

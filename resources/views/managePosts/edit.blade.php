@@ -9,7 +9,7 @@
                 <div class="tr-post">
                     <div class="section-title title-before">
                     <span class="right"><a href="{{route('managePosts.index')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
-                        <h1><a>Criar nova notícia</a></h1>
+                        <h1><a>Editar notícia</a></h1>
                     </div>
 
                         @if ($errors->any())
@@ -57,7 +57,7 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <label for="">Imagem Principal *</label>
-                                    <input type="file" name="files2" >
+                                    <input type="file" name="files2" data-fileuploader-files='{{$files}}' >
                                 </div>
                             </div>
                         </div>
@@ -138,28 +138,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
         limit: 1,
         extensions: ['jpg', 'jpeg', 'png', 'gif'],
         captions: 'pt',
-        files:  [{
-            name: '{{$img_name}}', // file name
-            size: 902400, // file size in bytes
-            type: 'image', // file MIME type
-            file: '{{$post->src_img}}', // file path
-            local: '{{$post->src_img}}', // file path in listInput (optional)
-            data: {
-                thumbnail: '{{$post->src_img}}', // item custom thumbnail; if false will disable the thumbnail (optional)
-                readerCrossOrigin: 'anonymous', // fix image cross-origin issue (optional)
-                readerForce: true, // prevent the browser cache of the image (optional)
-                popup: false, // remove the popup for this file (optional)
-            }
-        }],
         editor: {
             cropper: {
-                minWidth: 600,
-                minHeight: 200,
+                minWidth: 800,
+                minHeight: 300,
                 showGrid: true
             },
             quality: 90,
             maxHeight: 400
         },
+        onRemove: function(item){
+            console.log(item)
+                let _url = `/managePost/images/delete/${item.name}`;
+                    $.ajax({
+                        url: _url,
+                        type: 'DELETE',
+                        data: {
+                            "file": item.name,
+                            "_token": "{{ csrf_token() }}"
+                        }
+                    })
+                }
     });
 
     $('#tags').on('itemRemoved', function(event) {

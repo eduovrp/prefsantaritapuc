@@ -24,7 +24,7 @@
                     </div>
                 @endif
                     <a href="{{ route('uploadFiles') }}" class="btn btn-primary">Novo Upload</a>
-                <div class="tr-details">
+                <div class="tr-manage">
                         <table id="dataTable-Files" class="table table-striped table-bordered">
                             <thead>
                                 <tr>

@@ -138,7 +138,7 @@
                                                 <li role="presentation"><a href="#uteis" data-toggle="tab"><i class="fa fa-link"></i> Links Uteis</a></li>
                                             </ul>
                                             <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane active fade in" id="servicos">
+                                                <div role="tabpanel" class="tab-pane fade in active" id="servicos">
                                                     <ul class="authors-post">
                                                     <br>
                                                     <li>

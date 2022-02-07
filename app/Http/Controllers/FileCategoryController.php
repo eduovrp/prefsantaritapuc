@@ -13,7 +13,7 @@ class FileCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
      /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +32,14 @@ class FileCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fileCat = new FileCategory();
+
+        $fileCat->name = trim($request->name);
+        $fileCat->iconMenu = trim($request->iconMenu);
+        $fileCat->href = trim($request->href);
+        $fileCat->save();
+
+        return redirect()->route('manageFileCategories.index')->with('status', 'Categoria criada com sucesso!');
     }
 
     /**
@@ -43,7 +50,8 @@ class FileCategoryController extends Controller
      */
     public function show(FileCategory $FileCategory)
     {
-        //
+        $FileCategories = FileCategory::all();
+        return view('manageFileCategories.index', compact('FileCategories'));
     }
 
     /**
@@ -52,9 +60,11 @@ class FileCategoryController extends Controller
      * @param  \App\Models\FileCategory  $FileCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(FileCategory $FileCategory)
+    public function edit(FileCategory $fileCategory)
     {
-        //
+        $cat = FileCategory::where(['id'=>$fileCategory->id])->first();
+        $subCategorias = FileSubCategory::where(['file_category_id'=>$fileCategory->id])->get();
+        return view('manageFileCategories.edit',compact('cat', 'subCategorias'));
     }
 
     /**
@@ -64,9 +74,16 @@ class FileCategoryController extends Controller
      * @param  \App\Models\FileCategory  $FileCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FileCategory $FileCategory)
+    public function update(Request $request, FileCategory $fileCategory)
     {
-        //
+
+        FileCategory::where(['id'=>$fileCategory->id])->update([
+            'name' => trim($request->name),
+            'href' => trim($request->href),
+            'iconMenu' => trim($request->iconMenu),
+        ]);
+
+        return redirect()->route('manageFileCategories.index')->with('status', 'Categoria alterada com sucesso!');
     }
 
     /**
@@ -75,8 +92,8 @@ class FileCategoryController extends Controller
      * @param  \App\Models\FileCategory  $FileCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FileCategory $FileCategory)
+    public function destroy($id, FileCategory $FileCategory)
     {
-        //
+        $FileCategory->destroy($id);
     }
 }

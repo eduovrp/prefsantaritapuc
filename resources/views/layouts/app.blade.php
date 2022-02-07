@@ -111,7 +111,6 @@
                                                     <ul class="sub-menu">
                                                         @foreach($menu->fileSubCategories as $submenu)
                                                         <li>
-                                                            <!-- <a href="/{{$menu->href .'/'. $submenu->href}}">{{$submenu->name}}</a> -->
                                                             <a href="{{
                                                                 route('years',
                                                                 ['fileCategory' => $menu->href,
@@ -171,6 +170,7 @@
 										<ul class="sub-menu text-left">
 
                                             @if(Auth::user()->nivelAcesso == "Admin")
+                                                <li><a href="{{route('manageFileCategories.index')}}">Gerenciar Categorias de Arquivo</a></li>
                                                 <li><a href="{{route('manageFiles.index')}}">Gerenciar Arquivos</a></li>
                                                 <li><a href="{{route('managePosts.index')}}">Gerenciar Notícias</a></li>
                                                 <li><a href="{{route('manageCards.index')}}">Gerenciar Cartões</a></li>

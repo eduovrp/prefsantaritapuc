@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 captions: 'pt',
                 editor: {
                     cropper: {
-                        minWidth: 1300,
+                        minWidth: 1360,
                         minHeight: 600,
                         showGrid: true
                     },

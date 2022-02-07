@@ -18,7 +18,7 @@ class TagController extends Controller
         $tags = DB::table('tags')
             ->select('name')
             ->get();
-        
+
         foreach($tags as $tag){
             $tagsArr[] = $tag->name;
         }
@@ -92,8 +92,6 @@ class TagController extends Controller
         $tag = Tag::where('name', '=', $tag)
                     ->where('post_id', '=', $post)
                     ->get();
-
-    //    Tag::destroy($tag->id);
 
     Tag::destroy($tag);
        return true;
