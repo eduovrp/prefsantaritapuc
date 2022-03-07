@@ -125,7 +125,7 @@
                                                 </li>
                                             @endforeach
 
-                                    <li><a href="contato"><i class="fa fa-phone" aria-hidden="true"></i>Fale Conosco</a></li>
+                                    <li><a href="contact"><i class="fa fa-phone" aria-hidden="true"></i>Fale Conosco</a></li>
                                     </ul>
 										</ul>
 									</div>

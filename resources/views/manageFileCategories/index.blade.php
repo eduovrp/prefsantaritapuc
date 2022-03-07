@@ -83,12 +83,13 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ route('manageFileCategories.edit', ['fileCategory' => $cat->id]) }}"><i class="fa fa-edit fa-2x"></i> Editar</a></li>
                                             <li>
-                                                @if($cat->fileSubCategories->isNotEmpty())
+                                                @if($cat->fileSubCategories->isNotEmpty() == false)
                                                     <a href="javascript:void(0)" onClick="deleteCat({{ $cat->id }})">
                                                         <i class="fas fa-trash fa-2x"></i> Excluir
+                                                    </a>
                                                 @else
-                                                <i class="fas fa-trash fa-2x" data-toggle="tooltip" data-placement="top" title="Existem sub-menus cadastrados, é preciso remove-los antes"></i> Excluir
-                                                </a>
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Existem sub-menus cadastrados nesta categoria, é preciso remove-los antes de excluir este registro."><i class="gray fas fa-trash fa-2x"></i> Excluir</a>
+                                                @endif
                                             </li>
                                         </ul>
                                     </div>
@@ -109,6 +110,10 @@
 
 @section('script')
     <script>
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
 
         $('#name').on('focusout',function(){
             var text = $('#name').val();

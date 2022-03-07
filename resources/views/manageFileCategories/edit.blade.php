@@ -113,9 +113,13 @@
                                         <ul class="dropdown-menu">
                                             <li><a onclick="editarSubCat('{{$subCat->href}}','{{$subCat->name}}','{{$subCat->single_name}}',{{$subCat->id}})" class="pointer"><i class="fa fa-edit fa-2x"></i> Editar</a></li>
                                             <li>
-                                                <a href="javascript:void(0)" onClick="deleteSubCat({{ $subCat->id }})">
-                                                    <i class="fas fa-trash fa-2x"></i> Excluir
-                                                </a>
+                                                @if($subCat->files->isNotEmpty() == false)
+                                                    <a href="javascript:void(0)" onClick="deleteSubCat({{ $subCat->id }})">
+                                                        <i class="fas fa-trash fa-2x"></i> Excluir
+                                                    </a>
+                                                @else
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Existem arquivos cadastrados nesta sub-categirua, é preciso remove-los antes de excluir este registro."><i class="gray fas fa-trash fa-2x"></i> Excluir</a>
+                                                @endif
                                             </li>
                                         </ul>
                                     </div>
@@ -136,6 +140,10 @@
 
 @section('script')
     <script>
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
 
         $('#name1').on('focusout',function(){
             var text = $('#name1').val();

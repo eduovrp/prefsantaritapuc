@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FestivityController;
 use App\Http\Controllers\FestivityImagesController;
 use App\Http\Controllers\FileCategoryController;
@@ -25,6 +26,7 @@ use App\Models\FileCategory;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('posts', [PostController::class, 'index'])->name('posts');

@@ -105,6 +105,10 @@ p.file_desc{
 	padding-right: 2em
 }
 
+.gray{
+    color: gray;
+}
+
 .eventos .tr-section{
 	background-color: #e8e8e8;
 	border: #dbdbdb 1px solid
