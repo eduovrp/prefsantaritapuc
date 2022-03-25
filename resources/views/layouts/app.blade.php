@@ -125,7 +125,7 @@
                                                 </li>
                                             @endforeach
 
-                                    <li><a href="contact"><i class="fa fa-phone" aria-hidden="true"></i>Fale Conosco</a></li>
+                                    <li><a href="{{route ('contact.index') }}"><i class="fa fa-phone" aria-hidden="true"></i>Fale Conosco</a></li>
                                     </ul>
 										</ul>
 									</div>
@@ -175,6 +175,7 @@
                                                 <li><a href="{{route('managePosts.index')}}">Gerenciar Notícias</a></li>
                                                 <li><a href="{{route('manageCards.index')}}">Gerenciar Cartões</a></li>
                                                 <li><a href="{{route('manageFestivities.index')}}">Gerenciar Festividades</a></li>
+                                                <li><a href="{{route('contact.list')}}">Ouvidoria</a></li>
                                             @endif
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
@@ -224,7 +225,7 @@
                                                 <li><a href="{{url ('/')}}">Inicio</a></li>
                                                 <li><a href="posts">Notícias</a></li>
                                                 <li><a href="cidade#map">Como Chegar</a></li>
-                                                <li><a href="contato">Ouvidoria</a></li>
+                                                <li><a href="{{route ('contact.index') }}">Ouvidoria</a></li>
                                                 <li><a href="registrar">Registre-se</a></li>
                                                 <li><a href="https://portal.office.com/" target="_blank">Webmail</a></li>
                                             </ul>

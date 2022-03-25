@@ -12,6 +12,30 @@
                     </div>
                     <div class="tr-details arqs">
                         <div class="tr-contact-section tr-section">
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        @if (session('status'))
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{ session('status') }}
+                        </div>
+                        @endif
+                        @if (session('warning'))
+                            <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                {{ session('warning') }}
+                            </div>
+                         @endif
+
                             <ul class="contact-content">
                                 <li>
                                     <div class="icon">
@@ -35,7 +59,8 @@
                         </div><!-- /.tr-contact-section -->
                             <hr>
                         <div class="tr-comment-box">
-                            <form class="contact-form" name="contact-form" method="post" action="enviar.php">
+                            <form class="contact-form" name="contact-form" method="post" action="{{route ('contact.store') }}">
+                                @csrf
                                 <div class="section-title">
                                     <h1>Envie-nos uma mensagem</h1>
                                 </div>
@@ -43,7 +68,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="one">Nome *</label>
-                                            <input type="text" class="form-control" name="nome" required="required" id="one">
+                                            <input type="text" class="form-control" name="name" required="required" id="one">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -55,7 +80,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="three">Assunto *</label>
-                                            <input type="text" class="form-control" name="assunto" required="required" id="three">
+                                            <input type="text" class="form-control" name="subject" required="required" id="three">
                                         </div>
                                     </div>
 
