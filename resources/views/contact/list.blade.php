@@ -31,6 +31,7 @@
                                     <th class="print">Nome do Requerente</th>
                                     <th class="print">E-Mail</th>
                                     <th class="print">Assunto</th>
+                                    <th class="print">Data do Envio</th>
                                     <th class="print">Lido</th>
                                     <th>Ações</th>
                                 </tr>
@@ -42,6 +43,7 @@
                                 <td class="print">{{ $contact->name }}</td>
                                 <td class="print">{{ $contact->email }}</td>
                                 <td class="print">{{ $contact->subject }}</td>
+                                <td class="print">{{ date('d/m/Y', strtotime($contact->created_at)); }}</td>
                                 <td class="print">
                                     @if($contact->read == 'yes')
                                         <i class="fa fa-check" style="color:green"></i>
@@ -56,7 +58,7 @@
                                         <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><i class="fas fa-search-plus fa-2x"></i> Visualizar</li>
+                                            <li><a href="{{ route('contact.view', ['contact' => $contact->id]) }}"><i class="fas fa-search-plus fa-2x"></i> Visualizar</a></li>
                                             <li>
                                                 <a href="javascript:void(0)" onClick="deleteMessage({{ $contact->id }})">
                                                     <i class="fas fa-trash fa-2x"></i> Excluir

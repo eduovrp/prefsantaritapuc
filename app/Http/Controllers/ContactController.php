@@ -31,10 +31,21 @@ class ContactController extends Controller
 
     public function list()
     {
-        dd(\App\Models\Contact::all());
         $contacts = Contact::orderBy('id', 'desc')->get();
         return view ('contact.list', compact('contacts'));
     }
+
+    public function view(Contact $contact){
+
+        $data = Contact::where(['id'=>$contact->id])->first();
+
+        Contact::where(['id'=>$data->id])->update([
+            'read' => 'yes'
+        ]);
+
+        return view('contact.view', compact('data'));
+    }
+
 
     public function destroy($id)
     {

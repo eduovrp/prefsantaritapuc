@@ -62,6 +62,32 @@ p.footer{
 
 }
 
+.ouvidoria h2{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 48px;
+    color: #333;
+}
+.ouvidoria h3{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 14px
+}
+.ouvidoria p{
+    margin-top: 20px;
+    color: #131212;
+    font-family: 'Helvetica Neue', sans-serif;
+    line-height: 24px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.ouvidoria span{
+    color: #1c1c1c;
+    font-size: 12px;
+    float: right;
+}
+
 .tr-years{
 	background-color: #fff;
 	padding: 10px;

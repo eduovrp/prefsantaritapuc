@@ -30,6 +30,7 @@ Route::get('contact', [ContactController::class, 'index'])->name('contact.index'
 Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('contact/list', [ContactController::class, 'list'])->name('contact.list');
+Route::get('contact/view/{contact}', [ContactController::class, 'view'])->name('contact.view');
 Route::delete('contact/delete/{id}',[ContactController::class, 'destroy'])->name('contact.destroy');
 
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
