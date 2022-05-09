@@ -32,7 +32,7 @@
                                     <th class="print">E-Mail</th>
                                     <th class="print">Assunto</th>
                                     <th class="print">Data do Envio</th>
-                                    <th class="print">Lido</th>
+                                    <th class="print">Lido?</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
@@ -58,10 +58,10 @@
                                         <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{ route('contact.view', ['contact' => $contact->id]) }}"><i class="fas fa-search-plus fa-2x"></i> Visualizar</a></li>
+                                            <li><a href="{{ route('contact.view', ['contact' => $contact->id]) }}"><i class="fas fa-search-plus"></i> Visualizar</a></li>
                                             <li>
                                                 <a href="javascript:void(0)" onClick="deleteMessage({{ $contact->id }})">
-                                                    <i class="fas fa-trash fa-2x"></i> Excluir
+                                                    <i class="fas fa-trash"></i> Excluir
                                                 </a>
                                             </li>
                                         </ul>
@@ -125,6 +125,7 @@
             }
         })
     }
+
         </script>
 
 @endsection

@@ -2,8 +2,6 @@
 
 @section('content')
 
-<x-jet-validation-errors class="mb-4" />
-
 <div class="row">
 	<div class="col-sm-12 tr-sticky">
 	    <div class="tr-content theiaStickySidebar">

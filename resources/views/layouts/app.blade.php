@@ -176,6 +176,8 @@
                                                 <li><a href="{{route('manageCards.index')}}">Gerenciar Cartões</a></li>
                                                 <li><a href="{{route('manageFestivities.index')}}">Gerenciar Festividades</a></li>
                                                 <li><a href="{{route('contact.list')}}">Ouvidoria</a></li>
+                                            @elseif(Auth::user()->nivelAcesso == "User")
+                                                <li><a href="{{ route('auth.updateAccount', ['id' => Auth::user()->id]) }}">Atualizar Cadastro</a></li>
                                             @endif
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
@@ -183,7 +185,7 @@
                                                 <a href="{{ route('logout') }}"
                                                                     onclick="event.preventDefault();
                                                                                 this.closest('form').submit();">
-                                                    {{ __('Logout') }}
+                                                    {{ __('Sair') }}
                                                 </a>
                                             </li>
                                         </form>

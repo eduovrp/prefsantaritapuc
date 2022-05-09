@@ -12,6 +12,7 @@ use App\Http\Controllers\FestivityController;
 use App\Http\Controllers\FestivityImagesController;
 use App\Http\Controllers\FileCategoryController;
 use App\Http\Controllers\FileSubCategoryController;
+use App\Http\Controllers\RegisterController;
 use App\Models\FileCategory;
 
 /*
@@ -32,6 +33,7 @@ Route::post('contact', [ContactController::class, 'store'])->name('contact.store
 Route::get('contact/list', [ContactController::class, 'list'])->name('contact.list');
 Route::get('contact/view/{contact}', [ContactController::class, 'view'])->name('contact.view');
 Route::delete('contact/delete/{id}',[ContactController::class, 'destroy'])->name('contact.destroy');
+Route::delete('contact/unread/{id}',[ContactController::class, 'unreadMessage'])->name('contact.unreadMessage');
 
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('posts', [PostController::class, 'index'])->name('posts');
@@ -84,6 +86,13 @@ Route::put('manageFestivities/{festivity}',[FestivityController::class, 'update'
 
 Route::delete('manageFestivityImages/delete/{file}',[FestivityImagesController::class, 'destroy'])->name('manageFestivityImages.destroy');
 
+Route::get('auth/{id}/updateAccount/', [RegisterController::class, 'updateAccount'])->name('auth.updateAccount');
+Route::put('auth/{user}/update', [RegisterController::class, 'update'])->name('auth.update');
+
+
+Route::get('login/{provider}', [LoginController::class, 'redirectToProvider'])->name('social.login');
+Route::get('login/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('social.callback');
+
 Route::get('{fileCategory}/{fileSubCategory}', [FileController::class, 'files'])->name('years');
 Route::get('{fileCategory}/{fileSubCategory}/{year?}', [FileController::class, 'files'])->name('files');
 
@@ -95,5 +104,4 @@ Route::post('ajaxRequest', [FileController::class, 'ajaxRequest'])->name('ajaxRe
 //     return view('dashboard');
 // })->name('dashboard');
 
-Route::get('login/{provider}', [LoginController::class, 'redirectToProvider'])->name('social.login');
-Route::get('login/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('social.callback');
+
