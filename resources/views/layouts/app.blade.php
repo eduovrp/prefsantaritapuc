@@ -175,6 +175,7 @@
                                                 <li><a href="{{route('managePosts.index')}}">Gerenciar Notícias</a></li>
                                                 <li><a href="{{route('manageCards.index')}}">Gerenciar Cartões</a></li>
                                                 <li><a href="{{route('manageFestivities.index')}}">Gerenciar Festividades</a></li>
+                                                <li><a href="{{route('manageUsers.list')}}">Gerenciar Usuários</a></li>
                                                 <li><a href="{{route('contact.list')}}">Ouvidoria</a></li>
                                             @elseif(Auth::user()->nivelAcesso == "User")
                                                 <li><a href="{{ route('auth.updateAccount', ['id' => Auth::user()->id]) }}">Atualizar Cadastro</a></li>

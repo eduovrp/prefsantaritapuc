@@ -14,4 +14,15 @@ class UserController extends Controller
         return view('manageUsers.list', compact('users'));
     }
 
+    public function edit(User $User)
+    {
+        $user = User::where(['id'=>$User->id])->first();
+        return view('manageUsers.edit', compact('user'));
+    }
+
+    public function destroy(User $User, $id)
+    {
+        $User->destroy($id);
+    }
+
 }

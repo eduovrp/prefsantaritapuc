@@ -95,7 +95,9 @@ Route::middleware('auth')->group(function () {
         Route::delete('manageFestivityImages/delete/{file}',[FestivityImagesController::class, 'destroy'])->name('manageFestivityImages.destroy');
 
     //SubCategories
-        Route::post('manageUsers',[UserController::class, 'list'])->name('manageUsers.list');
+        Route::get('manageUsers',[UserController::class, 'list'])->name('manageUsers.list');
+        Route::get('manageUsers/{user}/edit',[UserController::class, 'edit'])->name('manageUsers.edit');
+        Route::delete('manageUsers/delete/{id}',[UserController::class, 'destroy'])->name('manageUsers.destroy');
 
 
     //Ajax request on file system, require admin auth

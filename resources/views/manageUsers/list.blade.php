@@ -52,7 +52,7 @@
                                         <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{ route('user.edit', ['contact' => $user->id]) }}"><i class="fas fa-search-plus"></i> Visualizar</a></li>
+                                            <li><a href="{{ route('manageUsers.edit', ['user' => $user->id]) }}"><i class="fas fa-edit"></i> Editar</a></li>
                                             <li>
                                                 <a href="javascript:void(0)" onClick="deleteUser({{ $user->id }})">
                                                     <i class="fas fa-trash"></i> Excluir
@@ -80,7 +80,7 @@
 
         function deleteUser(id) {
                 var id  = id;
-                let _url = `/user/delete/${id}`;
+                let _url = `/manageUsers/delete/${id}`;
 
                 Swal.fire({
                 title: 'Deseja realmente excluir este Usuário?',
