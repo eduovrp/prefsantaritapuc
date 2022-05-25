@@ -97,6 +97,9 @@ Route::middleware('auth')->group(function () {
     //SubCategories
         Route::get('manageUsers',[UserController::class, 'list'])->name('manageUsers.list');
         Route::get('manageUsers/{user}/edit',[UserController::class, 'edit'])->name('manageUsers.edit');
+        Route::put('manageUsers/promote/{id}',[UserController::class, 'promote'])->name('manageUsers.promote');
+        Route::put('manageUsers/{user}',[UserController::class, 'update'])->name('manageUsers.update');
+        Route::put('manageUsers/removePrivileges/{id}',[UserController::class, 'removePrivileges'])->name('manageUsers.removePrivileges');
         Route::delete('manageUsers/delete/{id}',[UserController::class, 'destroy'])->name('manageUsers.destroy');
 
 
