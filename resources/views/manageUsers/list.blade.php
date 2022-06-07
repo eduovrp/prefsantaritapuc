@@ -43,7 +43,7 @@
                                 <td class="print">{{ $user->name }}</td>
                                 <td class="print">{{ $user->email }}</td>
                                 <td class="print">{{ $user->provider }}</td>
-                                <td class="print">{{ $user->nivelAcesso }}</td>
+                                <td class="print">{{ $user->nivelAcesso->name }}</td>
                                 <td class="print">{{ date('d/m/Y', strtotime($user->created_at)); }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
@@ -52,11 +52,19 @@
                                         <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{ route('manageUsers.edit', ['user' => $user->id]) }}"><i class="fas fa-edit"></i> Editar</a></li>
+                                            @if(Auth::user()->nivel_acesso_id != 1 && $user->id != 6 || Auth::user()->nivel_acesso_id == 1)
+                                                <li><a href="{{ route('manageUsers.edit', ['user' => $user->id]) }}"><i class="fas fa-edit"></i> Editar</a></li>
+                                            @endif
                                             <li>
+                                               @if(Auth::user()->nivel_acesso_id > 1 && $user->nivel_acesso_id == 1 || Auth::user()->nivel_acesso_id == $user->nivel_acesso_id)
+                                                <a href="javascript:void(0)" onClick="warningMessage()">
+                                                    <i class="fas fa-trash"></i> Excluir
+                                                </a>
+                                               @else
                                                 <a href="javascript:void(0)" onClick="deleteUser({{ $user->id }})">
                                                     <i class="fas fa-trash"></i> Excluir
                                                 </a>
+                                                @endif
                                             </li>
                                         </ul>
                                     </div>
@@ -77,6 +85,19 @@
 
 @section('script')
     <script>
+
+function warningMessage() {
+
+                Swal.fire({
+                title: 'Erro!',
+                text: "Você não tem permissão excluir este usuário.",
+                icon: 'warning',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Fechar',
+                width: '450px'
+                });
+            }
 
         function deleteUser(id) {
                 var id  = id;

@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FestivityController;
 use App\Http\Controllers\FestivityImagesController;
 use App\Http\Controllers\FileCategoryController;
@@ -30,7 +31,7 @@ use App\Models\FileCategory;
 
 Route::middleware('auth')->group(function () {
 
-    Route::middleware('Check')->group(function () {
+    Route::middleware('CheckAdmin')->group(function () {
 
     //Manage Cards admin system
         Route::get('manageCards', [CardController::class, 'index'])->name('manageCards.index');
@@ -94,18 +95,17 @@ Route::middleware('auth')->group(function () {
     //Manage Festivities images
         Route::delete('manageFestivityImages/delete/{file}',[FestivityImagesController::class, 'destroy'])->name('manageFestivityImages.destroy');
 
-    //SubCategories
+    //ManageUsers
         Route::get('manageUsers',[UserController::class, 'list'])->name('manageUsers.list');
         Route::get('manageUsers/{user}/edit',[UserController::class, 'edit'])->name('manageUsers.edit');
-        Route::put('manageUsers/promote/{id}',[UserController::class, 'promote'])->name('manageUsers.promote');
         Route::put('manageUsers/{user}',[UserController::class, 'update'])->name('manageUsers.update');
-        Route::put('manageUsers/removePrivileges/{id}',[UserController::class, 'removePrivileges'])->name('manageUsers.removePrivileges');
         Route::delete('manageUsers/delete/{id}',[UserController::class, 'destroy'])->name('manageUsers.destroy');
-
 
     //Ajax request on file system, require admin auth
         Route::post('ajaxRequest', [FileController::class, 'ajaxRequest'])->name('ajaxRequest');
 
+    //Dashboard
+        Route::get('dashboard',[DashboardController::class, 'index'])->name('dashboard.index');
     });
 
     //Update account information, require authenticate

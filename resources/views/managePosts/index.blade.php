@@ -9,7 +9,7 @@
             <div class="tr-section">
                 <div class="tr-post">
                     <div class="section-title title-before">
-                        <h1><a>Arquivos</a></h1>
+                        <h1><a>Notícias</a></h1>
                     </div>
                     @if (session('status'))
                         <div class="alert alert-success alert-dismissible" role="alert">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FileSubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FileSubCategoryController extends Controller
 {
@@ -48,16 +49,19 @@ class FileSubCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        if(Auth::user()->nivel_acesso_id == "1"){
+            $fileCat = new FileSubCategory();
 
-        $fileCat = new FileSubCategory();
+            $fileCat->name = trim($request->name);
+            $fileCat->single_name = trim($request->single_name);
+            $fileCat->href = trim($request->href);
+            $fileCat->file_category_id = $request->fileCategory;
+            $fileCat->save();
 
-        $fileCat->name = trim($request->name);
-        $fileCat->single_name = trim($request->single_name);
-        $fileCat->href = trim($request->href);
-        $fileCat->file_category_id = $request->fileCategory;
-        $fileCat->save();
-
-        return redirect()->route('manageFileCategories.edit', ['fileCategory' => $request->fileCategory])->with('status', 'SubCategoria criada com sucesso!');
+            return redirect()->route('manageFileCategories.edit', ['fileCategory' => $request->fileCategory])->with('status', 'SubCategoria criada com sucesso!');
+        } else{
+            return redirect()->route('home')->with('warning', 'Você não possui permissão para acessar esta página');
+        }
 
     }
 
@@ -93,13 +97,18 @@ class FileSubCategoryController extends Controller
     public function update(Request $request, FileSubCategory $fileSubCategory)
     {
 
-        FileSubCategory::where(['id'=>$fileSubCategory->id])->update([
-            'name' => trim($request->name),
-            'href' => trim($request->href),
-            'single_name' => trim($request->single_name),
-        ]);
+        if(Auth::user()->nivel_acesso_id == "1"){
+            FileSubCategory::where(['id'=>$fileSubCategory->id])->update([
+                'name' => trim($request->name),
+                'href' => trim($request->href),
+                'single_name' => trim($request->single_name),
+            ]);
 
-        return redirect()->route('manageFileCategories.edit', ['fileCategory' => $request->fileCategory])->with('status', 'SubCategoria alterada com sucesso!');
+            return redirect()->route('manageFileCategories.edit', ['fileCategory' => $request->fileCategory])->with('status', 'SubCategoria alterada com sucesso!');
+        } else{
+            return redirect()->route('home')->with('warning', 'Você não possui permissão para acessar esta página');
+        }
+
 
     }
 
@@ -111,6 +120,11 @@ class FileSubCategoryController extends Controller
      */
     public function destroy(FileSubCategory $FileSubCategory, $id)
     {
-        $FileSubCategory->destroy($id);
+        if(Auth::user()->nivel_acesso_id == "1"){
+            $FileSubCategory->destroy($id);
+        } else{
+            return redirect()->route('home')->with('warning', 'Você não possui permissão para acessar esta página');
+        }
+
     }
 }

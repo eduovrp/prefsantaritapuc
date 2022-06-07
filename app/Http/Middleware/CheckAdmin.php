@@ -19,7 +19,7 @@ class CheckAdmin extends Middleware
     public function handle($request, Closure $next, ...$auth)
     {
 
-        if (Auth::user()->nivelAcesso == 'Admin') {
+        if (Auth::user()->nivel_acesso_id < '3') {
 
             return $next($request);
         }

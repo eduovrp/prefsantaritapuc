@@ -27,12 +27,11 @@ class CreateUsersTable extends Migration
             $table->string('provider_id')->nullable();
             $table->string('avatar_url')->default('images/others/ninja.png');
             $table->string('email')->unique();
-            $table->string('nivelAcesso')->default('User');
-            $table->timestamp('email_verified_at')->nullable();
+            $table->unsignedInteger('nivel_acesso_id')->default('3');
+            $table->foreign('nivel_acesso_id')->references('id')->on('nivel_acessos');
+           // $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->text('profile_photo_path')->nullable();
             $table->timestamps();
         });
     }

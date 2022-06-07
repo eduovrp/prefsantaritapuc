@@ -147,6 +147,73 @@ p.file_desc{
 .right{
     float: right;
 }
+
+/* IBOX  */
+.ibox {
+    clear: both;
+    margin-bottom: 25px;
+    margin-top: 0;
+    padding: 0;
+  }
+.ibox-title {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #ffffff;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 2px 0 0;
+    color: inherit;
+    margin-bottom: 0;
+    padding: 15px 15px 7px;
+    min-height: 48px;
+  }
+  .ibox-content {
+    background-color: #ffffff;
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+  }
+.float-e-margins .btn {
+    margin-bottom: 5px;
+}
+.ibox-content h1,
+.ibox-title h5 {
+  margin-top: 5px;
+}
+.no-margins {
+    margin: 0 !important;
+}
+.stat-percent {
+    float: right;
+}
+.font-bold {
+    font-weight: 600;
+}
+.text-navy {
+    color: #1ab394;
+}
+.text-s {
+    color: #1c84c6;
+}
+.text-info {
+    color: #23c6c8;
+}
+.text-y {
+    color: #f8ac59;
+}
+.text-r {
+    color: #ed5565;
+}
+
+
+
+
 .m-t-50{
 	margin-top: 50px;
 }

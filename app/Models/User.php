@@ -29,7 +29,7 @@ class User extends Authenticatable
         'password',
         'provider',
         'provider_id',
-        'user',
+        'nivel_acesso_id',
         'avatar_url'
     ];
 
@@ -41,25 +41,29 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
+        // 'two_factor_recovery_codes',
+        // 'two_factor_secret',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // /**
+    //  * The attributes that should be cast to native types.
+    //  *
+    //  * @var array
+    //  */
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    // ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+    // /**
+    //  * The accessors to append to the model's array form.
+    //  *
+    //  * @var array
+    //  */
+    // protected $appends = [
+    //     'profile_photo_url',
+    // ];
+
+    public function nivelAcesso(){
+        return $this->belongsTo(NivelAcesso::class);
+    }
 }

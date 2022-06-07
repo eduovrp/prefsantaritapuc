@@ -2,13 +2,18 @@
 
 @section('content')
 
+ @php
+ if(Auth::user()->nivel_acesso_id > 1)
+    $nivelAcessos->shift()
+ @endphp
+
 <div class="row">
     <div class="col-sm-12 tr-sticky">
         <div class="tr-content theiaStickySidebar">
             <div class="tr-section">
                 <div class="tr-post">
                     <div class="section-title title-before">
-                    <span class="right"><a href="{{route('home')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
+                    <span class="right"><a href="{{route('manageUsers.list')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a></span>
                         <h1><a>Gerenciar Usuário</a></h1>
                     </div>
 
@@ -23,7 +28,7 @@
                         @endif
 
                 <div class="tr-details">
-                    <form action="{{ route( 'manageUsers.update', ['user' => $user->id] ) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route( 'manageUsers.update', ['user' => $user->id] ) }}" method="post" id="target" enctype="multipart/form-data">
                         @csrf
                         @method("PUT")
                         <div class="form-group">
@@ -37,7 +42,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="tag">CPF</label>
-                                        <input type="number" class="form-control" id="cpf" name="cpf" value="{{ $user->cpf }}">
+                                        <input type="text" class="form-control" id="cpf" name="cpf" value="{{ $user->cpf }}">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="local">RG </label>
@@ -49,17 +54,17 @@
                                        <label for="email">e-mail</label>
                                        <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}">
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="nivel">Nivel Acesso</label>
-                                        <input type="text" class="form-control" id="nivelAcesso" name="nivelAcesso" value="{{ $user->nivelAcesso }}" disabled="disabled" >
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="promover">&nbsp;</label>
-                                        <input type="button" class="form-control btn btn-info" id="promote" @if($user->nivelAcesso == 'Admin') onClick="removePrivileges({{ $user->id }}) @else onClick="promoteUser({{ $user->id }}) @endif"
-                                        value="
-                                        @if($user->nivelAcesso == 'Admin') Remover privilégios de Admin
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label for="nivelAcesso"></label>
 
-                                            @elseif($user->nivelAcesso == 'User') Promover usuário a Gerente @else Promover usuário a Admin @endif">
+                                          <select class="form-control" name="nivel_acesso_id" id="nivel_acesso_id"
+                                                @if(Auth::user()->nivel_acesso_id >= 2 && $user->nivel_acesso_id <= 2) disabled="disabled" @endif>
+                                            @foreach($nivelAcessos as $nivel)
+                                                <option value="{{$nivel->id}}"  @if($nivel->id === $user->nivel_acesso_id) selected='selected' @endif>{{$nivel->name}}</option>
+                                            @endforeach
+                                          </select>
+                                        </div>
                                     </div>
                                </div>
                                <div class="row">
@@ -103,100 +108,14 @@
       </div><!-- /.row -->
 @endsection
 
-@section('script')
-<script>
-function removePrivileges(id) {
-            var id  = id;
-            let _url = `/manageUsers/removePrivileges/${id}`;
+@if(Auth::user()->nivel_acesso_id != 1 && $user->id == 6 || Auth::user()->nivel_acesso_id >= 1 && $user->id == 6 && Auth::user()->id != 6)
 
-            Swal.fire({
-            title: 'Deseja realmente remover os privilégios deste usuário?',
-            text: "O usuário selecionado não terá mais privilégios e não poderá inserir, alterar e apagar informações do sistema, confirmar?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim, Confirmar!',
-            cancelButtonText: 'Cancelar',
-            width: '450px'
+    @section('script')
+        <script>
 
-        }).then((result) => {
+            $("#target :input").prop("disabled", true);
 
-        if (result.isConfirmed) {
+        </script>
 
-            $.ajax({
-                url: _url,
-                type: 'PUT',
-                data: {
-                    "id": id,
-                    "_token": "{{ csrf_token() }}"
-                },
-                success: function(response) {
-
-                        $('#nivelAcesso').val('User');
-                        $('#promote').val('Promover Usuário a Gerente');
-                        $("#promote").attr("onClick",`promoteUser(${id})`);
-
-                    Swal.fire(
-                        'Privilégios de administrador removidos.!',
-                        'Tudo certo, as alterações foram realizadas com sucesso.',
-                        'success'
-                    )
-                }
-            });
-        }
-    })
-}
-
-    function promoteUser(id) {
-            var id  = id;
-            let _url = `/manageUsers/promote/${id}`;
-
-            Swal.fire({
-            title: 'Deseja realmente promover este usuário?',
-            text: "O usuário selecionado terá privilégios acima do atual, podendo inserir, alterar e apagar informações sensíveis do sistema, confirmar?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim, Confirmar!',
-            cancelButtonText: 'Cancelar',
-            width: '450px'
-
-        }).then((result) => {
-
-        if (result.isConfirmed) {
-
-            $.ajax({
-                url: _url,
-                type: 'PUT',
-                data: {
-                    "id": id,
-                    "_token": "{{ csrf_token() }}"
-                },
-                success: function(response) {
-
-                    if($('#nivelAcesso').val() == 'User') {
-                        $('#nivelAcesso').val('Gerente');
-                        $('#promote').val('Promover Usuário a Administrador');
-                    } else if($('#nivelAcesso').val() == 'Gerente') {
-                        $('#nivelAcesso').val('Administrador');
-                        $('#promote').val('Revogar Acesso de Administrador');
-                        $("#promote").attr("onClick",`removePrivileges(${id})`);
-                    }
-                    Swal.fire(
-                        'Usuário promovido!',
-                        'Tudo certo, o usuário foi promovido!',
-                        'success'
-                    )
-                }
-            });
-        }
-    })
-}
-
-
-
-    </script>
-
-@endsection
+    @endsection
+@endif

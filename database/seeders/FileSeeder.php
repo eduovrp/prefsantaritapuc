@@ -44,7 +44,7 @@ class FileSeeder extends Seeder
         DB::table('files')->insert([
             'name' => 'arquivo 3',
             'path' => 'null',
-            'year' => 2021,
+            'year' => 2022,
             'ext' => 'pdf',
             'number' => '0003',
             'desc' => 'Descrição do arquivo 3',

@@ -165,19 +165,23 @@
 									</div>
 									<div class="dropdown user-dropdown">
                                         Olá,
+
                                         @if(Auth::check())
 										<a href="#" aria-expanded="true">{{ Auth::user()->name }}<i class="fa fa-caret-down" aria-hidden="true"></i></a>
 										<ul class="sub-menu text-left">
 
-                                            @if(Auth::user()->nivelAcesso == "Admin")
+                                        @if(Auth::user()->nivel_acesso_id < "3")
+                                        <li><a href="{{route('dashboard.index')}}">Dashboard</a></li>
+                                            @if(Auth::user()->nivel_acesso_id == "1")
                                                 <li><a href="{{route('manageFileCategories.index')}}">Gerenciar Categorias de Arquivo</a></li>
+                                            @endif
                                                 <li><a href="{{route('manageFiles.index')}}">Gerenciar Arquivos</a></li>
                                                 <li><a href="{{route('managePosts.index')}}">Gerenciar Notícias</a></li>
                                                 <li><a href="{{route('manageCards.index')}}">Gerenciar Cartões</a></li>
                                                 <li><a href="{{route('manageFestivities.index')}}">Gerenciar Festividades</a></li>
                                                 <li><a href="{{route('manageUsers.list')}}">Gerenciar Usuários</a></li>
                                                 <li><a href="{{route('contact.list')}}">Ouvidoria</a></li>
-                                            @elseif(Auth::user()->nivelAcesso == "User")
+                                            @elseif(Auth::user()->nivel_acesso_id == "3")
                                                 <li><a href="{{ route('auth.updateAccount', ['id' => Auth::user()->id]) }}">Atualizar Cadastro</a></li>
                                             @endif
                                         <form method="POST" action="{{ route('logout') }}">
@@ -276,7 +280,7 @@
                                 <script type="text/javascript" src="{{asset('js/bootstrap-tagsinput.min.js')}}"></script>
                                 <script type="text/javascript" src="{{asset('js/sweetalert2.all.min.js')}}"></script>
                                 <script type="text/javascript" src="{{asset('js/switchery.min.js')}}"></script>
-
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                                 @yield('script')
 
                             </body>

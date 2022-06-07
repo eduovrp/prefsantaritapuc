@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NivelAcesso;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,49 +19,37 @@ class UserController extends Controller
     public function edit(User $User)
     {
         $user = User::where(['id'=>$User->id])->first();
-        return view('manageUsers.edit', compact('user'));
-    }
-
-    public function promote($id)
-    {
-
-        $user = User::where(['id'=>$id])->first();
-
-        if($user->nivelAcesso == "User"){
-            $novoNivel = "Gerente";
-        } elseif($user->nivelAcesso == "Gerente") {
-            $novoNivel = "Admin";
-        } else {
-            return false;
-        }
-
-        User::where(['id'=>$id])->update([
-            'nivelAcesso' => $novoNivel
-        ]);
+        $nivelAcessos = NivelAcesso::get();
+        return view('manageUsers.edit', compact('user', 'nivelAcessos'));
     }
 
     public function update(Request $request, $id)
     {
-        User::where(['id'=>$id])->update([
-            'name' => trim($request->name),
-            'cpf' => str_replace(array(".", ",", "-", "/"), "", trim($request->cpf)),
-            'rg' => trim($request->rg),
-            'email' => trim($request->email),
-            'address' => trim($request->address),
-            'number' => trim($request->number),
-            'district' => trim($request->district),
-            'city' => trim($request->city),
-            'state' => trim($request->state)
-        ]);
 
-        return redirect()->route('manageUsers.list')->with('status', 'Dados atualizados com sucesso!');
-    }
+        if(Auth::user()->nivel_acesso_id < 3){
 
-    public function removePrivileges($id)
-    {
-        User::where(['id'=>$id])->update([
-            'nivelAcesso' => "User",
-        ]);
+            if(Auth::user()->nivel_acesso_id != 1 && Auth::user()->id != 6 && $id == 6 ){
+                return redirect()->route('manageUsers.list')->with('warning', 'Ocorreu um erro com suas permissões, verifique ou tente novamente.');
+
+            } else {
+
+                User::where(['id'=>$id])->update([
+                    'name' => trim($request->name),
+                    'cpf' => str_replace(array(".", ",", "-", "/"), "", trim($request->cpf)),
+                    'rg' => trim($request->rg),
+                    'email' => trim($request->email),
+                    'address' => trim($request->address),
+                    'number' => trim($request->number),
+                    'district' => trim($request->district),
+                    'city' => trim($request->city),
+                    'state' => trim($request->state),
+                    'nivel_acesso_id' => $request->nivel_acesso_id
+                ]);
+                return redirect()->route('manageUsers.list')->with('status', 'Dados atualizados com sucesso!');
+            }
+        }else {
+            return redirect()->route('manageUsers.home')->with('warning', 'Ocorreu um erro com suas permissões, verifique ou tente novamente.');
+        }
     }
 
     public function destroy(User $User, $id)
