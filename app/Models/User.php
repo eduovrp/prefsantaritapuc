@@ -17,6 +17,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +31,8 @@ class User extends Authenticatable
         'provider',
         'provider_id',
         'nivel_acesso_id',
-        'avatar_url'
+        'avatar_url',
+        'remember_token'
     ];
 
     /**

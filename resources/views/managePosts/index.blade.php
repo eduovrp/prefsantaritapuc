@@ -18,11 +18,11 @@
                         </div>
                     @endif
                     @if (session('warning'))
-                    <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        {{ session('warning') }}
-                    </div>
-                @endif
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{ session('warning') }}
+                        </div>
+                    @endif
                     <a href="{{ route('managePosts.create') }}" class="btn btn-primary">Nova Notícia</a>
                 <div class="tr-manage">
                         <table id="dataTable-Files" class="table table-striped table-bordered">

@@ -8,11 +8,23 @@
                         <div class="tr-section">
                             <div class="tr-post">
                             <div class="tr-details arqs">
+                                @if (session('status'))
+                                    <div class="alert alert-success alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+                                @if (session('warning'))
+                                    <div class="alert alert-warning alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        {{ session('warning') }}
+                                    </div>
+                                @endif
                                 <x-jet-validation-errors class="alert alert-warning" role="alert" />
                             <div class="ragister-account text-center tr-section">
             <div class="account-content">
             <div class="logo text-center">
-                <a class="navbar-brand" href="#"><img class="img-responsive" src="images/logosr.png" width="40%" style="left: 0" alt="Logo"></a>
+                <a class="navbar-brand" href="#"><img class="img-responsive" src="{{ asset('images/logosr.png') }}" width="40%" style="left: 0" alt="Logo"></a>
             </div>
             <div class="section-title">
                 <h1>Seja Bem-vindo</h1>
@@ -22,11 +34,9 @@
                 <div class="form-group">
                     <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus placeholder="e-mail" />
                     <x-jet-input id="password" class="form-control" type="password" name="password" required autocomplete="current-password"  placeholder="Senha" />
-                    <label for="news">
-                        <x-jet-input id="news" type="checkbox" checked name="remember"/>
-                        Mantenha-me Logado
-                    </label>
+
                     <button type="submit" class="btn btn-primary">Entrar</button>
+                    <span><a href="{{route('auth.forgot-password')}}">Esqueci minha senha</a></span>
                 </div>
                 <span>Ou</span>
                 <div class="buttons">

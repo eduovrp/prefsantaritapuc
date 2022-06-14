@@ -10,17 +10,17 @@
                     <div class="section-title title-before">
                         <h1><a>{{implode(' / ',explode('/',$uri))}}</a></h1>
                     </div>
-                  
-            </div><!-- /.tr-section -->
 
-            
-            
+            </div><!-- /.tr-section -->
+{{ asset('storage/uploads/2022/VhWu3H30Emox2LVbXuQLyOXXwuy94Ii99RiXghW0.pdf');}}
+
+
         </div><!-- row -->
         @if($checkUri==false)
-    
+
             @foreach($years as $year)
             <a href='{{url("$uri/$year->year")}}'>
-                <div class="col-md-3">              
+                <div class="col-md-3">
                     <div class="tr-years">
                             {{$year->year}}
                         </div>
@@ -30,7 +30,7 @@
         @else
             @foreach($files as $file)
             <a href="{{ asset($file->path) }}" target="_blank">
-            <div class="col-md-4">      
+            <div class="col-md-4">
                 <div class="tr-arqs">
                     <div class="row">
                             <div class="col-md-3">
@@ -49,11 +49,11 @@
                                 <p class="file_name">{{$file->single_name.' n°. '.$file->number.' / '.$file->year}}</p>
                                 <p class="file_desc">{{$file->desc}}</p>
                             </div>
-                            @else 
+                            @else
                                 <div class="col-md-9">
-                                    
+
                                     <p class="file_desc">{{$file->fileName}}</p>
-                                </div> 
+                                </div>
                             @endif
                         </div>
                     </div><!-- /.tr-details -->
@@ -62,7 +62,7 @@
             @endforeach
         @endif
     </div>
-    
+
       </div><!-- /.row -->
 
 @endsection

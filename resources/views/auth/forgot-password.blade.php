@@ -1,34 +1,56 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.app')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+@section('content')
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+            <div class="row">
+                <div class="col-sm-12 tr-sticky">
+                    <div class="tr-content theiaStickySidebar">
+                        <div class="tr-section">
+                            <div class="tr-post">
+                            <div class="tr-details arqs">
+                                @if (session('status'))
+                                    <div class="alert alert-success alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+                                @if (session('warning'))
+                                    <div class="alert alert-warning alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        {{ session('warning') }}
+                                    </div>
+                                @endif
+                                <x-jet-validation-errors class="alert alert-warning" role="alert" />
+                            <div class="ragister-account text-center tr-section">
+            <div class="account-content">
+            <div class="logo text-center">
+                <a class="navbar-brand" href="#"><img class="img-responsive" src="{{ asset('images/logosr.png') }}" width="40%" style="left: 0" alt="Logo"></a>
             </div>
-        @endif
-
-        <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
-
-            <div class="block">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <div class="section-title">
+                <h1>Esqueci minha senha</h1>
             </div>
+            <form method="POST" class="contact-form contact-form-two" action="{{ route('auth.send-token') }}">
+                @csrf
+                <div class="form-group">
+                    <p>Caso tenha esquecido sua senha, digite o e-mail cadastrado para que possamos recupera-la.</p>
+                    <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus placeholder="e-mail" />
+                    <button type="submit" class="btn btn-primary">Enviar e-mail de recuperação</button>
+                </div>
+                </div>
+               </form><!-- /.contact-form -->
 
-            <div class="flex items-center justify-end mt-4">
-                <x-jet-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-jet-button>
+            </div><!-- /.account-content -->
+            </div><!-- /.tr-page-content -->
+
+                            </div><!-- /.tr-details -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            </div>
+            </div><!-- /.container-fulid -->
+            </div><!-- /.main-wrapper -->
+
+@endsection

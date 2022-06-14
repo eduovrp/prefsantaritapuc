@@ -44,7 +44,6 @@ Route::middleware('auth')->group(function () {
         Route::put('manageCards/{id}',[CardController::class, 'update'])->name('manageCards.update');
 
     //Contact admin pages
-        Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
         Route::get('contact/list', [ContactController::class, 'list'])->name('contact.list');
         Route::get('contact/view/{contact}', [ContactController::class, 'view'])->name('contact.view');
         Route::delete('contact/delete/{id}',[ContactController::class, 'destroy'])->name('contact.destroy');
@@ -116,11 +115,17 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('posts', [PostController::class, 'index'])->name('posts');
 
 Route::get('festivities', [FestivityController::class, 'index'])->name('festivities');
+
+Route::get('login/forgot-password', [LoginController::class, 'forgotPassword'])->name('auth.forgot-password');
+Route::get('login/reset-password/{token}', [LoginController::class, 'resetPassword'])->name('auth.reset-password');
+Route::PUT('login/reset-password/{user}', [LoginController::class, 'updatePassword'])->name('auth.update-password');
+Route::post('login/send-token', [LoginController::class, 'sendToken'])->name('auth.send-token');
 
 Route::get('login/{provider}', [LoginController::class, 'redirectToProvider'])->name('social.login');
 Route::get('login/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('social.callback');
