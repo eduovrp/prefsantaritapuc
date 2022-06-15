@@ -134,94 +134,18 @@
 
                                         <div class="tr-section tr-widget">
                                             <ul class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" class="active"><a href="#servicos" data-toggle="tab"><i class="fa fa-star"></i> Serviços</a></li>
-                                                <li role="presentation"><a href="#uteis" data-toggle="tab"><i class="fa fa-link"></i> Links Uteis</a></li>
+                                                <li role="presentation" class="active"><a href="#links" data-toggle="tab"><i class="fa fa-star"></i> Links Úteis</a></li>
                                             </ul>
-                                            <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane fade in active" id="servicos">
-                                                    <ul class="authors-post">
-                                                    <br>
-                                                    <li>
-                                                            <div class="entry-meta">
-                                                                <div class="author-image">
-                                                                    <a href="covid19"><img class="img-responsive" src="images/services/covid.png" alt="Image"></a>
-                                                                </div>
-
-
-                                                                <div class="author-info">
-                                                                    <h2><a href="covid19">Covid-19 (Transparência)</a></h2>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <hr>
-                                                        <li>
-                                                            <div class="entry-meta">
-                                                                <div class="author-image">
-                                                                    <a href="transparencia"><img class="img-responsive" src="images/services/transparencia.png" alt="Image"></a>
-                                                                </div>
-
-
-                                                                <div class="author-info">
-                                                                    <h2><a href="transparencia">Portal Transparência</a></h2>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <hr>
-                                                        <li>
-                                                            <div class="entry-meta">
-                                                                <div class="author-image">
-                                                                    <a href="transparencia"><img class="img-responsive" src="images/services/esic.png" alt="Image"></a>
-                                                                </div>
-                                                                <div class="author-info">
-                                                                    <h2><a href="transparencia">e-SIC</a></h2>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <hr>
-                                                        <li>
-                                                            <div class="entry-meta">
-                                                                <div class="author-image">
-                                                                    <a href="http://www.bwinformatica.com/nota/santarita/"><img class="img-responsive" src="images/services/nfe.png" alt="Image"></a>
-                                                                </div>
-                                                                <div class="author-info">
-                                                                    <h2><a href="http://www.bwinformatica.com/nota/santarita/">Nota Fiscal Eletrônica</a></h2>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <hr>
-                                                        <li>
-                                                            <div class="entry-meta">
-                                                                <div class="author-image">
-                                                                    <a href="servicosweb"><img class="img-responsive" src="images/services/servicosweb.png" alt="Image"></a>
-                                                                </div>
-                                                                <div class="author-info">
-                                                                    <h2><a href="servicosweb">Serviços Online</a></h2>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <hr>
-                                                        <li>
-                                                            <div class="entry-meta">
-                                                                <div class="author-image">
-                                                                    <a href="contato?ouvidoria"><img class="img-responsive" src="images/services/ouvidoria.png" alt="Image"></a>
-                                                                </div>
-                                                                <div class="author-info">
-                                                                    <h2><a href="contato?ouvidoria">Ouvidoria</a></h2>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane fade in" id="uteis">
+                                                <div role="tabpanel" class="tab-pane fade in" id="links">
                                                     <ul class="authors-post">
                                                     <br>
                                                         <li>
                                                             <div class="entry-meta">
                                                                 <div class="author-image">
-                                                                    <a href="search?pesquisa=concursos"><img class="img-responsive" src="images/services/concursos.png" alt="Image"></a>
+                                                                    <a href="{{url('concursos/editais')}}"><img class="img-responsive" src="images/services/concursos.png" alt="Concursos e Seletivos"></a>
                                                                 </div>
                                                                 <div class="author-info">
-                                                                    <h2><a href="search?pesquisa=concursos">Concursos e Seletivos</a></h2>
+                                                                    <h2><a href="{{url('concursos/editais')}}">Concursos e Seletivos</a></h2>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -229,10 +153,10 @@
                                                         <li>
                                                             <div class="entry-meta">
                                                                 <div class="author-image">
-                                                                    <a href="search?pesquisa=licitação"><img class="img-responsive" src="images/services/licitacao.png" alt="Image"></a>
+                                                                    <a href="{{url('licitacao/contratos')}}"><img class="img-responsive" src="images/services/licitacao.png" alt="Contratos de Licitações"></a>
                                                                 </div>
                                                                 <div class="author-info">
-                                                                    <h2><a href="search?pesquisa=licitação">Contratos e Licitações</a></h2>
+                                                                    <h2><a href="{{url('licitacao/contratos')}}">Contratos de Licitações</a></h2>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -240,10 +164,10 @@
                                                         <li>
                                                             <div class="entry-meta">
                                                                 <div class="author-image">
-                                                                    <a href="search?pesquisa=legislação"><img class="img-responsive" src="images/services/legislacao.png" alt="Image"></a>
+                                                                    <a href="{{url('legislacao/leis')}}"><img class="img-responsive" src="images/services/legislacao.png" alt="Leis do Município"></a>
                                                                 </div>
                                                                 <div class="author-info">
-                                                                    <h2><a href="search?pesquisa=legislação">Legislação</a></h2>
+                                                                    <h2><a href="{{url('legislacao/leis')}}">Leis do Município</a></h2>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -251,10 +175,10 @@
                                                         <li>
                                                             <div class="entry-meta">
                                                                 <div class="author-image">
-                                                                    <a href="sugestaoOrcamentaria"><img class="img-responsive" src="images/services/sugestao.png" alt="Image"></a>
+                                                                    <a href="{{url('legislacao/decretos')}}"><img class="img-responsive" src="images/services/sugestao.png" alt="Decretos"></a>
                                                                 </div>
                                                                 <div class="author-info">
-                                                                    <h2><a href="sugestaoOrcamentaria">Sugestão Orçamentária</a></h2>
+                                                                    <h2><a href="{{url('legislacao/decretos')}}">Decretos</a></h2>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -262,10 +186,21 @@
                                                         <li>
                                                             <div class="entry-meta">
                                                                 <div class="author-image">
-                                                                    <a href="atracoes-turisticas"><img class="img-responsive" src="images/services/turismo.png" alt="Image"></a>
+                                                                    <a href="{{route('festivities')}}"><img class="img-responsive" src="images/services/turismo.png" alt="Turismo"></a>
                                                                 </div>
                                                                 <div class="author-info">
-                                                                    <h2><a href="atracoes-turisticas">Turismo</a></h2>
+                                                                    <h2><a href="{{route('festivities')}}">Turismo</a></h2>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <hr>
+                                                        <li>
+                                                            <div class="entry-meta">
+                                                                <div class="author-image">
+                                                                    <a href="{{route('contact.index')}}"><img class="img-responsive" src="images/services/ouvidoria.png" alt="Ouvidoria"></a>
+                                                                </div>
+                                                                <div class="author-info">
+                                                                    <h2><a href="{{route('contact.index')}}">Ouvidoria</a></h2>
                                                                 </div>
                                                             </div>
                                                         </li>

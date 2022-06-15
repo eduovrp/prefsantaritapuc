@@ -94,13 +94,7 @@
                                                 <a class="pointer"><i class="fa fa-map-signs" aria-hidden="true"></i>Turismo</a>
                                                 <ul class="sub-menu">
                                                     <li>
-                                                        <a href="atracoes-turisticas">Atrações Turísticas </a>
-                                                    </li>
-                                                    <li>
                                                         <a href="{{url ('/festivities')}}">Calendário de Eventos</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="conheca-santarita">Conheça Santa Rita d'Oeste</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -229,12 +223,12 @@
                                     <div class="footer-menu">
                                         <div class="container">
                                             <ul class="nav navbar-nav">
-                                                <li><a href="{{url ('/')}}">Inicio</a></li>
-                                                <li><a href="posts">Notícias</a></li>
-                                                <li><a href="cidade#map">Como Chegar</a></li>
-                                                <li><a href="{{route ('contact.index') }}">Ouvidoria</a></li>
-                                                <li><a href="registrar">Registre-se</a></li>
-                                                <li><a href="https://portal.office.com/" target="_blank">Webmail</a></li>
+                                                <li><a href="{{route('home')}}">Inicio</a></li>
+                                                <li><a href="{{route('posts')}}">Notícias</a></li>
+                                                <li><a href="{{route('festivities')}}">Calendário de Eventos</a></li>
+                                                <li><a href="{{route('contact.index') }}">Ouvidoria</a></li>
+                                                <li><a href="{{route('login')}}">Login</a></li>
+                                                <li><a href="{{route('register')}}">Registre-se</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -247,7 +241,7 @@
                                                 </div>
                                                 <p>A cidade foi fundada em 22 de maio de 1952 e transformada em distrito em 30 de dezembro de 1953, em território do município de Santa Fé do Sul. Desenvolveu-se e obteve sua autonomia político-administrativa em 28 de fevereiro de 1964, quando foi elevada a município.</p>
                                                 <address>
-                                                    <p>&copy; 2020 <a href="{{url ('/')}}">Santa Rita d'Oeste - SP</a>. Email: <a href="#">tecnologia@santaritadoeste.sp.gov.br</a></p>
+                                                    <small>© {{ date('Y') }} Prefeitura Municipal de Santa Rita d'Oeste - SP. @lang('Todos os direitos reservados.')</small>
                                                 </address>
 
                                             </div><!-- /.footer-bottom-content -->

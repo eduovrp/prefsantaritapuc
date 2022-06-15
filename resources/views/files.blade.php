@@ -12,8 +12,6 @@
                     </div>
 
             </div><!-- /.tr-section -->
-{{ asset('storage/uploads/2022/VhWu3H30Emox2LVbXuQLyOXXwuy94Ii99RiXghW0.pdf');}}
-
 
         </div><!-- row -->
         @if($checkUri==false)
