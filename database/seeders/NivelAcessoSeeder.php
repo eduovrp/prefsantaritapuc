@@ -16,12 +16,12 @@ class NivelAcessoSeeder extends Seeder
     public function run()
     {
         DB::table('nivel_acessos')->insert([
-            'name'=>'SuperAdmin',
+            'name'=>'Administrador',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('nivel_acessos')->insert([
-            'name'=>'Admin',
+            'name'=>'Gestor',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);

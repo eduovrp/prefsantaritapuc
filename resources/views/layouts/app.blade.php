@@ -197,17 +197,7 @@
 										</ul>
 									</div>
 								</div>
-								<div class="searchNlogin">
-									<ul>
-										<li class="search-icon"><i class="fa fa-search"></i></li>
 
-									</ul>
-									<div class="search">
-										<form action="search" method="get">
-											<input type="text" name="pesquisa" class="search-form" autocomplete="off" minlength="3" placeholder="Digite & pressione Enter">
-										</form>
-									</div> <!--/.search-->
-								</div>
 							</div><!-- /.topbar-right -->
 						</div><!-- /.tr-topbar -->
 

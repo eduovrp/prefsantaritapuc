@@ -64,15 +64,15 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="col-md-3">
-                                        <label for="name">Name</label>
+                                        <label for="name1">Nome</label>
                                         <input type="text" class="form-control" id="name1" name="name">
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="single_name">Single Name</label>
+                                        <label for="single_name1">Nome no Singular</label>
                                         <input type="text" class="form-control" id="single_name1" name="single_name">
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="href">href</label>
+                                        <label for="href1">href</label>
                                         <input type="text" class="form-control" id="href1" name="href">
                                     </div>
                                     <div class="col-md-3">
@@ -89,7 +89,7 @@
                     <div class="tr-manage">
                         <table id="dataTable-Files" class="table table-striped table-bordered">
                             <thead>
-                                <tr>
+                            <tr>
                                     <th>Id</th>
                                     <th class="print">Name</th>
                                     <th class="print">Single Name</th>
