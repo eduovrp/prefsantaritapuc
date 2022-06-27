@@ -4195,7 +4195,7 @@ textarea.form-control {
 
 .account-content,
 .error-page-content {
-	width: 550px;
+	max-width: 550px;
 	display: inline-block;
 	overflow: hidden;
 }
@@ -4582,6 +4582,19 @@ a, .navbar-default li a i,
 	.footer-widgets{
 		display: none;
 	}
+
+    .tr-details {
+        font-size: 14px;
+        line-height: 26px;
+        color: #888;
+        margin-top: 25px;
+        padding: 10px 15px 10px 15px;
+        border-top: 1px solid #f0f3f5;
+        min-height: 500px !important;
+    }
+    .navbar-brand img.img-responsive{
+        max-width: 50%;
+    }
 }
 
 @media screen and (min-width:1445px){

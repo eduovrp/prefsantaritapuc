@@ -10,10 +10,10 @@
                     <x-jet-validation-errors />
 
 					<div class="tr-details arqs">
-                        <div class="ragister-account text-center tr-section">
+                        <div class="ragister-account text-center">
                             <div class="account-content">
                                 <div class="logo text-center">
-                                    <a class="navbar-brand" href="#"><img class="img-responsive" src="{{ asset('images/logosr.png') }}" width="40%" style="left: 0" alt="Logo"></a>
+                                    <a class="navbar-brand" href="#"><img class="img-responsive" src="{{ asset('images/logosr.png') }}" style="left: 0" alt="Logo"></a>
                                 </div>
                                 <div class="section-title">
                                     <h1>Registre-se</h1>
