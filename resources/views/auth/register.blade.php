@@ -13,7 +13,7 @@
                         <div class="ragister-account text-center tr-section">
                             <div class="account-content">
                                 <div class="logo text-center">
-                                    <a class="navbar-brand" href="#"><img class="img-responsive" src="images/logosr.png" width="40%" style="left: 0" alt="Logo"></a>
+                                    <a class="navbar-brand" href="#"><img class="img-responsive" src="{{ asset('images/logosr.png') }}" width="40%" style="left: 0" alt="Logo"></a>
                                 </div>
                                 <div class="section-title">
                                     <h1>Registre-se</h1>

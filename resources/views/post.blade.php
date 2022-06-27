@@ -9,7 +9,7 @@
                 <div class="tr-post">
                     <div class="entry-header">
                         <div class="entry-thumbnail">
-                            <img class="img-responsive" src="{{$post->src_img}}" alt="Image">
+                            <img class="img-responsive" src="{{ asset($post->src_img) }}" alt="Image">
                         </div>
                     </div>
                     <div class="post-content">

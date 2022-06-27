@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                          <label for="nivelAcesso"></label>
+                                        <label for="nivelAcesso">Nivel de Acesso</label>
 
                                           <select class="form-control" name="nivel_acesso_id" id="nivel_acesso_id"
                                                 @if(Auth::user()->nivel_acesso_id >= 2 && $user->nivel_acesso_id <= 2) disabled="disabled" @endif>

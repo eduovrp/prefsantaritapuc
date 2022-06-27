@@ -17,7 +17,7 @@
                             <div class="row notice">
                                 <a href="{{route('post.show', ['post'=> $post->id])}}" target="_blank">
                                     <div class="col-md-3">
-                                        <img src="{{$post->src_img}}" class="img-responsive">
+                                        <img src="{{ asset($post->src_img)}}" class="img-responsive">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="row">

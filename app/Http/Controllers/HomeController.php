@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use App\Models\Post;
 use AdinanCenci\Climatempo\Climatempo;
+use Exception;
 
 class HomeController extends Controller
 {
@@ -12,13 +13,21 @@ class HomeController extends Controller
     public function index()
     {
 
-        $token      = '0767bb1676bdfb6a5a5b0caf82b63d3e';
+        $token      = '240c46429bacc1c7124574c7b4300934';
         $locales 	= 3662;
         $climatempo = new Climatempo($token);
 
-        $weather    = $climatempo->current($locales);
-        $forecast   = $climatempo->fifteenDays($locales);
+        try {
+            $weather    = $climatempo->current($locales);
+        } catch (Exception $e) {
+            $weather = null;
+        }
 
+        try {
+            $forecast   = $climatempo->fifteenDays($locales);
+        } catch (Exception $e) {
+            $forecast = null;
+        }
 
         $posts = Post::orderBy('id','desc')->take(4)->get();
         $cards = Card::all();
