@@ -4176,12 +4176,12 @@ textarea.form-control {
 	float: none;
 	padding: 0;
 	margin-bottom: 35px;
-	display: inline-block;
+	display: unset;
 }
 
 .account-content .navbar-brand img,
 .error-page-content .navbar-brand img {
-	display: inline-block;
+	display: unset;
 }
 
 .ragister-account .section-title h1 {
