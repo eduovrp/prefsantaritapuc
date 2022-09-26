@@ -4195,6 +4195,7 @@ textarea.form-control {
 
 .account-content,
 .error-page-content {
+    width: 100%;
 	max-width: 550px;
 	display: inline-block;
 	overflow: hidden;
@@ -4595,6 +4596,14 @@ a, .navbar-default li a i,
     .navbar-brand img.img-responsive{
         max-width: 50%;
     }
+
+    .account-content,
+.error-page-content {
+    width: 100%;
+	max-width: 550px;
+	display: inline-block;
+	overflow: hidden;
+}
 }
 
 @media screen and (min-width:1445px){

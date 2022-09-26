@@ -6,10 +6,9 @@
 	<div class="col-sm-12 tr-sticky">
 	    <div class="tr-content theiaStickySidebar">
 			<div class="tr-section">
-				<div class="tr-post">
                     <x-jet-validation-errors />
 
-					<div class="tr-details arqs">
+
                         <div class="ragister-account text-center">
                             <div class="account-content">
                                 <div class="logo text-center">
@@ -33,7 +32,7 @@
                                     </div>
                                     <span>Ou</span>
                                     <div class="buttons">
-                                        <a href="{{route('login')}}" class="btn btn-primary pass">Já possui cadastro? Clique para entrar</a>
+                                        <a href="{{route('login')}}" class="btn btn-primary pass">Entre usando sua senha</a>
                                     </div>
 
                                 </form><!-- /.contact-form -->
@@ -41,14 +40,9 @@
 
                             </div><!-- /.account-content -->
                         </div><!-- /.tr-page-content -->
-
-                                    </div><!-- /.tr-details -->
-
-										</div>
                                     </div>
-                                </div>
+
                             </div>
-						</div>
                     </div>
 						  </div><!-- /.container-fulid -->
                       </div><!-- /.main-wrapper -->

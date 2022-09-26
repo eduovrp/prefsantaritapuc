@@ -6,7 +6,7 @@ use App\Mail\sendMailContact;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-
+use App\Rules\ReCAPTCHAv3;
 
 class ContactController extends Controller
 {
@@ -17,6 +17,13 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required',
+            'subject' => 'required|min:3',
+            'grecaptcha' => [ 'required', new ReCAPTCHAv3]
+        ]);
+
         $contact = Contact::create([
             'name' => trim($request->name),
             'email' => trim($request->email),

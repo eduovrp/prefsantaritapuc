@@ -1,7 +1,7 @@
-/* lg */ 
+/* lg */
 @media (min-width: 1400px) {
-	
-	.gallery-indicators li, 
+
+	.gallery-indicators li,
 	.gallery-indicators li.active {
 		width: 5.7%;
 		height: 40px;
@@ -10,7 +10,7 @@
 
 /* md */
 @media (min-width: 992px) and (max-width: 1199px) {
-	
+
 	.tr-menu.sidebar-menu .navbar-default {
 		padding:15px 10px;
 	}
@@ -34,19 +34,19 @@
 	}
 	.medium-post .entry-meta ul>li:last-child {
 		margin-left: 0;
-	}	
+	}
 	.football-result .col-md-6 {
 		width: 100%;
 	}
 	.tr-topbar .navbar-brand {
 		margin-right: 10px;
 	}
-	.photo-gallery-two .gallery-indicators li, 
+	.photo-gallery-two .gallery-indicators li,
 	.photo-gallery-two .gallery-indicators li.active {
 		width: 30px;
 		height: 30px;
 	}
-	.photo-gallery-two .left-photo, 
+	.photo-gallery-two .left-photo,
 	.photo-gallery-two .right-photo {
 		bottom: -5px;
 	}
@@ -87,7 +87,7 @@
 	}
 	.tr-topbar.topbar-width-container .topbar-right {
 		width: 53%;
-	}	
+	}
 	.search {
 		right: 145px;
 	}
@@ -116,11 +116,11 @@
 	.team-members > li {
 		width: 25%;
 	}
-	.tr-live-score .live-match, 
+	.tr-live-score .live-match,
 	.stock-quotes{
 		width: 18%;
-	}	
-	.quotes-content, 
+	}
+	.quotes-content,
 	.live-score-content {
 		width: 82%;
 	}
@@ -140,13 +140,13 @@
 	}
 	.medium-post-responsive .feed.pull-right{
 		float: left !important;
-	}	
+	}
 	.league-result > ul > li {
 		padding: 20px 13px;
 	}
 	.jp-volume-bar {
 		width: 50%;
-	}	
+	}
 	.tr-post-tab .tab-content {
 		border-left: 1px solid #cecece;
 	}
@@ -219,10 +219,10 @@
 
 	.entry-title {
 		font-size: 18px;
-	}	
+	}
 	.item .entry-title {
 		font-size: 24px;
-	}	
+	}
 	.tr-menu.sidebar-menu .navbar-default{
 		padding: 10px 15px;
 	}
@@ -252,7 +252,7 @@
 	.slider-style-four .post-content {
 		width: 100%;
 	}
-	.slider-style-three .item, 
+	.slider-style-three .item,
 	.slider-style-three .container {
 		min-height: 650px;
 	}
@@ -313,7 +313,7 @@
 	}
 	.slider-style-two .carousel-indicators {
 		width: 31%;
-	}	
+	}
 	.slider-style-two .item-content {
 		width: 69%;
 	}
@@ -339,11 +339,11 @@
 	}
 	.post-vertical .post-content {
 		margin-top: 25px;
-	}	
+	}
 	.small-post-list .entry-header {
 		width: 65px;
 		height: 65px;
-	}	
+	}
 	.post-list-style-two  .entry-header {
 		width: 75px;
 		height: 67px;
@@ -413,11 +413,11 @@
 	.catagory-list ul li a {
 		font-size: 12px;
 	}
-	.tr-live-score .live-match, 
+	.tr-live-score .live-match,
 	.stock-quotes{
 		width: 25%;
-	}	
-	.quotes-content, 
+	}
+	.quotes-content,
 	.live-score-content {
 		width: 75%;
 	}
@@ -442,19 +442,19 @@
 	.widget-left {
 		border: 0;
 	}
-	.audio-post .soundcloud, 
+	.audio-post .soundcloud,
 	.post-style-six .video-post .entry-thumbnail {
 		height: 310px;
-	}	
+	}
 	.medium-post-content .left-post {
 		border-right: 0;
 	}
 	.tr-breaking-news .tr-post {
 		margin-bottom: 14px;
-	}	
+	}
 	.tr-menu .navbar-nav > li {
 	    margin-right: 15px;
-	}	
+	}
 	.tr-weather.style-two .weather-top ul {
 		text-align: left;
 	}
@@ -473,7 +473,7 @@
 
 /* xs */
 @media (max-width: 767px) {
-	
+
 	.ad-bottom {
 		margin-top: 40px;
 	}
@@ -498,7 +498,7 @@
 	}
 	.match-category {
 		margin: 30px 0;
-	}	
+	}
 	.item .entry-title {
 		font-size: 18px;
 	}
@@ -614,7 +614,7 @@
 	.item-image-content,
 	.slider-style-two .item .post-content {
 		width: 100%;
-	}	
+	}
 	.slider-style-two .item-image {
 		height: 150px;
 	}
@@ -641,7 +641,7 @@
 	.sidebar-menu-two,
 	.tr-comment,
 	.catagory-list,
-	.tr-live-score, 
+	.tr-live-score,
 	.tr-stock-quotes,
 	.tr-news-content,
 	.tr-weather,
@@ -686,8 +686,8 @@
 	.slider-style-three .post-content {
 		width: 100%;
 		bottom: 50px;
-	}	
-	.slider-style-three .item, 
+	}
+	.slider-style-three .item,
 	.slider-style-three .container {
 		min-height: 450px;
 	}
@@ -697,8 +697,8 @@
 	.entertainment-slider .slick-next {
 		right: -20px;
 	}
-	.tr-menu.menu-style-two, 
-	.tr-menu.menu-style-two ul.sub-menu .sub-menu-2, 
+	.tr-menu.menu-style-two,
+	.tr-menu.menu-style-two ul.sub-menu .sub-menu-2,
 	.tr-menu.menu-style-two ul.sub-menu {
 		background-color: #000;
 		padding: 0;
@@ -706,7 +706,7 @@
 	.homepage-3 .section-title {
 		margin: 0;
 	}
-	.trending-news::before, 
+	.trending-news::before,
 	.tr-post-tab .nav-tabs::before {
 		display: none;
 	}
@@ -762,14 +762,14 @@
 	.contact-form-two {
 		margin-bottom: 35px;
 	}
-	.tr-live-score .live-match, 
+	.tr-live-score .live-match,
 	.stock-quotes {
 		width: 40%;
 	}
-	.quotes-content, 
+	.quotes-content,
 	.live-score-content	{
 		width: 60%;
-	}	
+	}
 	.tr-breaking-news {
 		padding: 20px 15px;
 	}
@@ -854,7 +854,7 @@
 	.player-wrapper-image img {
 		width: 100%;
 	}
-	.tr-contact-section li span, 
+	.tr-contact-section li span,
 	.tr-contact-section li span a {
 		font-size: 14px;
 	}
@@ -897,8 +897,8 @@
 	}
 	.tr-contact-section li {
 		width: 100%;
-	}	
-	.account-content .navbar-brand, 
+	}
+	.account-content .navbar-brand,
 	.error-page-content .navbar-brand {
 		margin-bottom: 15px;
 	}
@@ -921,7 +921,7 @@
 	.widget.widget-menu-3 ul li {
 		width: 50%;
 	}
-	.quotes-content, 
+	.quotes-content,
 	.live-score-content {
 		padding: 0 20px;
 	}
@@ -940,13 +940,13 @@
 	}
 	.tr-hamburger{
 		margin: 12px 15px 0 15px;
-	}	
+	}
 	.topbar-two .navbar-brand {
 		padding: 15px;
 	}
 	.sidebar-menu .navbar-nav > li {
 		margin: 5px 0;
-	}	
+	}
 	.aside-menu {
 		padding: 20px;
 	}
@@ -974,7 +974,7 @@
 	.expanded .search {
 		width: 180px;
 	}
-	.expanded .search-icon::before, 
+	.expanded .search-icon::before,
 	.expanded .search-icon::after {
 		display: none;
 	}
@@ -1015,7 +1015,7 @@
 	}
 	.slider-style-two .item-content {
 		width: 60%;
-	}	
+	}
 	.slider-style-two .feed.pull-right {
 		float: left !important;
 	}
@@ -1024,7 +1024,7 @@
 	}
 	.tr-menu .feed {
 		top: -130px;
-	}	
+	}
 	.slider-style-two .item-image {
 		height: 100px;
 	}
@@ -1047,7 +1047,7 @@
 	}
 	.tr-about .about h1 {
 		font-size: 30px;
-	}		
+	}
 	.team-members > li {
 		width: 100%;
 	}
@@ -1061,9 +1061,9 @@
 		float: none !important;
 		text-align: left;
 	}
-	.tr-live-score .live-match, 
+	.tr-live-score .live-match,
 	.stock-quotes,
-	.quotes-content, 
+	.quotes-content,
 	.live-score-content	{
 		width: 100%;
 		border: 0;
@@ -1072,7 +1072,7 @@
 	.tr-live-score .live-match {
 		border-bottom: 1px solid #f0f3f5;
 	}
-	.tr-live-score, 
+	.tr-live-score,
 	.tr-stock-quotes {
 		padding-right: 0;
 	}
@@ -1080,7 +1080,7 @@
 	.quotes-slider {
 		padding-right: 30px;
 	}
-	.result-slider .slick-next, 
+	.result-slider .slick-next,
 	.quotes-slider .slick-next {
 		right: -10px;
 	}
@@ -1090,14 +1090,14 @@
 	.slider-style-four .gallery-turner {
 		bottom: 46%;
 	}
-	.result-slider, 
+	.result-slider,
 	.quotes-slider	{
 		border: 0;
 		margin: 0 15px;
-	}	
+	}
 	.tr-post-tab .nav-tabs li a {
 		padding: 5px 15px;
-	}	
+	}
 	.topbar-two .searchNlogin {
 		right: 10px;
 	}
@@ -1109,7 +1109,7 @@
 	}
 	.account-content,
 	.error-page-content {
-		padding: 0 15px;
+		padding: 0;
 	}
 	ul.sub-menu .sub-menu-2 {
 		left: 50%;
@@ -1122,16 +1122,16 @@
 	.result-slider .slick-next,
 	.quotes-slider .slick-next {
 		right: -20px;
-	}	
+	}
 	.tr-home-slider.home-slider-1 .post-content {
 		width: 100%;
-	}	
+	}
 	.tr-home-slider.home-slider-1 .item {
 		min-height: 350px;
-	}	
+	}
 	.tr-home-slider.home-slider-1 .carousel-indicators {
 		display: none;
-	}		
+	}
 
 }
 
